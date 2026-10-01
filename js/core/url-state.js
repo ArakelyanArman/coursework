@@ -2,26 +2,12 @@
 import { pageUrl } from './paths.js';
 
 /**
- * URL is state: search, filters, sort and page live in query params.
- *
- * @example
- * const schema = {
- *   q: { type: 'string' },
- *   genres: { type: 'array' },
- *   page: { type: 'number', default: 1 },
- * };
- * const state = readParams(schema);          // { q: '', genres: [], page: 1 }
- * writeParams({ ...state, page: 2 }, schema); // pushes ?page=2
- *
  * @typedef {{ type: 'string' | 'number' | 'array', default?: string | number | string[] }} ParamSpec
  * @typedef {Record<string, ParamSpec>} ParamSchema
  * @typedef {Record<string, any>} ParamValues
  */
 
-/**
- * @param {ParamSpec} spec
- * @returns {string | number | string[] | null}
- */
+/** @param {ParamSpec} spec */
 function defaultFor(spec) {
   if (spec.default !== undefined) return spec.default;
   if (spec.type === 'array') return [];
@@ -30,7 +16,7 @@ function defaultFor(spec) {
 }
 
 /**
- * Read typed values from a query string. Missing or invalid params get their default.
+ * Missing or invalid params get their default.
  * @param {ParamSchema} schema
  * @param {string} [search]
  * @returns {ParamValues}
@@ -60,11 +46,10 @@ export function readParams(schema, search = window.location.search) {
 }
 
 /**
- * Serialize values to a query string, leaving out empty values and defaults so
- * URLs stay short. Arrays become comma-separated lists.
+ * Empty values and defaults are left out; arrays become comma-separated lists.
  * @param {ParamValues} values
  * @param {ParamSchema} [schema]
- * @returns {string} Without the leading "?"; empty when there is nothing to write.
+ * @returns {string} Without the leading "?".
  */
 export function serializeParams(values, schema = {}) {
   const params = new URLSearchParams();
@@ -82,11 +67,9 @@ export function serializeParams(values, schema = {}) {
 }
 
 /**
- * Write values to the current URL without reloading.
  * @param {ParamValues} values
  * @param {ParamSchema} [schema]
- * @param {{ replace?: boolean }} [options] `replace` rewrites the current history entry
- *   (use while typing); the default adds an entry so Back restores the previous view.
+ * @param {{ replace?: boolean }} [options] `replace` rewrites the current history entry instead of adding one.
  */
 export function writeParams(values, schema = {}, { replace = false } = {}) {
   const query = serializeParams(values, schema);
@@ -96,20 +79,14 @@ export function writeParams(values, schema = {}, { replace = false } = {}) {
   else window.history.pushState(null, '', url);
 }
 
-/**
- * Run `handler` when the user goes Back or Forward.
- * @param {() => void} handler
- * @returns {() => void} Removes the listener.
- */
+/** @param {() => void} handler Runs on Back and Forward. @returns {() => void} Removes the listener. */
 export function onParamsChange(handler) {
   window.addEventListener('popstate', handler);
   return () => window.removeEventListener('popstate', handler);
 }
 
 /**
- * Build a link to an app page with query params.
- * @example buildUrl('catalog.html', { category: 'classics', page: 2 })
- * @param {string} path Path relative to the app root.
+ * @param {string} path Relative to the app root.
  * @param {ParamValues} [values]
  * @param {ParamSchema} [schema]
  * @returns {string} Root-relative URL.
@@ -120,20 +97,18 @@ export function buildUrl(path, values = {}, schema = {}) {
 }
 
 /**
- * Accept only same-origin, relative `returnTo` values. Anything else (absolute
- * URLs, "//host", "javascript:") returns `fallback`, so a crafted login link
- * cannot send the user to another site.
+ * Only same-origin relative values pass, so a crafted login link cannot redirect off-site.
  * @param {unknown} value
  * @param {string} fallback
- * @returns {string} A root-relative URL.
+ * @returns {string}
  */
 export function safeReturnTo(value, fallback) {
   if (typeof value !== 'string' || value === '') return fallback;
-  // Reject schemes, protocol-relative URLs, backslashes and control characters up front.
+  const hasScheme = /^[a-z][a-z0-9+.-]*:/i.test(value);
+  const isProtocolRelative = /^[/\\]{2}/.test(value);
   // eslint-disable-next-line no-control-regex
-  if (/^[a-z][a-z0-9+.-]*:/i.test(value) || /^[/\\]{2}/.test(value) || /[\\\u0000-\u001f]/.test(value)) {
-    return fallback;
-  }
+  const hasUnsafeChars = /[\\\u0000-\u001f]/.test(value);
+  if (hasScheme || isProtocolRelative || hasUnsafeChars) return fallback;
   try {
     const url = new URL(value, window.location.href);
     if (url.origin !== window.location.origin) return fallback;

@@ -1,20 +1,14 @@
 // @ts-check
 
-/**
- * App configuration. Switching to the real backend only touches this file and
- * the provider layer: set `dataSource` to 'backend'.
- */
 export const config = {
   /** @type {'external' | 'backend'} */
   dataSource: 'external', // 'external' now → 'backend' later
   backendBaseUrl: '/api',
   openLibraryBaseUrl: 'https://openlibrary.org',
   coversBaseUrl: 'https://covers.openlibrary.org',
-  /** Simulated latency range in ms, for local-db only. */
-  localLatencyMs: [300, 600],
+  localLatencyMs: [300, 600], // simulated latency for local-db only
 
-  /** Prefix for every localStorage/sessionStorage key. Also used in theme-init.js. */
-  storagePrefix: 'library:',
+  storagePrefix: 'library:', // also hard-coded in theme-init.js
 
   /** @type {ReadonlyArray<'en' | 'hy'>} */
   languages: ['en', 'hy'],
@@ -24,9 +18,8 @@ export const config = {
   locales: { en: 'en-US', hy: 'hy-AM' },
 
   httpTimeoutMs: 10_000,
-  /** Cache lifetime for Open Library GETs. */
   httpCacheTtlMs: 10 * 60 * 1000,
+  pageSize: 20,
 
-  /** Dev-only warnings (missing translation keys, etc.). */
   isDev: ['localhost', '127.0.0.1', '[::1]'].includes(globalThis.location?.hostname ?? ''),
 };

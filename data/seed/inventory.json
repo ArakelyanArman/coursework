@@ -1,0 +1,925 @@
+[
+  {
+    "id": "OL66554W",
+    "title": "Pride and Prejudice",
+    "authors": [
+      "Jane Austen"
+    ],
+    "category": "classics",
+    "genres": [
+      "romance"
+    ],
+    "first_publish_year": 1813,
+    "cover_id": 14348537,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-01-12T09:00:00Z"
+  },
+  {
+    "id": "OL166894W",
+    "title": "Crime and Punishment",
+    "authors": [
+      "Fyodor Dostoevsky"
+    ],
+    "category": "classics",
+    "genres": [
+      "philosophy",
+      "psychology"
+    ],
+    "first_publish_year": 1866,
+    "cover_id": 9411873,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-01-15T09:17:00Z"
+  },
+  {
+    "id": "OL267096W",
+    "title": "Anna Karenina",
+    "authors": [
+      "Leo Tolstoy"
+    ],
+    "category": "classics",
+    "genres": [
+      "romance"
+    ],
+    "first_publish_year": 1877,
+    "cover_id": 2560652,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-01-18T09:34:00Z"
+  },
+  {
+    "id": "OL267171W",
+    "title": "War and Peace",
+    "authors": [
+      "Leo Tolstoy"
+    ],
+    "category": "classics",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1869,
+    "cover_id": 12621906,
+    "cover_url": null,
+    "description": null,
+    "copies": 4,
+    "created_at": "2026-01-21T09:51:00Z"
+  },
+  {
+    "id": "OL102749W",
+    "title": "Moby Dick",
+    "authors": [
+      "Herman Melville"
+    ],
+    "category": "classics",
+    "genres": [
+      "adventure"
+    ],
+    "first_publish_year": 1851,
+    "cover_id": 10544254,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-01-24T10:08:00Z"
+  },
+  {
+    "id": "OL1095427W",
+    "title": "Jane Eyre",
+    "authors": [
+      "Charlotte Brontë"
+    ],
+    "category": "classics",
+    "genres": [
+      "romance"
+    ],
+    "first_publish_year": 1847,
+    "cover_id": 8235363,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-01-27T10:25:00Z"
+  },
+  {
+    "id": "OL503666W",
+    "title": "Don Quixote",
+    "authors": [
+      "Miguel de Cervantes"
+    ],
+    "category": "classics",
+    "genres": [
+      "adventure",
+      "humor"
+    ],
+    "first_publish_year": 1605,
+    "cover_id": 14428305,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-01-30T10:42:00Z"
+  },
+  {
+    "id": "OL26446888W",
+    "title": "The Odyssey",
+    "authors": [
+      "Homer"
+    ],
+    "category": "classics",
+    "genres": [
+      "adventure"
+    ],
+    "first_publish_year": null,
+    "cover_id": 12474938,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-02-02T10:59:00Z"
+  },
+  {
+    "id": "OL1063588W",
+    "title": "Les Misérables",
+    "authors": [
+      "Victor Hugo"
+    ],
+    "category": "classics",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1862,
+    "cover_id": 12721865,
+    "cover_url": null,
+    "description": null,
+    "copies": 5,
+    "created_at": "2026-02-05T11:16:00Z"
+  },
+  {
+    "id": "OL468431W",
+    "title": "The Great Gatsby",
+    "authors": [
+      "F. Scott Fitzgerald"
+    ],
+    "category": "classics",
+    "genres": [],
+    "first_publish_year": 1925,
+    "cover_id": 10590366,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-02-08T11:33:00Z"
+  },
+  {
+    "id": "OL274505W",
+    "title": "One Hundred Years of Solitude",
+    "authors": [
+      "Gabriel García Márquez"
+    ],
+    "category": "fiction",
+    "genres": [],
+    "first_publish_year": 1967,
+    "cover_id": 12627383,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-02-11T11:50:00Z"
+  },
+  {
+    "id": "OL3140822W",
+    "title": "To Kill a Mockingbird",
+    "authors": [
+      "Harper Lee"
+    ],
+    "category": "fiction",
+    "genres": [],
+    "first_publish_year": 1960,
+    "cover_id": 14351077,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-02-14T12:07:00Z"
+  },
+  {
+    "id": "OL1168083W",
+    "title": "Nineteen Eighty-Four",
+    "authors": [
+      "George Orwell"
+    ],
+    "category": "science-fiction",
+    "genres": [],
+    "first_publish_year": 1949,
+    "cover_id": 9267242,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-02-17T12:24:00Z"
+  },
+  {
+    "id": "OL676009W",
+    "title": "The Master and Margarita",
+    "authors": [
+      "Mikhail Bulgakov"
+    ],
+    "category": "fiction",
+    "genres": [
+      "humor"
+    ],
+    "first_publish_year": 1967,
+    "cover_id": 12947486,
+    "cover_url": null,
+    "description": null,
+    "copies": 4,
+    "created_at": "2026-02-20T12:41:00Z"
+  },
+  {
+    "id": "OL10263W",
+    "title": "The Little Prince",
+    "authors": [
+      "Antoine de Saint-Exupéry"
+    ],
+    "category": "fiction",
+    "genres": [
+      "juvenile_fiction"
+    ],
+    "first_publish_year": 1943,
+    "cover_id": 10708272,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-02-23T12:58:00Z"
+  },
+  {
+    "id": "OL1230613W",
+    "title": "The Stranger",
+    "authors": [
+      "Albert Camus"
+    ],
+    "category": "fiction",
+    "genres": [
+      "philosophy"
+    ],
+    "first_publish_year": 1942,
+    "cover_id": 13151269,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-02-26T13:15:00Z"
+  },
+  {
+    "id": "OL27482W",
+    "title": "The Hobbit",
+    "authors": [
+      "J.R.R. Tolkien"
+    ],
+    "category": "fantasy",
+    "genres": [
+      "adventure"
+    ],
+    "first_publish_year": 1937,
+    "cover_id": 14627509,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-03-01T13:32:00Z"
+  },
+  {
+    "id": "OL27448W",
+    "title": "The Lord of the Rings",
+    "authors": [
+      "J.R.R. Tolkien"
+    ],
+    "category": "fantasy",
+    "genres": [
+      "adventure"
+    ],
+    "first_publish_year": 1954,
+    "cover_id": 14625765,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-03-04T13:49:00Z"
+  },
+  {
+    "id": "OL82563W",
+    "title": "Harry Potter and the Philosopher's Stone",
+    "authors": [
+      "J. K. Rowling"
+    ],
+    "category": "fantasy",
+    "genres": [
+      "juvenile_fiction"
+    ],
+    "first_publish_year": 1997,
+    "cover_id": 15155833,
+    "cover_url": null,
+    "description": null,
+    "copies": 5,
+    "created_at": "2026-03-07T14:06:00Z"
+  },
+  {
+    "id": "OL59798W",
+    "title": "A Wizard of Earthsea",
+    "authors": [
+      "Ursula K. Le Guin"
+    ],
+    "category": "fantasy",
+    "genres": [],
+    "first_publish_year": 1968,
+    "cover_id": 13617691,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-03-10T14:23:00Z"
+  },
+  {
+    "id": "OL893414W",
+    "title": "Dune",
+    "authors": [
+      "Frank Herbert"
+    ],
+    "category": "science-fiction",
+    "genres": [
+      "adventure"
+    ],
+    "first_publish_year": 1965,
+    "cover_id": 11481354,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-03-13T14:40:00Z"
+  },
+  {
+    "id": "OL103123W",
+    "title": "Fahrenheit 451",
+    "authors": [
+      "Ray Bradbury"
+    ],
+    "category": "science-fiction",
+    "genres": [],
+    "first_publish_year": 1953,
+    "cover_id": 12993656,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-03-16T14:57:00Z"
+  },
+  {
+    "id": "OL109524W",
+    "title": "Solaris",
+    "authors": [
+      "Stanisław Lem"
+    ],
+    "category": "science-fiction",
+    "genres": [
+      "philosophy"
+    ],
+    "first_publish_year": 1961,
+    "cover_id": 12313764,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-03-19T15:14:00Z"
+  },
+  {
+    "id": "OL2163649W",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "authors": [
+      "Douglas Adams"
+    ],
+    "category": "science-fiction",
+    "genres": [
+      "humor"
+    ],
+    "first_publish_year": 1979,
+    "cover_id": 12986869,
+    "cover_url": null,
+    "description": null,
+    "copies": 4,
+    "created_at": "2026-03-22T15:31:00Z"
+  },
+  {
+    "id": "OL471576W",
+    "title": "Murder on the Orient Express",
+    "authors": [
+      "Agatha Christie"
+    ],
+    "category": "mystery",
+    "genres": [],
+    "first_publish_year": 1934,
+    "cover_id": 11100465,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-03-25T15:48:00Z"
+  },
+  {
+    "id": "OL262454W",
+    "title": "The Hound of the Baskervilles",
+    "authors": [
+      "Arthur Conan Doyle"
+    ],
+    "category": "mystery",
+    "genres": [],
+    "first_publish_year": 1902,
+    "cover_id": 8063264,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-03-28T16:05:00Z"
+  },
+  {
+    "id": "OL8996439W",
+    "title": "The Name of the Rose",
+    "authors": [
+      "Umberto Eco"
+    ],
+    "category": "mystery",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1980,
+    "cover_id": 8598263,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-03-31T16:22:00Z"
+  },
+  {
+    "id": "OL16239762W",
+    "title": "Gone Girl",
+    "authors": [
+      "Gillian Flynn"
+    ],
+    "category": "mystery",
+    "genres": [
+      "thriller"
+    ],
+    "first_publish_year": 2012,
+    "cover_id": 8368314,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-04-03T16:39:00Z"
+  },
+  {
+    "id": "OL17075811W",
+    "title": "Sapiens",
+    "authors": [
+      "Yuval Noah Harari"
+    ],
+    "category": "history",
+    "genres": [],
+    "first_publish_year": 2011,
+    "cover_id": 8634250,
+    "cover_url": null,
+    "description": null,
+    "copies": 5,
+    "created_at": "2026-04-06T16:56:00Z"
+  },
+  {
+    "id": "OL3378527W",
+    "title": "The Guns of August",
+    "authors": [
+      "Barbara Tuchman"
+    ],
+    "category": "history",
+    "genres": [],
+    "first_publish_year": 1962,
+    "cover_id": 6616967,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-04-09T17:13:00Z"
+  },
+  {
+    "id": "OL17340134W",
+    "title": "SPQR",
+    "authors": [
+      "Mary Beard"
+    ],
+    "category": "history",
+    "genres": [],
+    "first_publish_year": 2015,
+    "cover_id": 7418788,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-04-12T17:30:00Z"
+  },
+  {
+    "id": "OL1892617W",
+    "title": "A Brief History of Time",
+    "authors": [
+      "Stephen Hawking"
+    ],
+    "category": "science",
+    "genres": [],
+    "first_publish_year": 1988,
+    "cover_id": 10432365,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-04-15T17:47:00Z"
+  },
+  {
+    "id": "OL15829966W",
+    "title": "Cosmos",
+    "authors": [
+      "Carl Sagan"
+    ],
+    "category": "science",
+    "genres": [],
+    "first_publish_year": 1980,
+    "cover_id": 8283901,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-04-18T18:04:00Z"
+  },
+  {
+    "id": "OL1966488W",
+    "title": "The Selfish Gene",
+    "authors": [
+      "Richard Dawkins"
+    ],
+    "category": "science",
+    "genres": [],
+    "first_publish_year": 1976,
+    "cover_id": 133936,
+    "cover_url": null,
+    "description": null,
+    "copies": 4,
+    "created_at": "2026-04-21T18:21:00Z"
+  },
+  {
+    "id": "OL515051W",
+    "title": "On the Origin of Species",
+    "authors": [
+      "Charles Darwin"
+    ],
+    "category": "science",
+    "genres": [],
+    "first_publish_year": 1859,
+    "cover_id": 7153600,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-04-24T18:38:00Z"
+  },
+  {
+    "id": "OL16333W",
+    "title": "Leaves of Grass",
+    "authors": [
+      "Walt Whitman"
+    ],
+    "category": "poetry",
+    "genres": [],
+    "first_publish_year": 1855,
+    "cover_id": 9000447,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-04-27T18:55:00Z"
+  },
+  {
+    "id": "OL93082W",
+    "title": "The Divine Comedy",
+    "authors": [
+      "Dante Alighieri"
+    ],
+    "category": "poetry",
+    "genres": [],
+    "first_publish_year": 1472,
+    "cover_id": 11621024,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-04-30T19:12:00Z"
+  },
+  {
+    "id": "OL1142292W",
+    "title": "The Waste Land",
+    "authors": [
+      "T. S. Eliot"
+    ],
+    "category": "poetry",
+    "genres": [],
+    "first_publish_year": 1922,
+    "cover_id": 115288,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-05-03T19:29:00Z"
+  },
+  {
+    "id": "OL266178W",
+    "title": "The Diary of a Young Girl",
+    "authors": [
+      "Anne Frank"
+    ],
+    "category": "biography",
+    "genres": [],
+    "first_publish_year": 1947,
+    "cover_id": 8584021,
+    "cover_url": null,
+    "description": null,
+    "copies": 5,
+    "created_at": "2026-05-06T19:46:00Z"
+  },
+  {
+    "id": "OL1783377W",
+    "title": "Long Walk to Freedom",
+    "authors": [
+      "Nelson Mandela"
+    ],
+    "category": "biography",
+    "genres": [],
+    "first_publish_year": 1994,
+    "cover_id": 12702407,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-05-09T20:03:00Z"
+  },
+  {
+    "id": "OL5781992W",
+    "title": "The Kite Runner",
+    "authors": [
+      "Khaled Hosseini"
+    ],
+    "category": "fiction",
+    "genres": [
+      "drama"
+    ],
+    "first_publish_year": 2003,
+    "cover_id": 14846827,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-05-12T20:20:00Z"
+  },
+  {
+    "id": "OL20150260W",
+    "title": "Normal People",
+    "authors": [
+      "Sally Rooney"
+    ],
+    "category": "fiction",
+    "genres": [
+      "romance"
+    ],
+    "first_publish_year": 2018,
+    "cover_id": 8794265,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-05-15T20:37:00Z"
+  },
+  {
+    "id": "OL5819456W",
+    "title": "The Book Thief",
+    "authors": [
+      "Markus Zusak"
+    ],
+    "category": "fiction",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 2005,
+    "cover_id": 8153054,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-05-18T20:54:00Z"
+  },
+  {
+    "id": "OL8039331W",
+    "title": "The Fool",
+    "authors": [
+      "Raffi"
+    ],
+    "category": "armenian",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1881,
+    "cover_id": 2694861,
+    "cover_url": null,
+    "description": null,
+    "copies": 4,
+    "created_at": "2026-05-21T21:11:00Z"
+  },
+  {
+    "id": "OL32224169W",
+    "title": "Samvel",
+    "authors": [
+      "Raffi"
+    ],
+    "category": "armenian",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1886,
+    "cover_id": null,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-05-24T21:28:00Z"
+  },
+  {
+    "id": "OL24779936W",
+    "title": "Wounds of Armenia",
+    "authors": [
+      "Khachatur Abovian"
+    ],
+    "category": "armenian",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1858,
+    "cover_id": 11536253,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-05-27T21:45:00Z"
+  },
+  {
+    "id": "OL1442158W",
+    "title": "The Human Comedy",
+    "authors": [
+      "William Saroyan"
+    ],
+    "category": "armenian",
+    "genres": [],
+    "first_publish_year": 1943,
+    "cover_id": 7412101,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-05-30T22:02:00Z"
+  },
+  {
+    "id": "OL1442072W",
+    "title": "My Name Is Aram",
+    "authors": [
+      "William Saroyan"
+    ],
+    "category": "armenian",
+    "genres": [
+      "short_stories"
+    ],
+    "first_publish_year": 1940,
+    "cover_id": 8405487,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-06-02T22:19:00Z"
+  },
+  {
+    "id": "OL1442060W",
+    "title": "The Daring Young Man on the Flying Trapeze",
+    "authors": [
+      "William Saroyan"
+    ],
+    "category": "armenian",
+    "genres": [
+      "short_stories"
+    ],
+    "first_publish_year": 1934,
+    "cover_id": 14940859,
+    "cover_url": null,
+    "description": null,
+    "copies": 5,
+    "created_at": "2026-06-05T22:36:00Z"
+  },
+  {
+    "id": "OL723949W",
+    "title": "Book of Lamentations",
+    "authors": [
+      "Grigor Narekatsi"
+    ],
+    "category": "armenian",
+    "genres": [
+      "philosophy"
+    ],
+    "first_publish_year": null,
+    "cover_id": 4898219,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-06-08T22:53:00Z"
+  },
+  {
+    "id": "OL866117W",
+    "title": "History of the Armenians",
+    "authors": [
+      "Movses Khorenatsi"
+    ],
+    "category": "armenian",
+    "genres": [],
+    "first_publish_year": null,
+    "cover_id": 6099193,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-06-11T23:10:00Z"
+  },
+  {
+    "id": "OL44927417W",
+    "title": "Anush",
+    "authors": [
+      "Hovhannes Tumanyan"
+    ],
+    "category": "armenian",
+    "genres": [
+      "drama"
+    ],
+    "first_publish_year": 1892,
+    "cover_id": null,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-06-14T23:27:00Z"
+  },
+  {
+    "id": "OL26223185W",
+    "title": "Gikor",
+    "authors": [
+      "Hovhannes Tumanyan"
+    ],
+    "category": "armenian",
+    "genres": [
+      "short_stories"
+    ],
+    "first_publish_year": 1895,
+    "cover_id": 12222184,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-06-17T23:44:00Z"
+  },
+  {
+    "id": "OL37796088W",
+    "title": "The Forty Days of Musa Dagh",
+    "authors": [
+      "Franz Werfel"
+    ],
+    "category": "fiction",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 1933,
+    "cover_id": 14905735,
+    "cover_url": null,
+    "description": null,
+    "copies": 4,
+    "created_at": "2026-06-21T00:01:00Z"
+  },
+  {
+    "id": "OL2621002W",
+    "title": "Passage to Ararat",
+    "authors": [
+      "Michael J. Arlen"
+    ],
+    "category": "biography",
+    "genres": [],
+    "first_publish_year": 1975,
+    "cover_id": 7133155,
+    "cover_url": null,
+    "description": null,
+    "copies": 2,
+    "created_at": "2026-06-24T00:18:00Z"
+  },
+  {
+    "id": "OL15834887W",
+    "title": "Black Dog of Fate",
+    "authors": [
+      "Peter Balakian"
+    ],
+    "category": "biography",
+    "genres": [],
+    "first_publish_year": 1997,
+    "cover_id": 6798764,
+    "cover_url": null,
+    "description": null,
+    "copies": 1,
+    "created_at": "2026-06-27T00:35:00Z"
+  },
+  {
+    "id": "OL16451343W",
+    "title": "The Sandcastle Girls",
+    "authors": [
+      "Chris Bohjalian"
+    ],
+    "category": "fiction",
+    "genres": [
+      "historical_fiction"
+    ],
+    "first_publish_year": 2012,
+    "cover_id": 11709110,
+    "cover_url": null,
+    "description": null,
+    "copies": 3,
+    "created_at": "2026-06-30T00:52:00Z"
+  }
+]

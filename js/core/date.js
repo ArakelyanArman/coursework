@@ -1,11 +1,9 @@
 // @ts-check
 
 /**
- * Calendar-date helpers. Booking dates are calendar dates stored as ISO strings
- * ("2026-10-15"), never timestamps. All arithmetic runs in UTC, so time zones
- * and daylight-saving changes cannot shift a date. Weeks start on Monday.
- *
- * @typedef {string} IsoDate A calendar date as "YYYY-MM-DD".
+ * Calendar dates as "YYYY-MM-DD" strings, never timestamps. Arithmetic runs in UTC so
+ * time zones and daylight saving cannot shift a date. Weeks start on Monday.
+ * @typedef {string} IsoDate
  */
 
 const ISO_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/;
@@ -13,9 +11,8 @@ const MS_PER_DAY = 86_400_000;
 
 /**
  * @param {number} year
- * @param {number} month 1–12
+ * @param {number} month 1–12; out-of-range parts roll over.
  * @param {number} day
- * @returns {Date} Midnight UTC. Out-of-range parts roll over, like Date does.
  */
 function utcDate(year, month, day) {
   // setUTCFullYear, unlike Date.UTC, does not remap years 0–99 to 1900–1999.
@@ -24,10 +21,7 @@ function utcDate(year, month, day) {
   return date;
 }
 
-/**
- * @param {Date} date
- * @returns {IsoDate}
- */
+/** @param {Date} date @returns {IsoDate} */
 function fromUtc(date) {
   const year = String(date.getUTCFullYear()).padStart(4, '0');
   const month = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -35,29 +29,20 @@ function fromUtc(date) {
   return `${year}-${month}-${day}`;
 }
 
-/**
- * Split an ISO date into numbers.
- * @param {IsoDate} iso
- * @returns {{ year: number, month: number, day: number }} `month` is 1–12.
- */
+/** @param {IsoDate} iso @returns {{ year: number, month: number, day: number }} month is 1–12. */
 export function parseIso(iso) {
   const match = ISO_PATTERN.exec(iso);
   if (!match) throw new RangeError(`Not an ISO date: "${iso}"`);
   return { year: Number(match[1]), month: Number(match[2]), day: Number(match[3]) };
 }
 
-/**
- * The same calendar date as a Date at midnight UTC (for Intl with timeZone 'UTC').
- * @param {IsoDate} iso
- * @returns {Date}
- */
+/** @param {IsoDate} iso @returns {Date} Midnight UTC, for Intl with timeZone 'UTC'. */
 export function toUtcDate(iso) {
   const { year, month, day } = parseIso(iso);
   return utcDate(year, month, day);
 }
 
 /**
- * Build an ISO date. Out-of-range parts roll over (month 13 → January next year).
  * @param {number} year
  * @param {number} month 1–12
  * @param {number} day
@@ -67,29 +52,21 @@ export function toIso(year, month, day) {
   return fromUtc(utcDate(year, month, day));
 }
 
-/**
- * True for a real calendar date in "YYYY-MM-DD" form ("2026-02-30" is false).
- * @param {unknown} value
- * @returns {value is IsoDate}
- */
+/** @param {unknown} value @returns {value is IsoDate} False for "2026-02-30". */
 export function isValidIso(value) {
   if (typeof value !== 'string' || !ISO_PATTERN.test(value)) return false;
   const { year, month, day } = parseIso(value);
   return toIso(year, month, day) === value;
 }
 
-/**
- * Today in the user's own time zone.
- * @param {Date} [now]
- * @returns {IsoDate}
- */
+/** @param {Date} [now] @returns {IsoDate} Today in the user's own time zone. */
 export function todayIso(now = new Date()) {
   return toIso(now.getFullYear(), now.getMonth() + 1, now.getDate());
 }
 
 /**
  * @param {IsoDate} iso
- * @param {number} days May be negative.
+ * @param {number} days
  * @returns {IsoDate}
  */
 export function addDays(iso, days) {
@@ -100,16 +77,15 @@ export function addDays(iso, days) {
 /**
  * @param {number} year
  * @param {number} month 1–12
- * @returns {number}
  */
 export function daysInMonth(year, month) {
   return utcDate(year, month + 1, 0).getUTCDate();
 }
 
 /**
- * Move by whole months, clamping the day (Jan 31 + 1 month → Feb 28/29).
+ * Clamps the day: Jan 31 + 1 month → Feb 28/29.
  * @param {IsoDate} iso
- * @param {number} months May be negative.
+ * @param {number} months
  * @returns {IsoDate}
  */
 export function addMonths(iso, months) {
@@ -121,10 +97,9 @@ export function addMonths(iso, months) {
 }
 
 /**
- * Whole days from `from` to `to` (negative when `to` is earlier).
  * @param {IsoDate} from
  * @param {IsoDate} to
- * @returns {number}
+ * @returns {number} Whole days; negative when `to` is earlier.
  */
 export function diffDays(from, to) {
   return Math.round((toUtcDate(to).getTime() - toUtcDate(from).getTime()) / MS_PER_DAY);
@@ -153,58 +128,42 @@ export const isBefore = (a, b) => compare(a, b) < 0;
 export const isAfter = (a, b) => compare(a, b) > 0;
 
 /**
- * True when `iso` is within `from`…`to`, both ends included.
+ * Both ends included.
  * @param {IsoDate} iso
  * @param {IsoDate} from
  * @param {IsoDate} to
  */
 export const isBetween = (iso, from, to) => compare(iso, from) >= 0 && compare(iso, to) <= 0;
 
-/**
- * Day of the week with Monday first.
- * @param {IsoDate} iso
- * @returns {number} 0 = Monday … 6 = Sunday.
- */
+/** @param {IsoDate} iso @returns {number} 0 = Monday … 6 = Sunday. */
 export function weekdayIndex(iso) {
   return (toUtcDate(iso).getUTCDay() + 6) % 7;
 }
 
-/**
- * @param {IsoDate} iso
- * @returns {IsoDate} The Monday of that week.
- */
+/** @param {IsoDate} iso @returns {IsoDate} */
 export function startOfWeek(iso) {
   return addDays(iso, -weekdayIndex(iso));
 }
 
-/**
- * @param {IsoDate} iso
- * @returns {IsoDate} The Sunday of that week.
- */
+/** @param {IsoDate} iso @returns {IsoDate} */
 export function endOfWeek(iso) {
   return addDays(iso, 6 - weekdayIndex(iso));
 }
 
-/**
- * @param {IsoDate} iso
- * @returns {IsoDate}
- */
+/** @param {IsoDate} iso @returns {IsoDate} */
 export function startOfMonth(iso) {
   const { year, month } = parseIso(iso);
   return toIso(year, month, 1);
 }
 
-/**
- * @param {IsoDate} iso
- * @returns {IsoDate}
- */
+/** @param {IsoDate} iso @returns {IsoDate} */
 export function endOfMonth(iso) {
   const { year, month } = parseIso(iso);
   return toIso(year, month, daysInMonth(year, month));
 }
 
 /**
- * Every date from `from` to `to`, both ends included.
+ * Both ends included.
  * @param {IsoDate} from
  * @param {IsoDate} to
  * @returns {IsoDate[]}
@@ -217,8 +176,7 @@ export function eachDay(from, to) {
 }
 
 /**
- * Weeks for a month view, Monday first. Days from the neighbouring months fill
- * the first and last week and are flagged with `inMonth: false`.
+ * Weeks for a month view, Monday first, padded with days from the neighbouring months.
  * @param {number} year
  * @param {number} month 1–12
  * @returns {{ iso: IsoDate, inMonth: boolean }[][]}

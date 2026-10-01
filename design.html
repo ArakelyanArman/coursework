@@ -47,6 +47,7 @@
             <a class="design-toc__link" href="#foundations" data-i18n="design.foundations.title"></a>
             <a class="design-toc__link" href="#icons" data-i18n="design.icons.title"></a>
             <a class="design-toc__link" href="#i18n" data-i18n="design.i18n.title"></a>
+            <a class="design-toc__link" href="#data" id="data-link" data-i18n="design.data.title" hidden></a>
           </nav>
         </div>
       </section>
@@ -108,6 +109,20 @@
             <div class="design-panel">
               <h3 class="design-panel__title t-label muted" data-i18n="design.i18n.keysTitle"></h3>
               <div class="stack gap-3" id="key-parity"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="design-section" id="data" aria-labelledby="data-title" hidden>
+          <header class="design-section__head">
+            <h2 class="t-h1" id="data-title" data-i18n="design.data.title"></h2>
+            <p class="muted measure" data-i18n="design.data.intro"></p>
+          </header>
+          <div class="design-panel stack gap-4">
+            <p class="tnum" id="data-counts"></p>
+            <div class="row gap-3">
+              <button type="button" class="design-btn design-btn--outline" id="data-reset" data-i18n="design.data.reset"></button>
+              <span class="t-body-sm muted" id="data-status" role="status"></span>
             </div>
           </div>
         </section>

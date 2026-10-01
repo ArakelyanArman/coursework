@@ -7,17 +7,19 @@ import { getLanguage, getLocale, hasIntlLocale, localizeNumber, t } from './i18n
 
 /** @type {Record<DateStyle, Intl.DateTimeFormatOptions>} */
 const DATE_STYLES = {
-  medium: { month: 'short', day: 'numeric', year: 'numeric' }, // Mar 15, 2026
-  short: { month: 'short', day: 'numeric' }, // Mar 15
-  long: { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }, // for aria-labels
-  monthYear: { month: 'long', year: 'numeric' }, // calendar heading
+  medium: { month: 'short', day: 'numeric', year: 'numeric' },
+  short: { month: 'short', day: 'numeric' },
+  long: { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' },
+  monthYear: { month: 'long', year: 'numeric' },
 };
 
-/** A Monday, used to generate weekday names in Monday-first order. */
 const KNOWN_MONDAY = '2024-01-01';
 
-/** Translation arrays used when the browser has no Intl data for the language. */
-const WEEKDAY_KEYS = { long: 'date.weekdaysLong', short: 'date.weekdaysShort', narrow: 'date.weekdaysNarrow' };
+const WEEKDAY_KEYS = {
+  long: 'date.weekdaysLong',
+  short: 'date.weekdaysShort',
+  narrow: 'date.weekdaysNarrow',
+};
 const MONTH_KEYS = { long: 'date.monthsLong', short: 'date.monthsShort' };
 
 /** @type {Map<string, Intl.DateTimeFormat>} */
@@ -31,7 +33,6 @@ function dateFormatter(locale, options) {
   const key = locale + JSON.stringify(options);
   let formatter = dateFormatters.get(key);
   if (!formatter) {
-    // Calendar dates are held as UTC midnights, so they are formatted in UTC too.
     formatter = new Intl.DateTimeFormat(locale, { ...options, timeZone: 'UTC' });
     dateFormatters.set(key, formatter);
   }
@@ -39,8 +40,7 @@ function dateFormatter(locale, options) {
 }
 
 /**
- * Format a date from the patterns in translations.json. Only used when the
- * browser has no Intl data for the current language (see hasIntlLocale).
+ * Used only when the browser has no Intl data for the current language.
  * @param {IsoDate} iso
  * @param {DateStyle} style
  */
@@ -57,10 +57,9 @@ function patternDate(iso, style) {
 }
 
 /**
- * Format a calendar date for the current language.
  * @param {IsoDate} iso
  * @param {DateStyle} [style]
- * @returns {string} e.g. "Mar 15, 2026" in English.
+ * @returns {string}
  */
 export function formatDate(iso, style = 'medium') {
   if (!hasIntlLocale()) return patternDate(iso, style);
@@ -68,7 +67,6 @@ export function formatDate(iso, style = 'medium') {
 }
 
 /**
- * Format a date range for the current language, e.g. "Mar 15 – 22, 2026".
  * @param {IsoDate} from
  * @param {IsoDate} to
  * @param {DateStyle} [style]
@@ -84,7 +82,6 @@ export function formatDateRange(from, to, style = 'medium') {
 }
 
 /**
- * Format a number for the current language.
  * @param {number} value
  * @param {Intl.NumberFormatOptions} [options]
  * @returns {string}
@@ -93,11 +90,7 @@ export function formatNumber(value, options = {}) {
   return localizeNumber(value, options);
 }
 
-/**
- * Weekday names for the current language, Monday first.
- * @param {'long' | 'short' | 'narrow'} [width]
- * @returns {string[]} Seven names.
- */
+/** @param {'long' | 'short' | 'narrow'} [width] @returns {string[]} Monday first. */
 export function weekdayNames(width = 'short') {
   if (!hasIntlLocale()) {
     return Array.from({ length: 7 }, (_, index) => t(`${WEEKDAY_KEYS[width]}.${index}`));
@@ -109,11 +102,7 @@ export function weekdayNames(width = 'short') {
   );
 }
 
-/**
- * Month names for the current language, January first.
- * @param {'long' | 'short'} [width]
- * @returns {string[]} Twelve names.
- */
+/** @param {'long' | 'short'} [width] @returns {string[]} January first. */
 export function monthNames(width = 'long') {
   if (!hasIntlLocale()) {
     return Array.from({ length: 12 }, (_, index) => t(`${MONTH_KEYS[width]}.${index}`));
@@ -124,7 +113,6 @@ export function monthNames(width = 'long') {
   );
 }
 
-/** English short month names, lower-cased: the "MMM" of the typed date format. */
 const EN_MONTHS = Array.from({ length: 12 }, (_, index) =>
   dateFormatter('en-US', { month: 'short' })
     .format(toUtcDate(toIso(2024, index + 1, 1)))
@@ -133,9 +121,9 @@ const EN_MONTHS = Array.from({ length: 12 }, (_, index) =>
 
 /**
  * @param {number} year
- * @param {number} month 1–12
+ * @param {number} month
  * @param {number} day
- * @returns {IsoDate | null} Null unless it is a real calendar date.
+ * @returns {IsoDate | null}
  */
 function checked(year, month, day) {
   if (month < 1 || month > 12 || day < 1 || day > 31) return null;
@@ -146,12 +134,10 @@ function checked(year, month, day) {
 }
 
 /**
- * Parse a date typed by the user.
- * English accepts "MMM d, yyyy" (Mar 15, 2026); Armenian accepts "DD.MM.YYYY"
- * (15.03.2026). Both accept ISO "YYYY-MM-DD".
+ * English accepts "Mar 15, 2026", Armenian "15.03.2026"; both accept "2026-03-15".
  * @param {string} text
  * @param {'en' | 'hy'} [lang]
- * @returns {IsoDate | null} Null when the text is not a valid date.
+ * @returns {IsoDate | null}
  */
 export function parseTypedDate(text, lang = getLanguage()) {
   const value = text.trim();
@@ -169,8 +155,7 @@ export function parseTypedDate(text, lang = getLanguage()) {
 }
 
 /**
- * Format a date the way it should be typed, so the text parses back with
- * {@link parseTypedDate}: "Mar 15, 2026" in English, "15.03.2026" in Armenian.
+ * The inverse of parseTypedDate.
  * @param {IsoDate} iso
  * @param {'en' | 'hy'} [lang]
  * @returns {string}

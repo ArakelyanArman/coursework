@@ -5,15 +5,14 @@ import { EVENTS, emit } from './events.js';
 /**
  * @typedef {object} Store
  * @property {(key: string, fallback?: any) => any} get
- * @property {(key: string, value: unknown) => boolean} set Returns false when the write failed (quota, private mode).
+ * @property {(key: string, value: unknown) => boolean} set False when the write failed (quota, private mode).
  * @property {(key: string) => void} remove
- * @property {() => string[]} keys Keys owned by this app, without the prefix.
+ * @property {() => string[]} keys This app's keys, without the prefix.
  * @property {() => void} clear Removes only this app's keys.
  */
 
 /**
- * JSON store over a Web Storage area, namespaced with `config.storagePrefix`.
- * Falls back to memory when storage is unavailable (private mode, blocked cookies).
+ * JSON store over a Web Storage area; falls back to memory when storage is unavailable.
  * @param {() => Storage} getArea
  * @returns {Store}
  */
@@ -67,7 +66,7 @@ function createStore(getArea) {
       try {
         area()?.removeItem(prefix + key);
       } catch {
-        // Nothing to remove when storage is unavailable.
+        return;
       }
     },
 
@@ -80,7 +79,7 @@ function createStore(getArea) {
           if (name?.startsWith(prefix)) found.add(name.slice(prefix.length));
         }
       } catch {
-        // Memory keys only.
+        return [...found];
       }
       return [...found];
     },
@@ -91,17 +90,10 @@ function createStore(getArea) {
   };
 }
 
-/** Persistent store (survives restarts). */
 export const local = createStore(() => window.localStorage);
-
-/** Per-tab store (HTTP cache). */
 export const session = createStore(() => window.sessionStorage);
 
-/**
- * Shared state: persisted in localStorage and broadcast on `document`.
- * Event detail is `{ value, source }`, where source is 'local' (this tab) or
- * 'remote' (another tab changed it).
- */
+/** Shared state: persisted, and broadcast with detail { value, source: 'local' | 'remote' }. */
 const SHARED = Object.freeze({
   session: { key: 'session', event: EVENTS.AUTH_CHANGE },
   theme: { key: 'theme', event: EVENTS.THEME_CHANGE },
@@ -120,9 +112,8 @@ export function getShared(name, fallback = null) {
 }
 
 /**
- * Persist a shared value (null removes it) and broadcast its change event.
  * @param {SharedName} name
- * @param {unknown} value
+ * @param {unknown} value null removes it.
  */
 export function setShared(name, value) {
   const { key, event } = SHARED[name];
@@ -131,7 +122,7 @@ export function setShared(name, value) {
   emit(event, { value: value ?? null, source: 'local' });
 }
 
-// Another tab changed shared state: re-broadcast it here so both tabs stay in sync.
+// Another tab changed shared state: re-broadcast it here.
 window.addEventListener('storage', (event) => {
   if (event.storageArea !== window.localStorage || !event.key) return;
   const entry = Object.values(SHARED).find(({ key }) => config.storagePrefix + key === event.key);

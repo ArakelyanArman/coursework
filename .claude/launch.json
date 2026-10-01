@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "library-static",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8000", "--bind", "127.0.0.1"],
-      "port": 8000
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "tools/server.ps1", "-NoBrowser"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

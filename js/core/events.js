@@ -1,6 +1,6 @@
 // @ts-check
 
-/** Shared-state events, broadcast as CustomEvents on `document`. */
+/** Shared-state events, dispatched on `document`. */
 export const EVENTS = Object.freeze({
   AUTH_CHANGE: 'auth:change',
   THEME_CHANGE: 'theme:change',
@@ -8,7 +8,6 @@ export const EVENTS = Object.freeze({
 });
 
 /**
- * Dispatch a CustomEvent on `document`.
  * @param {string} name
  * @param {unknown} [detail]
  */
@@ -17,11 +16,10 @@ export function emit(name, detail) {
 }
 
 /**
- * Listen for an event. Returns a function that removes the listener.
  * @param {string} name
  * @param {(event: CustomEvent) => void} handler
  * @param {EventTarget} [target]
- * @returns {() => void}
+ * @returns {() => void} Removes the listener.
  */
 export function on(name, handler, target = document) {
   const listener = /** @type {EventListener} */ (handler);
@@ -30,12 +28,11 @@ export function on(name, handler, target = document) {
 }
 
 /**
- * Event delegation: one listener on `root` for every descendant matching `selector`.
  * @param {Element | Document} root
  * @param {string} type
  * @param {string} selector
  * @param {(event: Event, target: Element) => void} handler
- * @returns {() => void}
+ * @returns {() => void} Removes the listener.
  */
 export function delegate(root, type, selector, handler) {
   /** @param {Event} event */
@@ -49,7 +46,6 @@ export function delegate(root, type, selector, handler) {
 }
 
 /**
- * Delay calls to `fn` until `ms` have passed without a new call.
  * @template {unknown[]} A
  * @param {(...args: A) => void} fn
  * @param {number} ms

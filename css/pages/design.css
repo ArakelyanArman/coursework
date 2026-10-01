@@ -1,9 +1,4 @@
-/* design.html — dev-only living style guide. Page layout only; tokens come from index.css.
-   The top-bar buttons here are stand-ins until the Button component lands in Phase 3. */
-
 @layer pages {
-  /* ---------- Top bar ---------- */
-
   .design-bar {
     position: sticky;
     top: 0;
@@ -89,6 +84,20 @@
     background: var(--color-surface-sunken);
   }
 
+  .design-btn--outline {
+    background: var(--color-surface);
+    border-color: var(--color-border-input);
+  }
+
+  .design-btn--outline:hover {
+    background: var(--color-surface-muted);
+  }
+
+  .design-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   .design-btn--icon {
     width: var(--size-control-md);
     padding-inline: var(--space-0);
@@ -99,8 +108,6 @@
       display: none;
     }
   }
-
-  /* ---------- Hero and sections ---------- */
 
   .design-hero {
     padding-block: var(--space-12);
@@ -184,8 +191,6 @@
     border-top: var(--border-width) solid var(--color-border);
   }
 
-  /* ---------- Color swatches ---------- */
-
   .swatch-group + .swatch-group {
     margin-top: var(--space-8);
   }
@@ -238,8 +243,6 @@
     overflow-wrap: anywhere;
   }
 
-  /* ---------- Type scale ---------- */
-
   .type-row {
     display: grid;
     gap: var(--space-1);
@@ -274,8 +277,6 @@
       align-items: baseline;
     }
   }
-
-  /* ---------- Spacing, radius, elevation ---------- */
 
   .scale-row {
     display: grid;
@@ -317,8 +318,6 @@
     box-shadow: var(--box-shadow);
   }
 
-  /* ---------- Icons ---------- */
-
   .icon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
@@ -340,8 +339,6 @@
   .icon-tile code {
     overflow-wrap: anywhere;
   }
-
-  /* ---------- Language and formatting ---------- */
 
   .format-list {
     display: grid;

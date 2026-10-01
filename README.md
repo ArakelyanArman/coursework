@@ -3,83 +3,146 @@
 A library book-booking web app. Readers browse a catalog and reserve books for a date range;
 admins manage books and users and generate reports. English and Armenian, light and dark themes.
 
-Built with **vanilla HTML, CSS and JavaScript**: no framework, no preprocessor, no build step.
-The full specification is in [FRONTEND_BRIEF.md](FRONTEND_BRIEF.md).
+Built with **plain HTML, CSS and JavaScript**: no framework, no preprocessor, no build step.
 
 ## Run it
 
-The app is plain static files. Serve the repository root with any static file server:
+You need a modern browser (Chrome, Edge, Firefox or Safari) and an internet connection, because
+book data and covers come from Open Library. **Nothing has to be installed on Windows.**
+
+### Windows
+
+1. Download or clone this folder to the computer.
+2. Open the folder in File Explorer.
+3. Double-click **`start.bat`**.
+4. A black window opens and your browser opens the app at <http://localhost:3000>.
+5. Keep the black window open while you use the app.
+6. To stop, close that window (or press `Ctrl+C` in it).
+
+If port 3000 is already used by another program, the script picks the next free port and prints
+the address to open, for example `http://localhost:3001`. To choose a port yourself:
 
 ```bash
-python -m http.server 8000
+start.bat 8080
+```
+
+`start.bat` uses PowerShell, which is part of Windows. If Windows asks whether to allow it, choose
+**Run**.
+
+### macOS and Linux
+
+1. Open a terminal in this folder.
+2. Run:
+
+```bash
+sh start.sh
+```
+
+3. The browser opens <http://localhost:3000>. Press `Ctrl+C` in the terminal to stop.
+
+The script uses whichever of Python, Ruby, PHP or Node.js is already on the computer.
+
+### Other ways
+
+Any static file server works. From this folder:
+
+```bash
+python -m http.server 3000
 ```
 
 ```bash
-npx serve .
+npx serve -l 3000 .
 ```
 
-or use the VS Code **Live Server** extension. Then open <http://localhost:8000/design.html>.
+or right-click `design.html` in VS Code and choose **Open with Live Server**.
 
-> **Opening the files directly (`file://`) does not work.** Browsers block ES modules, `fetch`
-> and the SVG icon sprite on `file://` URLs, so a local server is required.
+### Why a server is needed
 
-Note for `python -m http.server`: it serves `.woff2` as `application/octet-stream`. Browsers
-still load the fonts; a production server should send `font/woff2`.
+Opening the HTML files by double-clicking them (`file://` addresses) does **not** work: browsers
+block JavaScript modules and data files loaded that way. The start scripts above run a tiny local
+server so the app is served from `http://localhost`, which is all it needs.
 
-## Build status
+## Demo accounts
 
-The app is built in eight phases (see the brief, "Build order").
+Users, bookings and the library's holdings are demo data kept in your browser.
 
-| # | Phase | Status |
+| Role | Email | Password |
 |---|---|---|
-| 1 | Foundation: tokens, fonts, theme, core helpers, i18n engine, icon sprite | Done |
-| 2 | Data layer: types, mappers, providers, services, API contract | Not started |
-| 3 | Primitives: every component, shown in `design.html` | Not started |
-| 4 | Shell: navbar, footer, auth state, guards, toasts, 404 | Not started |
-| 5 | Public pages: Home, Catalog, Book detail and booking | Not started |
-| 6 | Auth pages: Login, Register | Not started |
-| 7 | Admin: Books, Users, Reports | Not started |
-| 8 | Polish: states, keyboard, contrast, responsive, key parity | Not started |
+| Admin | `admin@library.am` | `LibraryAdmin1` |
+| Member | `member@library.am` | `LibraryMember1` |
 
-Right now the only page is `design.html`, the dev-only style guide (Foundations section).
-Demo accounts and the steps for switching to the real backend are documented with Phase 2.
+The other seed users (see `data/seed/users.json`) share the member password.
+
+To start over, open `design.html`, scroll to **Demo data** and press **Reset demo data**.
+
+## What works today
+
+| Part | Status |
+|---|---|
+| Design tokens, fonts, themes, language switch, core helpers | Done |
+| Data layer: Open Library, local demo store, services, backend adapter | Done |
+| Components (buttons, fields, cards, calendar, table, dialogs) | Next |
+| Navigation shell, Home, Catalog, Book page, Login, Register, Admin | After that |
+
+Until the pages are built, the start scripts open `design.html`, the style guide.
 
 ## Project structure
 
 ```
-design.html            dev-only living style guide (not linked from the nav)
+start.bat, start.sh     start a local server on port 3000
+design.html             style guide (not linked from the app navigation)
+components/
+  Icon/                 one folder per component: Icon.html, Icon.css, Icon.js
 assets/
-  fonts/               self-hosted variable woff2 + their OFL licenses
-  icons/sprite.svg     Lucide icons as <symbol>s
-  img/                 logo.svg, favicon.svg
+  fonts/                self-hosted variable fonts and their licenses
+  icons/sprite.svg      Lucide icons
+  img/                  logo and favicon
 css/
-  index.css            tokens, @font-face, reset, base, typography, layout, utilities
-  components/          one file per component
-  pages/               page-specific layout only
-i18n/translations.json ALL user-facing text, both languages
+  index.css             design tokens, fonts, reset, base, typography, utilities
+  pages/                page-specific layout
+i18n/translations.json  all user-facing text, English and Armenian
+data/seed/              demo inventory, users and bookings
 js/
-  config.js            data source switch, base URLs, feature flags
-  theme-init.js        classic script in <head>; sets data-theme before paint
-  core/                dom, i18n, url-state, storage, events, a11y, format, date, validate, http, theme, paths
-  components/          UI components: functions returning DOM elements
-  pages/               one entry module per HTML page
+  config.js             data source switch and base URLs
+  types.js              data shapes: Book, User, Booking, Report
+  core/                 dom, template, i18n, http, date, format, validate, storage, events, a11y
+  services/             the data API the pages use: books, bookings, auth, users, reports
+  providers/            openlibrary, local-db, http-backend
+  mappers/              API shapes to app shapes and back
+  pages/                one entry module per HTML page
+docs/
+  ARCHITECTURE.md       how the layers fit together
+  API_CONTRACT.md       the REST API a real backend must implement
+tools/server.ps1        the local server used by start.bat
 ```
+
+## Switching to a real backend
+
+The app currently reads books from Open Library and keeps everything else in the browser.
+To use a real backend instead, change one line in `js/config.js`:
+
+```js
+dataSource: 'backend',
+```
+
+and set `backendBaseUrl`. The backend must implement [docs/API_CONTRACT.md](docs/API_CONTRACT.md).
+No other file changes; see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Conventions
 
-- **Tokens only.** Component and page CSS never hard-code a colour, font size, shadow or radius;
-  every value is a custom property from `css/index.css`.
-- **No `innerHTML`.** DOM is built with `h()` from `js/core/dom.js`; text is always inserted as text.
-- **No hard-coded text.** HTML carries `data-i18n` keys; JS calls `t('key')`. Add every string to
-  both `en` and `hy` in `i18n/translations.json`. `design.html` reports any key missing from one
-  language.
-- **Dates** are calendar dates stored as ISO strings (`"2026-10-15"`); weeks start on Monday.
-- **Network access** goes through `js/core/http.js`; UI code will only import from `js/services/`.
+- **Tokens only.** Styles never hard-code a colour, font size, shadow or radius; every value is a
+  custom property from `css/index.css`.
+- **No `innerHTML`.** Text always reaches the page as text, never as HTML.
+- **No hard-coded text.** HTML carries `data-i18n` keys and JS calls `t('key')`. Every string is in
+  both `en` and `hy` in `i18n/translations.json`; `design.html` reports any key missing from one.
+- **Dates** are calendar dates stored as `"2026-10-15"`; weeks start on Monday.
+- Pages talk to `js/services/` only. Network requests go through `js/core/http.js`.
 - No code file is longer than 500 lines (`css/index.css` is the one exception).
 
-## Dev tooling (optional)
+## Optional developer tools
 
-Prettier and ESLint are dev-only and never ship to the browser. They need Node.js 20.19 or newer:
+Prettier and ESLint check formatting and code quality. They are not needed to run the app and
+never reach the browser. They need Node.js 20.19 or newer:
 
 ```bash
 npm install
@@ -95,7 +158,8 @@ npm run format
 
 ## Third-party files
 
-Everything third-party is vendored at a pinned version; nothing is loaded from a CDN at runtime.
+Everything third-party is stored in this repository at a fixed version; nothing is loaded from a
+CDN while the app runs.
 
 | What | Version | License |
 |---|---|---|
@@ -105,3 +169,4 @@ Everything third-party is vendored at a pinned version; nothing is loaded from a
 | Lucide icons | 1.49.0 | ISC |
 
 License texts sit next to the files in `assets/fonts/` and `assets/icons/`.
+Book data and covers: [Open Library](https://openlibrary.org).

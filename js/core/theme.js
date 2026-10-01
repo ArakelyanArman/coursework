@@ -6,10 +6,7 @@ import { getShared, setShared } from './storage.js';
 
 const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-/**
- * @param {unknown} value
- * @returns {value is Theme}
- */
+/** @param {unknown} value @returns {value is Theme} */
 const isTheme = (value) => value === 'light' || value === 'dark';
 
 /** @returns {Theme} */
@@ -20,47 +17,32 @@ function apply(theme) {
   document.documentElement.dataset.theme = theme;
 }
 
-/**
- * The user's saved choice, or null when they are following the system preference.
- * @returns {Theme | null}
- */
+/** @returns {Theme | null} null while the user follows the system preference. */
 export function getStoredTheme() {
   const stored = getShared('theme');
   return isTheme(stored) ? stored : null;
 }
 
-/**
- * The theme currently in effect.
- * @returns {Theme}
- */
+/** @returns {Theme} */
 export function getTheme() {
   const current = document.documentElement.dataset.theme;
   return isTheme(current) ? current : (getStoredTheme() ?? systemTheme());
 }
 
-/**
- * Apply and persist a theme, then broadcast `theme:change`.
- * @param {Theme} theme
- */
+/** @param {Theme} theme */
 export function setTheme(theme) {
   apply(theme);
   setShared('theme', theme);
 }
 
-/**
- * Switch between light and dark.
- * @returns {Theme} The new theme.
- */
+/** @returns {Theme} The new theme. */
 export function toggleTheme() {
   const next = getTheme() === 'dark' ? 'light' : 'dark';
   setTheme(next);
   return next;
 }
 
-/**
- * Keep the theme in sync with the system preference (until the user chooses)
- * and with other tabs. theme-init.js has already set the initial value.
- */
+/** Follow the system preference (until the user chooses) and other tabs. */
 export function initTheme() {
   apply(getTheme());
 

@@ -2,16 +2,7 @@
 import { isValidIso } from './date.js';
 
 /**
- * Schema-style validation. Rules return i18n keys, never English sentences:
- * the UI shows `t(error.key, error.params)`.
- *
- * @example
- * const result = validate(
- *   { email: [rules.required(), rules.email()], password: [rules.required(), rules.minLength(8)] },
- *   { email: 'ani@example.am', password: 'short' },
- * );
- * // result.errors.password → { key: 'validation.minLength', params: { count: 8 } }
- *
+ * Rules return i18n keys, never sentences: the UI shows t(error.key, error.params).
  * @typedef {{ key: string, params?: Record<string, unknown> }} ValidationError
  * @typedef {(value: unknown, values: Record<string, unknown>) => ValidationError | null} Rule
  * @typedef {Record<string, Rule[]>} Schema
@@ -20,10 +11,7 @@ import { isValidIso } from './date.js';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/**
- * @param {unknown} value
- * @returns {boolean} True for null, undefined, blank strings and empty arrays.
- */
+/** @param {unknown} value */
 function isEmpty(value) {
   if (value == null) return true;
   if (typeof value === 'string') return value.trim() === '';
@@ -32,26 +20,20 @@ function isEmpty(value) {
 }
 
 /**
- * Rules other than `required` pass on empty values, so optional fields stay optional.
+ * Every rule except `required` passes on empty values, so optional fields stay optional.
  * @param {(value: any, values: Record<string, unknown>) => ValidationError | null} check
  * @returns {Rule}
  */
 const whenFilled = (check) => (value, values) => (isEmpty(value) ? null : check(value, values));
 
 export const rules = {
-  /**
-   * @param {string} [key]
-   * @returns {Rule}
-   */
+  /** @param {string} [key] @returns {Rule} */
   required:
     (key = 'validation.required') =>
     (value) =>
       isEmpty(value) ? { key } : null,
 
-  /**
-   * @param {string} [key]
-   * @returns {Rule}
-   */
+  /** @param {string} [key] @returns {Rule} */
   email: (key = 'validation.email') =>
     whenFilled((value) => (EMAIL_PATTERN.test(String(value).trim()) ? null : { key })),
 
@@ -71,10 +53,7 @@ export const rules = {
   maxLength: (count, key = 'validation.maxLength') =>
     whenFilled((value) => (String(value).length <= count ? null : { key, params: { count } })),
 
-  /**
-   * @param {{ min?: number, max?: number, integer?: boolean }} [limits]
-   * @returns {Rule}
-   */
+  /** @param {{ min?: number, max?: number, integer?: boolean }} [limits] @returns {Rule} */
   number: ({ min, max, integer = false } = {}) =>
     whenFilled((value) => {
       const number = typeof value === 'number' ? value : Number(String(value).trim());
@@ -85,10 +64,7 @@ export const rules = {
       return null;
     }),
 
-  /**
-   * @param {string} [key]
-   * @returns {Rule}
-   */
+  /** @param {string} [key] @returns {Rule} */
   isoDate: (key = 'validation.date') => whenFilled((value) => (isValidIso(value) ? null : { key })),
 
   /**
@@ -100,7 +76,6 @@ export const rules = {
     whenFilled((value) => (options.includes(value) ? null : { key })),
 
   /**
-   * Any other check, e.g. comparing two fields.
    * @param {(value: any, values: Record<string, unknown>) => boolean} isValid
    * @param {string} key
    * @param {Record<string, unknown>} [params]
@@ -111,11 +86,10 @@ export const rules = {
 };
 
 /**
- * Run one field's rules in order.
  * @param {unknown} value
  * @param {Rule[]} fieldRules
  * @param {Record<string, unknown>} [values] All form values, for cross-field rules.
- * @returns {ValidationError | null} The first failure, or null.
+ * @returns {ValidationError | null} The first failure.
  */
 export function validateField(value, fieldRules, values = {}) {
   for (const rule of fieldRules) {
@@ -126,10 +100,9 @@ export function validateField(value, fieldRules, values = {}) {
 }
 
 /**
- * Validate a whole form.
  * @param {Schema} schema
  * @param {Record<string, unknown>} values
- * @returns {ValidationResult} `firstInvalid` is the first failing field in schema order (for focus).
+ * @returns {ValidationResult}
  */
 export function validate(schema, values) {
   /** @type {Record<string, ValidationError>} */

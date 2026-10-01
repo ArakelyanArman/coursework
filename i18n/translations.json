@@ -82,12 +82,83 @@
         "other": "{count} books"
       }
     },
+    "categories": {
+      "all": "All",
+      "fiction": "Fiction",
+      "classics": "Classics",
+      "mystery": "Mystery",
+      "fantasy": "Fantasy",
+      "scienceFiction": "Science fiction",
+      "history": "History",
+      "science": "Science",
+      "poetry": "Poetry",
+      "biography": "Biography",
+      "armenian": "Armenian literature"
+    },
+    "genres": {
+      "romance": "Romance",
+      "historicalFiction": "Historical fiction",
+      "adventure": "Adventure",
+      "thriller": "Thriller",
+      "horror": "Horror",
+      "humor": "Humor",
+      "drama": "Drama",
+      "shortStories": "Short stories",
+      "philosophy": "Philosophy",
+      "psychology": "Psychology",
+      "children": "Children's books",
+      "essays": "Essays"
+    },
+    "sort": {
+      "relevance": "Relevance",
+      "title": "Title A–Z",
+      "newest": "Newest",
+      "trending": "Trending"
+    },
+    "auth": {
+      "errors": {
+        "invalidCredentials": "Incorrect email or password.",
+        "emailTaken": "An account with this email already exists."
+      }
+    },
+    "booking": {
+      "errors": {
+        "invalidRange": "Choose a start date and an end date.",
+        "past": "Bookings can't start in the past.",
+        "tooLong": {
+          "one": "A booking can be at most {count} day.",
+          "other": "A booking can be at most {count} days."
+        },
+        "unavailable": "The book is already booked on some of those dates."
+      }
+    },
+    "books": {
+      "errors": {
+        "notFound": "We couldn't find that book.",
+        "exists": "This book is already in the library."
+      }
+    },
+    "users": {
+      "errors": {
+        "notFound": "We couldn't find that user.",
+        "selfDelete": "You can't delete your own account.",
+        "selfDemote": "You can't remove your own admin role."
+      }
+    },
+    "reports": {
+      "types": {
+        "bookingsByDate": "Bookings by date",
+        "mostBooked": "Most-booked books",
+        "activeUsers": "Active users",
+        "overdue": "Overdue returns"
+      }
+    },
     "design": {
       "pageTitle": "Design system · Library",
       "devOnly": "Dev only",
       "title": "Paper & Ink",
       "lead": "Warm paper neutrals, deep ink-blue for actions, a brass accent used sparingly, and a serif for anything bookish. Every value on this page is read from the CSS custom properties.",
-      "phaseNote": "Foundations only for now. Components are added in the next build phases.",
+      "phaseNote": "Foundations and data only for now. Components are added next.",
       "toc": "On this page",
       "footer": "Development style guide. Not linked from the app navigation.",
       "colors": {
@@ -148,6 +219,20 @@
         },
         "missingInHy": "Missing in Armenian",
         "missingInEn": "Missing in English"
+      },
+      "data": {
+        "title": "Demo data",
+        "intro": "Users, bookings and the library's holdings are stored in this browser. You can restore the original seed data at any time.",
+        "users": {
+          "one": "{count} user",
+          "other": "{count} users"
+        },
+        "bookings": {
+          "one": "{count} booking",
+          "other": "{count} bookings"
+        },
+        "reset": "Reset demo data",
+        "resetDone": "Demo data was reset."
       }
     }
   },
@@ -225,7 +310,7 @@
       }
     },
     "number": {
-      "group": " ",
+      "group": "\u00a0",
       "decimal": ","
     },
     "catalog": {
@@ -234,12 +319,83 @@
         "other": "{count} գիրք"
       }
     },
+    "categories": {
+      "all": "Բոլորը",
+      "fiction": "Գեղարվեստական",
+      "classics": "Դասականներ",
+      "mystery": "Դետեկտիվ",
+      "fantasy": "Ֆենթեզի",
+      "scienceFiction": "Գիտական ֆանտաստիկա",
+      "history": "Պատմություն",
+      "science": "Գիտություն",
+      "poetry": "Պոեզիա",
+      "biography": "Կենսագրություն",
+      "armenian": "Հայ գրականություն"
+    },
+    "genres": {
+      "romance": "Սիրավեպ",
+      "historicalFiction": "Պատմավեպ",
+      "adventure": "Արկածային",
+      "thriller": "Թրիլլեր",
+      "horror": "Սարսափ",
+      "humor": "Հումոր",
+      "drama": "Դրամա",
+      "shortStories": "Պատմվածքներ",
+      "philosophy": "Փիլիսոփայություն",
+      "psychology": "Հոգեբանություն",
+      "children": "Մանկական գրքեր",
+      "essays": "Էսսեներ"
+    },
+    "sort": {
+      "relevance": "Համապատասխանություն",
+      "title": "Վերնագիր (Ա–Ֆ)",
+      "newest": "Նորագույն",
+      "trending": "Հանրաճանաչ"
+    },
+    "auth": {
+      "errors": {
+        "invalidCredentials": "Էլ. հասցեն կամ գաղտնաբառը սխալ է։",
+        "emailTaken": "Այս էլ. հասցեով հաշիվ արդեն գոյություն ունի։"
+      }
+    },
+    "booking": {
+      "errors": {
+        "invalidRange": "Ընտրեք սկզբի և ավարտի ամսաթվերը։",
+        "past": "Ամրագրումը չի կարող սկսվել անցյալում։",
+        "tooLong": {
+          "one": "Ամրագրումը կարող է տևել առավելագույնը {count} օր։",
+          "other": "Ամրագրումը կարող է տևել առավելագույնը {count} օր։"
+        },
+        "unavailable": "Գիրքն այդ օրերից մի քանիսում արդեն ամրագրված է։"
+      }
+    },
+    "books": {
+      "errors": {
+        "notFound": "Այդ գիրքը չհաջողվեց գտնել։",
+        "exists": "Այս գիրքն արդեն կա գրադարանում։"
+      }
+    },
+    "users": {
+      "errors": {
+        "notFound": "Այդ օգտատերը չի գտնվել։",
+        "selfDelete": "Դուք չեք կարող ջնջել ձեր սեփական հաշիվը։",
+        "selfDemote": "Դուք չեք կարող հանել ձեր սեփական ադմինի դերը։"
+      }
+    },
+    "reports": {
+      "types": {
+        "bookingsByDate": "Ամրագրումներն ըստ օրերի",
+        "mostBooked": "Ամենաշատ ամրագրված գրքերը",
+        "activeUsers": "Ակտիվ օգտատերեր",
+        "overdue": "Ուշացած վերադարձներ"
+      }
+    },
     "design": {
       "pageTitle": "Դիզայն համակարգ · Գրադարան",
       "devOnly": "Միայն մշակման համար",
       "title": "Թուղթ և թանաք",
       "lead": "Թղթի ջերմ չեզոք երանգներ, մուգ թանաքագույն կապույտ՝ գործողությունների համար, չափավոր օգտագործվող արույրե շեշտ և սերիֆ տառատեսակ՝ գրքային ամեն ինչի համար։ Այս էջի յուրաքանչյուր արժեք կարդացվում է CSS փոփոխականներից։",
-      "phaseNote": "Առայժմ միայն հիմքերը։ Բաղադրիչները կավելացվեն կառուցման հաջորդ փուլերում։",
+      "phaseNote": "Առայժմ միայն հիմքերն ու տվյալները։ Բաղադրիչները կավելացվեն հաջորդիվ։",
       "toc": "Այս էջում",
       "footer": "Մշակման ոճային ուղեցույց։ Հավելվածի նավիգացիայից հղված չէ։",
       "colors": {
@@ -300,6 +456,20 @@
         },
         "missingInHy": "Բացակայում է հայերենում",
         "missingInEn": "Բացակայում է անգլերենում"
+      },
+      "data": {
+        "title": "Ցուցադրական տվյալներ",
+        "intro": "Օգտատերերը, ամրագրումները և գրադարանի գրքերը պահվում են այս դիտարկիչում։ Ցանկացած պահի կարող եք վերականգնել սկզբնական տվյալները։",
+        "users": {
+          "one": "{count} օգտատեր",
+          "other": "{count} օգտատեր"
+        },
+        "bookings": {
+          "one": "{count} ամրագրում",
+          "other": "{count} ամրագրում"
+        },
+        "reset": "Վերականգնել ցուցադրական տվյալները",
+        "resetDone": "Ցուցադրական տվյալները վերականգնվեցին։"
       }
     }
   }

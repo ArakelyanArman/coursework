@@ -1,7 +1,5 @@
 // @ts-check
-// Entry module for design.html: the dev-only living style guide.
-// Phase 1 covers foundations; component sections are added in Phase 3.
-import { ICON_NAMES, Icon } from '../components/icon.js';
+import { ICON_NAMES, Icon } from '../../components/Icon/Icon.js';
 import { addDays, diffDays, todayIso } from '../core/date.js';
 import { h, qs, render } from '../core/dom.js';
 import { EVENTS, on } from '../core/events.js';
@@ -13,8 +11,10 @@ import {
   parseTypedDate,
   weekdayNames,
 } from '../core/format.js';
+import { ApiError } from '../core/http.js';
 import { diffKeys, getLanguage, hasIntlLocale, initI18n, setLanguage, t } from '../core/i18n.js';
 import { getTheme, initTheme, toggleTheme } from '../core/theme.js';
+import { getDemoCounts, hasDemoData, resetDemoData } from '../services/demo.js';
 
 /** [token, token used for the sample text on top of it], both without the `--color-` prefix. */
 const COLOR_GROUPS = /** @type {const} */ ([
@@ -337,6 +337,35 @@ function renderKeyParity() {
   );
 }
 
+async function renderData() {
+  if (!hasDemoData) return;
+  qs('#data').hidden = false;
+  qs('#data-link').hidden = false;
+  const counts = await getDemoCounts();
+  if (!counts) return;
+  qs('#data-counts').textContent = [
+    t('catalog.resultCount', { count: counts.books }),
+    t('design.data.users', { count: counts.users }),
+    t('design.data.bookings', { count: counts.bookings }),
+  ].join(' · ');
+}
+
+async function resetData() {
+  const button = qs('#data-reset');
+  const status = qs('#data-status');
+  button.disabled = true;
+  status.textContent = '';
+  try {
+    await resetDemoData();
+    await renderData();
+    status.textContent = t('design.data.resetDone');
+  } catch (error) {
+    status.textContent = t(error instanceof ApiError ? error.messageKey : 'errors.unknown');
+  } finally {
+    button.disabled = false;
+  }
+}
+
 function renderAll() {
   renderControls();
   renderColors();
@@ -345,6 +374,8 @@ function renderAll() {
   renderIcons();
   renderFormatting();
   renderKeyParity();
+  qs('#data-status').textContent = '';
+  renderData();
 }
 
 async function init() {
@@ -358,6 +389,7 @@ async function init() {
     setLanguage(getLanguage() === 'en' ? 'hy' : 'en');
   });
   qs('#theme-toggle').addEventListener('click', () => toggleTheme());
+  qs('#data-reset').addEventListener('click', resetData);
 
   on(EVENTS.LANG_CHANGE, renderAll);
   on(EVENTS.THEME_CHANGE, () => {

@@ -1,6 +1,5 @@
 // @ts-check
-// Classic (non-module) script loaded in <head>: sets data-theme before first paint
-// so there is no flash of the wrong theme. Keep in sync with js/core/theme.js.
+// Classic script in <head>: sets data-theme before first paint so the wrong theme never flashes.
 (function () {
   let theme = null;
   try {

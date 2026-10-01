@@ -1,21 +1,12 @@
-/* ==========================================================================
-   Library — "Paper & Ink" design system
-   Tokens, @font-face, reset, base, typography, layout and utilities.
-   Component files are @imported below; page files are linked per HTML page.
-
-   Cascade order is fixed by layers, not by source order:
-     tokens < reset < base < components < pages < utilities
-
-   Breakpoints (custom properties cannot be used in @media, so these literals
-   are the one allowed exception to "tokens only"):
-     sm 640px · md 768px · lg 1024px · xl 1280px · 2xl 1536px
-   ========================================================================== */
+/* Cascade order is fixed by layers: tokens < reset < base < components < pages < utilities.
+   Breakpoints (custom properties cannot be used in @media, so literals are used there):
+   sm 640px · md 768px · lg 1024px · xl 1280px · 2xl 1536px */
 
 @layer tokens, reset, base, components, pages, utilities;
 
-@import url("./components/icon.css") layer(components);
+@import url("../components/Icon/Icon.css") layer(components);
 
-/* ---------- Fonts (self-hosted, SIL OFL; licenses in assets/fonts/) ---------- */
+/* ---------- Fonts ---------- */
 
 @font-face {
   font-family: "Inter";
@@ -58,7 +49,6 @@
   :root {
     color-scheme: light;
 
-    /* Typography */
     --font-sans: "Inter", "Noto Sans Armenian", system-ui, sans-serif;
     --font-serif: "Source Serif 4", "Noto Serif Armenian", Georgia, serif;
     --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -94,7 +84,6 @@
 
     --measure: 70ch;
 
-    /* Color — light theme */
     --color-bg: #fbfaf7;
     --color-surface: #ffffff;
     --color-surface-muted: #f4f1ea;
@@ -123,7 +112,6 @@
     --color-on-danger: #ffffff;
     --color-overlay: rgb(28 26 23 / 0.45);
 
-    /* Spacing — 4px base */
     --space-0: 0;
     --space-1: 4px;
     --space-2: 8px;
@@ -137,39 +125,33 @@
     --space-16: 64px;
     --space-20: 80px;
 
-    /* Semantic spacing (Part 2 §3) */
     --card-pad: var(--space-4);
     --section-gap: var(--space-12);
     --field-gap: var(--space-5);
     --label-gap: var(--space-2);
 
-    /* Radius */
     --radius-sm: 6px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-full: 9999px;
 
-    /* Borders and focus */
     --border-width: 1px;
     --border-width-strong: 2px;
     --focus-ring-width: 2px;
     --focus-ring-offset: 2px;
 
-    /* Elevation */
     --shadow-xs: 0 1px 2px rgb(28 26 23 / 0.06);
     --shadow-sm: 0 1px 3px rgb(28 26 23 / 0.08), 0 1px 2px rgb(28 26 23 / 0.04);
     --shadow-md: 0 4px 12px -2px rgb(28 26 23 / 0.1), 0 2px 4px rgb(28 26 23 / 0.05);
     --shadow-lg: 0 16px 40px -8px rgb(28 26 23 / 0.2);
     --shadow-cover: 0 2px 4px rgb(28 26 23 / 0.12), 0 8px 16px -4px rgb(28 26 23 / 0.18);
 
-    /* Motion */
     --duration-fast: 120ms;
     --duration-base: 200ms;
     --duration-slow: 300ms;
     --ease-out: cubic-bezier(0.2, 0, 0, 1);
 
-    /* Control sizes */
     --size-control-sm: 32px;
     --size-control-md: 40px;
     --size-control-lg: 48px;
@@ -178,13 +160,11 @@
     --size-icon: 20px;
     --icon-stroke: 1.75;
 
-    /* Layout */
     --nav-height: 64px;
     --container-max: 1280px;
     --container-pad: var(--space-4);
     --grid-gutter: var(--space-6);
 
-    /* Stacking */
     --z-nav: 40;
     --z-popover: 50;
     --z-dialog: 70;
@@ -235,7 +215,6 @@
     --color-on-danger: #2a0f0c;
     --color-overlay: rgb(0 0 0 / 0.6);
 
-    /* Black-based and subtle: dark mode relies on surface steps instead. */
     --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.3);
     --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.35);
     --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.45);
@@ -408,7 +387,6 @@
     background: var(--color-primary-soft);
   }
 
-  /* Global focus ring: every interactive element, keyboard focus only. */
   :focus-visible {
     outline: var(--focus-ring-width) solid var(--color-focus);
     outline-offset: var(--focus-ring-offset);
@@ -419,10 +397,9 @@
   }
 }
 
-/* ---------- Utilities: typography, layout, helpers ---------- */
+/* ---------- Utilities ---------- */
 
 @layer utilities {
-  /* Type scale (Part 2 §2) */
   .t-display,
   .t-h1,
   .t-h2,
@@ -498,7 +475,7 @@
     font-weight: var(--font-weight-medium);
   }
 
-  /* Short English-only meta. Uppercase hurts Armenian readability, so it is dropped there. */
+  /* Uppercase hurts Armenian readability, so it is dropped there. */
   .caps {
     text-transform: uppercase;
     letter-spacing: var(--tracking-wide);
@@ -549,7 +526,6 @@
     line-clamp: 3;
   }
 
-  /* Layout */
   .container {
     width: 100%;
     max-width: var(--container-max);
@@ -612,7 +588,6 @@
     gap: var(--space-8);
   }
 
-  /* Accessibility helpers */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -646,7 +621,6 @@
     transform: none;
   }
 
-  /* Reduced motion: no movement, near-instant state changes. */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

@@ -12,27 +12,20 @@ const PLURAL_CATEGORIES = new Set(['zero', 'one', 'two', 'few', 'many', 'other']
 
 /** @type {Record<string, any>} */
 let translations = {};
-
 /** @type {Lang} */
 let currentLang = config.defaultLanguage;
 
-/** Keys already reported, so each missing key warns once. */
 const warned = new Set();
-
 /** @type {Map<string, boolean>} */
 const intlSupport = new Map();
 /** @type {Map<string, Intl.NumberFormat>} */
 const numberFormatters = new Map();
 
-/**
- * @param {unknown} value
- * @returns {value is Lang}
- */
+/** @param {unknown} value @returns {value is Lang} */
 const isLang = (value) => config.languages.includes(/** @type {Lang} */ (value));
 
 /**
- * A plural entry is an object whose keys are all plural categories,
- * e.g. { one: '{count} book', other: '{count} books' }.
+ * A plural entry looks like { one: '{count} book', other: '{count} books' }.
  * @param {unknown} value
  * @returns {value is Record<string, string>}
  */
@@ -45,7 +38,6 @@ function isPlural(value) {
 /**
  * @param {Lang} lang
  * @param {string} key Dotted path, e.g. 'nav.home'.
- * @returns {unknown}
  */
 function lookup(lang, key) {
   /** @type {any} */
@@ -57,7 +49,7 @@ function lookup(lang, key) {
   return node;
 }
 
-/** @returns {Lang} Saved choice, else the browser language (hy* → Armenian), else English. */
+/** @returns {Lang} */
 function detectLanguage() {
   const stored = getShared('language');
   if (isLang(stored)) return stored;
@@ -69,20 +61,14 @@ export function getLanguage() {
   return currentLang;
 }
 
-/** @returns {string} BCP 47 locale for Intl: 'en-US' or 'hy-AM'. */
+/** @returns {string} 'en-US' or 'hy-AM'. */
 export function getLocale() {
   return config.locales[currentLang];
 }
 
 /**
- * Translate a key.
- *
- * - `{name}` placeholders are filled from `params`.
- * - Plural entries are chosen with `Intl.PluralRules` from `params.count`, and
- *   `{count}` is printed as a locale-formatted number.
- * - A key missing in the current language falls back to English (dev warning);
- *   a key missing everywhere returns the key itself.
- *
+ * Translate a key. {name} placeholders come from `params`; plural entries are chosen by
+ * `params.count`. A key missing in the current language falls back to English, then to the key.
  * @param {string} key
  * @param {Params} [params]
  * @returns {string}
@@ -119,10 +105,8 @@ export function t(key, params = {}) {
 }
 
 /**
- * Whether the browser ships Intl date and number data for the current language.
- * Chromium has none for Armenian (its trimmed ICU build resolves 'hy-AM' to
- * 'en-US'); Firefox and Safari do. When this is false, numbers here and dates
- * in core/format.js use the patterns in translations.json instead.
+ * Chromium ships no Intl date/number data for Armenian ('hy-AM' silently resolves to 'en-US').
+ * When this is false, numbers here and dates in format.js use the patterns in translations.json.
  * @returns {boolean}
  */
 export function hasIntlLocale() {
@@ -138,7 +122,6 @@ export function hasIntlLocale() {
 }
 
 /**
- * Format a number for the current language.
  * @param {number} value
  * @param {Intl.NumberFormatOptions} [options]
  * @returns {string}
@@ -154,7 +137,6 @@ export function localizeNumber(value, options = {}) {
   }
   if (native) return formatter.format(value);
 
-  // No Intl data: format as English, then swap in this language's separators.
   return formatter
     .formatToParts(value)
     .map((part) => {
@@ -166,11 +148,7 @@ export function localizeNumber(value, options = {}) {
 }
 
 /**
- * Fill translated text and attributes inside `root`.
- *
- * - `data-i18n="key"` sets the element's text.
- * - `data-i18n-attr="placeholder:key;aria-label:key"` sets attributes.
- *
+ * Fill `data-i18n="key"` text and `data-i18n-attr="placeholder:key;aria-label:key"` attributes.
  * @param {ParentNode} [root]
  */
 export function applyTranslations(root = document) {
@@ -207,8 +185,7 @@ function activate(lang) {
 }
 
 /**
- * Switch language in place: no reload. Persists the choice, re-fills static
- * text, then broadcasts `lang:change` so components re-render.
+ * Switch language in place and broadcast `lang:change`.
  * @param {Lang} lang
  */
 export function setLanguage(lang) {
@@ -218,8 +195,8 @@ export function setLanguage(lang) {
 }
 
 /**
- * Load translations and translate the static HTML. Call once, before first render.
- * @returns {Promise<Lang>} The active language.
+ * Call once, before first render.
+ * @returns {Promise<Lang>}
  */
 export async function initI18n() {
   currentLang = detectLanguage();
@@ -227,7 +204,6 @@ export async function initI18n() {
   translations = await getJson(assetUrl('i18n/translations.json'));
   applyTranslations(document);
 
-  // Another tab switched language: follow it.
   on(EVENTS.LANG_CHANGE, ({ detail }) => {
     if (detail?.source === 'remote' && isLang(detail.value) && detail.value !== currentLang) {
       activate(detail.value);
@@ -255,7 +231,7 @@ function collectKeys(node, prefix, keys) {
 }
 
 /**
- * Dev check: compare the key sets of English and Armenian.
+ * Dev check: keys present in one language but not the other.
  * @returns {{ total: number, missingInHy: string[], missingInEn: string[] }}
  */
 export function diffKeys() {

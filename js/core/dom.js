@@ -3,7 +3,7 @@
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const SVG_TAGS = new Set(['svg', 'use', 'g', 'path', 'circle', 'rect', 'line']);
 
-/** Attributes that must be set as DOM properties to take effect. */
+/** Must be set as DOM properties to take effect. */
 const PROPERTIES = new Set([
   'value',
   'checked',
@@ -25,7 +25,6 @@ const PROPERTIES = new Set([
  */
 function setAttr(element, name, value) {
   if (value == null || value === false) {
-    // aria-* needs an explicit "false"; everything else is simply left off.
     if (value === false && name.startsWith('aria-')) element.setAttribute(name, 'false');
     return;
   }
@@ -44,7 +43,7 @@ function setAttr(element, name, value) {
   }
 
   if (name === 'style' && typeof value === 'object') {
-    // Inline styles are limited to custom-property hooks, e.g. { '--cover-hue': 210 }.
+    // Inline styles are limited to custom-property hooks such as { '--cover-hue': 210 }.
     for (const [prop, entry] of Object.entries(value)) {
       if (!prop.startsWith('--')) throw new Error(`h(): only custom properties allowed, got "${prop}"`);
       if (entry != null) /** @type {HTMLElement} */ (element).style.setProperty(prop, String(entry));
@@ -80,21 +79,16 @@ function append(parent, child) {
   } else if (child instanceof Node) {
     parent.appendChild(child);
   } else if (child != null && child !== false && child !== true) {
-    // Strings and numbers become text nodes: never parsed as HTML.
     parent.appendChild(document.createTextNode(String(child)));
   }
 }
 
 /**
- * Create a DOM element. Text children are always inserted as text, never as HTML.
- *
- * @example
- * h('a', { class: 'book-card', href: url, onClick: track }, h('span', { class: 't-title-sm' }, book.title))
- *
+ * Create an element. String children become text nodes, never HTML.
  * @param {string} tag
  * @param {Record<string, unknown> | Child | Child[]} [attrs] Attributes, or the first child.
  * @param {...(Child | Child[])} children
- * @returns {any} HTMLElement, or SVGElement for SVG tags.
+ * @returns {any}
  */
 export function h(tag, attrs, ...children) {
   const element = SVG_TAGS.has(tag)
@@ -117,7 +111,7 @@ export function h(tag, attrs, ...children) {
 }
 
 /**
- * Replace everything inside `parent` with `children`.
+ * Replace everything inside `parent`.
  * @param {Element} parent
  * @param {...(Child | Child[])} children
  * @returns {Element}
@@ -129,10 +123,7 @@ export function render(parent, ...children) {
   return parent;
 }
 
-/**
- * Remove every child of `element`.
- * @param {Element} element
- */
+/** @param {Element} element */
 export function clear(element) {
   element.replaceChildren();
 }
@@ -140,7 +131,7 @@ export function clear(element) {
 /**
  * @param {string} selector
  * @param {ParentNode} [root]
- * @returns {any} First match, or null.
+ * @returns {any}
  */
 export function qs(selector, root = document) {
   return root.querySelector(selector);
@@ -149,7 +140,7 @@ export function qs(selector, root = document) {
 /**
  * @param {string} selector
  * @param {ParentNode} [root]
- * @returns {any[]} All matches as an array.
+ * @returns {any[]}
  */
 export function qsa(selector, root = document) {
   return [...root.querySelectorAll(selector)];

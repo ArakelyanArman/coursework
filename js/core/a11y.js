@@ -1,7 +1,5 @@
 // @ts-check
 
-/** Shared accessibility helpers for the hand-built WAI-ARIA APG patterns. */
-
 const FOCUSABLE = [
   'a[href]',
   'button:not([disabled])',
@@ -11,11 +9,7 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(',');
 
-/**
- * Visible, focusable elements inside `root`, in tab order.
- * @param {ParentNode} root
- * @returns {HTMLElement[]}
- */
+/** @param {ParentNode} root @returns {HTMLElement[]} Visible focusable elements, in tab order. */
 export function getFocusable(root) {
   return /** @type {HTMLElement[]} */ ([...root.querySelectorAll(FOCUSABLE)]).filter(
     (element) => element.getClientRects().length > 0 && !element.closest('[inert]'),
@@ -23,8 +17,7 @@ export function getFocusable(root) {
 }
 
 /**
- * Keep Tab and Shift+Tab inside `container` (popovers and other non-<dialog> overlays;
- * native <dialog>.showModal() already traps focus).
+ * For popovers; native <dialog>.showModal() already traps focus.
  * @param {HTMLElement} container
  * @returns {() => void} Releases the trap.
  */
@@ -52,11 +45,7 @@ export function trapFocus(container) {
   return () => container.removeEventListener('keydown', onKeydown);
 }
 
-/**
- * Remember what has focus now; call the returned function to give focus back
- * (e.g. to the button that opened a popover).
- * @returns {() => void}
- */
+/** @returns {() => void} Call it to give focus back to what had it. */
 export function rememberFocus() {
   const previous = document.activeElement;
   return () => {
@@ -65,29 +54,28 @@ export function rememberFocus() {
 }
 
 /**
- * Run `handler` when Escape is pressed inside `target`.
  * @param {HTMLElement | Document} target
  * @param {(event: KeyboardEvent) => void} handler
  * @returns {() => void} Removes the listener.
  */
 export function onEscape(target, handler) {
-  const listener = /** @type {EventListener} */ (
-    (/** @type {KeyboardEvent} */ event) => {
-      if (event.key === 'Escape') handler(event);
+  /** @param {Event} event */
+  const listener = (event) => {
+    if (/** @type {KeyboardEvent} */ (event).key === 'Escape') {
+      handler(/** @type {KeyboardEvent} */ (event));
     }
-  );
+  };
   target.addEventListener('keydown', listener);
   return () => target.removeEventListener('keydown', listener);
 }
 
 /**
- * Roving tabindex: one item in a group is tabbable, arrow keys move between items.
- * Used by menus, chip rows and other composite widgets.
+ * One item in the group is tabbable; arrow keys, Home and End move between items.
  * @param {HTMLElement} container
  * @param {object} options
- * @param {string} options.selector Matches the items inside `container`.
+ * @param {string} options.selector
  * @param {'horizontal' | 'vertical' | 'both'} [options.orientation]
- * @param {boolean} [options.loop] Wrap around at the ends. Defaults to true.
+ * @param {boolean} [options.loop]
  * @returns {{ refresh: () => void, focusItem: (index: number) => void, destroy: () => void }}
  */
 export function rovingTabindex(container, { selector, orientation = 'horizontal', loop = true }) {
@@ -163,7 +151,7 @@ export function rovingTabindex(container, { selector, orientation = 'horizontal'
 const liveRegions = {};
 
 /**
- * Announce a message to screen readers through a visually hidden live region.
+ * Announce to screen readers through a visually hidden live region.
  * @param {string} message Already translated.
  * @param {'polite' | 'assertive'} [politeness]
  */
@@ -177,7 +165,7 @@ export function announce(message, politeness = 'polite') {
     document.body.appendChild(region);
     liveRegions[politeness] = region;
   }
-  // Clear first so repeating the same message is announced again.
+  // Cleared first so a repeated message is announced again.
   const target = region;
   target.textContent = '';
   window.setTimeout(() => {
@@ -187,11 +175,7 @@ export function announce(message, politeness = 'polite') {
 
 let uidCounter = 0;
 
-/**
- * A unique id for wiring aria-controls, aria-describedby and label[for].
- * @param {string} [prefix]
- * @returns {string}
- */
+/** @param {string} [prefix] @returns {string} A unique id for aria-controls, aria-describedby, label[for]. */
 export function uid(prefix = 'id') {
   uidCounter += 1;
   return `${prefix}-${uidCounter}`;
