@@ -1,0 +1,306 @@
+{
+  "en": {
+    "common": {
+      "appName": "Library",
+      "skipToContent": "Skip to content",
+      "retry": "Try again",
+      "cancel": "Cancel",
+      "close": "Close",
+      "save": "Save",
+      "delete": "Delete",
+      "search": "Search",
+      "loading": "Loading…"
+    },
+    "nav": {
+      "primary": "Main navigation",
+      "home": "Home",
+      "catalog": "Catalog",
+      "login": "Log in",
+      "logout": "Log out",
+      "admin": "Admin"
+    },
+    "theme": {
+      "switchToDark": "Switch to dark theme",
+      "switchToLight": "Switch to light theme"
+    },
+    "language": {
+      "shortEn": "EN",
+      "shortHy": "ՀՅ",
+      "switchToEn": "Switch to English",
+      "switchToHy": "Switch to Armenian"
+    },
+    "errors": {
+      "network": "Couldn't reach the server. Check your connection and try again.",
+      "timeout": "The request took too long. Try again.",
+      "notFound": "We couldn't find what you were looking for.",
+      "server": "Something went wrong on our side. Try again in a moment.",
+      "badResponse": "The server sent a response we couldn't read. Try again.",
+      "unauthorized": "Log in to continue.",
+      "forbidden": "You don't have permission to do that.",
+      "unknown": "Something went wrong. Try again."
+    },
+    "validation": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "minLength": {
+        "one": "Use at least {count} character.",
+        "other": "Use at least {count} characters."
+      },
+      "maxLength": {
+        "one": "Use no more than {count} character.",
+        "other": "Use no more than {count} characters."
+      },
+      "number": "Enter a number.",
+      "integer": "Enter a whole number.",
+      "min": "Enter {min} or more.",
+      "max": "Enter {max} or less.",
+      "date": "Enter a valid date.",
+      "oneOf": "Choose one of the listed options."
+    },
+    "date": {
+      "monthsLong": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      "monthsInDate": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      "monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      "weekdaysLong": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "weekdaysShort": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      "weekdaysNarrow": ["M", "T", "W", "T", "F", "S", "S"],
+      "patterns": {
+        "medium": "{monthShort} {day}, {year}",
+        "short": "{monthShort} {day}",
+        "long": "{weekday}, {month} {day}, {year}",
+        "monthYear": "{monthName} {year}",
+        "range": "{from} – {to}"
+      }
+    },
+    "number": {
+      "group": ",",
+      "decimal": "."
+    },
+    "catalog": {
+      "resultCount": {
+        "one": "{count} book",
+        "other": "{count} books"
+      }
+    },
+    "design": {
+      "pageTitle": "Design system · Library",
+      "devOnly": "Dev only",
+      "title": "Paper & Ink",
+      "lead": "Warm paper neutrals, deep ink-blue for actions, a brass accent used sparingly, and a serif for anything bookish. Every value on this page is read from the CSS custom properties.",
+      "phaseNote": "Foundations only for now. Components are added in the next build phases.",
+      "toc": "On this page",
+      "footer": "Development style guide. Not linked from the app navigation.",
+      "colors": {
+        "title": "Color",
+        "intro": "Values update with the theme. Each swatch shows the contrast ratio between its two tokens.",
+        "neutrals": "Neutrals",
+        "brand": "Brand",
+        "feedback": "Feedback",
+        "contrast": "Contrast {ratio}:1"
+      },
+      "typography": {
+        "title": "Typography",
+        "intro": "Source Serif 4 for titles and books, Inter for everything you read or operate. Armenian text uses Noto Serif Armenian and Noto Sans Armenian.",
+        "serif": "Serif",
+        "sans": "Sans",
+        "mixed": "Library · Գրադարան · 0123456789",
+        "samples": {
+          "display": "Find your next read",
+          "h1": "Catalog",
+          "h2": "Trending this week",
+          "h3": "Wounds of Armenia",
+          "titleSm": "The Fool",
+          "bodyLg": "Book descriptions on the detail page use the large body size for comfortable reading.",
+          "body": "Default interface text, inputs and paragraphs.",
+          "bodySm": "Authors, list descriptions and table cells. The smallest size for any paragraph.",
+          "label": "Buttons · Form labels · Tabs",
+          "caption": "Badges · Helper text · Meta"
+        }
+      },
+      "foundations": {
+        "title": "Spacing · Radius · Elevation",
+        "spacing": "Spacing, 4 px base",
+        "radius": "Radius",
+        "elevation": "Elevation"
+      },
+      "icons": {
+        "title": "Icons",
+        "intro": "Lucide icons from one SVG sprite, drawn at 20 px with a 1.75 stroke in the current text colour."
+      },
+      "i18n": {
+        "title": "Language and formatting",
+        "intro": "Dates, numbers and plurals follow the selected language. Switch the language in the top bar to compare.",
+        "today": "Today",
+        "longDate": "Long date",
+        "range": "Two-week range",
+        "weekdays": "Week, Monday first",
+        "typedDate": "Typed date format",
+        "number": "Number",
+        "plural": "Plural",
+        "monthHeading": "Calendar heading",
+        "formatter": "Formatter",
+        "intlNative": "The browser's Intl data",
+        "intlFallback": "App patterns (this browser has no Intl data for this language)",
+        "keysTitle": "Translation keys",
+        "keysMatch": {
+          "one": "English and Armenian define the same {count} key.",
+          "other": "English and Armenian define the same {count} keys."
+        },
+        "missingInHy": "Missing in Armenian",
+        "missingInEn": "Missing in English"
+      }
+    }
+  },
+  "hy": {
+    "common": {
+      "appName": "Գրադարան",
+      "skipToContent": "Անցնել բովանդակությանը",
+      "retry": "Կրկին փորձել",
+      "cancel": "Չեղարկել",
+      "close": "Փակել",
+      "save": "Պահպանել",
+      "delete": "Ջնջել",
+      "search": "Որոնել",
+      "loading": "Բեռնվում է…"
+    },
+    "nav": {
+      "primary": "Հիմնական նավիգացիա",
+      "home": "Գլխավոր",
+      "catalog": "Կատալոգ",
+      "login": "Մուտք",
+      "logout": "Ելք",
+      "admin": "Ադմին"
+    },
+    "theme": {
+      "switchToDark": "Միացնել մուգ թեման",
+      "switchToLight": "Միացնել բաց թեման"
+    },
+    "language": {
+      "shortEn": "EN",
+      "shortHy": "ՀՅ",
+      "switchToEn": "Փոխել անգլերենի",
+      "switchToHy": "Փոխել հայերենի"
+    },
+    "errors": {
+      "network": "Չհաջողվեց կապվել սերվերին։ Ստուգեք կապը և կրկին փորձեք։",
+      "timeout": "Հարցումը չափազանց երկար տևեց։ Կրկին փորձեք։",
+      "notFound": "Չհաջողվեց գտնել այն, ինչ փնտրում էիք։",
+      "server": "Մեր կողմում սխալ տեղի ունեցավ։ Փորձեք մի փոքր ուշ։",
+      "badResponse": "Սերվերի պատասխանը չհաջողվեց կարդալ։ Կրկին փորձեք։",
+      "unauthorized": "Շարունակելու համար մուտք գործեք։",
+      "forbidden": "Դուք չունեք այս գործողության թույլտվությունը։",
+      "unknown": "Ինչ-որ բան սխալ ստացվեց։ Կրկին փորձեք։"
+    },
+    "validation": {
+      "required": "Այս դաշտը պարտադիր է։",
+      "email": "Մուտքագրեք վավեր էլ. հասցե։",
+      "minLength": {
+        "one": "Օգտագործեք առնվազն {count} նիշ։",
+        "other": "Օգտագործեք առնվազն {count} նիշ։"
+      },
+      "maxLength": {
+        "one": "Օգտագործեք ոչ ավելի, քան {count} նիշ։",
+        "other": "Օգտագործեք ոչ ավելի, քան {count} նիշ։"
+      },
+      "number": "Մուտքագրեք թիվ։",
+      "integer": "Մուտքագրեք ամբողջ թիվ։",
+      "min": "Մուտքագրեք {min} կամ ավելի մեծ թիվ։",
+      "max": "Մուտքագրեք {max} կամ ավելի փոքր թիվ։",
+      "date": "Մուտքագրեք վավեր ամսաթիվ։",
+      "oneOf": "Ընտրեք նշված տարբերակներից մեկը։"
+    },
+    "date": {
+      "monthsLong": ["հունվար", "փետրվար", "մարտ", "ապրիլ", "մայիս", "հունիս", "հուլիս", "օգոստոս", "սեպտեմբեր", "հոկտեմբեր", "նոյեմբեր", "դեկտեմբեր"],
+      "monthsInDate": ["հունվարի", "փետրվարի", "մարտի", "ապրիլի", "մայիսի", "հունիսի", "հուլիսի", "օգոստոսի", "սեպտեմբերի", "հոկտեմբերի", "նոյեմբերի", "դեկտեմբերի"],
+      "monthsShort": ["հնվ", "փտվ", "մրտ", "ապր", "մյս", "հնս", "հլս", "օգս", "սեպ", "հոկ", "նոյ", "դեկ"],
+      "weekdaysLong": ["երկուշաբթի", "երեքշաբթի", "չորեքշաբթի", "հինգշաբթի", "ուրբաթ", "շաբաթ", "կիրակի"],
+      "weekdaysShort": ["երկ", "երք", "չրք", "հնգ", "ուր", "շբթ", "կիր"],
+      "weekdaysNarrow": ["Ե", "Ե", "Չ", "Հ", "Ու", "Շ", "Կ"],
+      "patterns": {
+        "medium": "{day} {monthShort}, {year} թ.",
+        "short": "{day} {monthShort}",
+        "long": "{year} թ. {month} {day}, {weekday}",
+        "monthYear": "{year} թ. {monthName}",
+        "range": "{from} – {to}"
+      }
+    },
+    "number": {
+      "group": " ",
+      "decimal": ","
+    },
+    "catalog": {
+      "resultCount": {
+        "one": "{count} գիրք",
+        "other": "{count} գիրք"
+      }
+    },
+    "design": {
+      "pageTitle": "Դիզայն համակարգ · Գրադարան",
+      "devOnly": "Միայն մշակման համար",
+      "title": "Թուղթ և թանաք",
+      "lead": "Թղթի ջերմ չեզոք երանգներ, մուգ թանաքագույն կապույտ՝ գործողությունների համար, չափավոր օգտագործվող արույրե շեշտ և սերիֆ տառատեսակ՝ գրքային ամեն ինչի համար։ Այս էջի յուրաքանչյուր արժեք կարդացվում է CSS փոփոխականներից։",
+      "phaseNote": "Առայժմ միայն հիմքերը։ Բաղադրիչները կավելացվեն կառուցման հաջորդ փուլերում։",
+      "toc": "Այս էջում",
+      "footer": "Մշակման ոճային ուղեցույց։ Հավելվածի նավիգացիայից հղված չէ։",
+      "colors": {
+        "title": "Գույներ",
+        "intro": "Արժեքները փոխվում են թեմայի հետ։ Յուրաքանչյուր նմուշ ցույց է տալիս իր երկու գույների կոնտրաստի հարաբերակցությունը։",
+        "neutrals": "Չեզոք գույներ",
+        "brand": "Բրենդ",
+        "feedback": "Արձագանք",
+        "contrast": "Կոնտրաստ՝ {ratio}:1"
+      },
+      "typography": {
+        "title": "Տառատեսակներ",
+        "intro": "Source Serif 4՝ վերնագրերի և գրքերի համար, Inter՝ մնացած ամեն ինչի համար։ Հայերեն տեքստի համար օգտագործվում են Noto Serif Armenian և Noto Sans Armenian տառատեսակները։",
+        "serif": "Սերիֆ",
+        "sans": "Սանս",
+        "mixed": "Library · Գրադարան · 0123456789",
+        "samples": {
+          "display": "Գտեք ձեր հաջորդ գիրքը",
+          "h1": "Կատալոգ",
+          "h2": "Այս շաբաթվա ամենաընթերցվածները",
+          "h3": "Վերք Հայաստանի",
+          "titleSm": "Խենթը",
+          "bodyLg": "Գրքի նկարագրությունը մանրամասների էջում ցուցադրվում է մեծ չափով՝ հարմար ընթերցման համար։",
+          "body": "Միջերեսի հիմնական տեքստ, մուտքագրման դաշտեր և պարբերություններ։",
+          "bodySm": "Հեղինակներ, ցանկերի նկարագրություններ և աղյուսակի բջիջներ։ Պարբերության համար ամենափոքր չափը։",
+          "label": "Կոճակներ · Դաշտերի պիտակներ · Ներդիրներ",
+          "caption": "Նշաններ · Օգնող տեքստ · Մետատվյալներ"
+        }
+      },
+      "foundations": {
+        "title": "Տարածություններ · Անկյուններ · Ստվերներ",
+        "spacing": "Տարածություններ՝ 4 px հիմքով",
+        "radius": "Անկյունների շառավիղ",
+        "elevation": "Բարձրություն"
+      },
+      "icons": {
+        "title": "Պատկերակներ",
+        "intro": "Lucide պատկերակներ մեկ SVG ֆայլից՝ 20 px չափով, 1.75 հաստությամբ գծով և տեքստի ընթացիկ գույնով։"
+      },
+      "i18n": {
+        "title": "Լեզու և ձևաչափեր",
+        "intro": "Ամսաթվերը, թվերը և հոգնակի ձևերը հետևում են ընտրված լեզվին։ Համեմատելու համար փոխեք լեզուն վերևի վահանակում։",
+        "today": "Այսօր",
+        "longDate": "Ամբողջական ամսաթիվ",
+        "range": "Երկշաբաթյա միջակայք",
+        "weekdays": "Շաբաթ՝ երկուշաբթիից",
+        "typedDate": "Ամսաթվի մուտքագրման ձևաչափ",
+        "number": "Թիվ",
+        "plural": "Հոգնակի",
+        "monthHeading": "Օրացույցի վերնագիր",
+        "formatter": "Ձևաչափիչ",
+        "intlNative": "Դիտարկիչի Intl տվյալները",
+        "intlFallback": "Հավելվածի ձևանմուշները (այս դիտարկիչը չունի այս լեզվի Intl տվյալները)",
+        "keysTitle": "Թարգմանության բանալիներ",
+        "keysMatch": {
+          "one": "Անգլերենն ու հայերենն ունեն նույն {count} բանալին։",
+          "other": "Անգլերենն ու հայերենն ունեն նույն {count} բանալիները։"
+        },
+        "missingInHy": "Բացակայում է հայերենում",
+        "missingInEn": "Բացակայում է անգլերենում"
+      }
+    }
+  }
+}

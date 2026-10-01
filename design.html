@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title data-i18n="design.pageTitle"></title>
+
+    <script src="js/theme-init.js"></script>
+
+    <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="i18n/translations.json" as="fetch" crossorigin />
+
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/pages/design.css" />
+
+    <script type="module" src="js/pages/design.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="common.skipToContent"></a>
+
+    <header class="design-bar">
+      <div class="container design-bar__inner">
+        <a class="design-bar__brand" href="design.html">
+          <span class="design-bar__mark" id="brand-mark"></span>
+          <span class="design-bar__wordmark" data-i18n="common.appName"></span>
+        </a>
+        <span class="design-bar__tag t-caption" data-i18n="design.devOnly"></span>
+        <div class="design-bar__actions">
+          <button type="button" class="design-btn" id="lang-switch"></button>
+          <button type="button" class="design-btn design-btn--icon" id="theme-toggle"></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="design-hero">
+        <div class="container stack gap-4">
+          <h1 class="t-display" data-i18n="design.title"></h1>
+          <p class="t-body-lg muted measure" data-i18n="design.lead"></p>
+          <p class="t-body-sm muted" data-i18n="design.phaseNote"></p>
+          <nav class="design-toc" data-i18n-attr="aria-label:design.toc">
+            <a class="design-toc__link" href="#colors" data-i18n="design.colors.title"></a>
+            <a class="design-toc__link" href="#typography" data-i18n="design.typography.title"></a>
+            <a class="design-toc__link" href="#foundations" data-i18n="design.foundations.title"></a>
+            <a class="design-toc__link" href="#icons" data-i18n="design.icons.title"></a>
+            <a class="design-toc__link" href="#i18n" data-i18n="design.i18n.title"></a>
+          </nav>
+        </div>
+      </section>
+
+      <div class="container">
+        <section class="design-section" id="colors" aria-labelledby="colors-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="colors-title" data-i18n="design.colors.title"></h2>
+            <p class="muted measure" data-i18n="design.colors.intro"></p>
+          </header>
+          <div id="swatches"></div>
+        </section>
+
+        <section class="design-section" id="typography" aria-labelledby="typography-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="typography-title" data-i18n="design.typography.title"></h2>
+            <p class="muted measure" data-i18n="design.typography.intro"></p>
+          </header>
+          <div class="design-panel" id="type-scale"></div>
+        </section>
+
+        <section class="design-section" id="foundations" aria-labelledby="foundations-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="foundations-title" data-i18n="design.foundations.title"></h2>
+          </header>
+          <div class="design-columns">
+            <div class="design-panel">
+              <h3 class="design-panel__title t-label muted" data-i18n="design.foundations.spacing"></h3>
+              <div class="stack gap-3" id="spacing-scale"></div>
+            </div>
+            <div class="stack gap-4">
+              <div class="design-panel">
+                <h3 class="design-panel__title t-label muted" data-i18n="design.foundations.radius"></h3>
+                <div class="row gap-4" id="radius-scale"></div>
+              </div>
+              <div class="design-panel design-panel--bg">
+                <h3 class="design-panel__title t-label muted" data-i18n="design.foundations.elevation"></h3>
+                <div class="row gap-5" id="shadow-scale"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="design-section" id="icons" aria-labelledby="icons-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="icons-title" data-i18n="design.icons.title"></h2>
+            <p class="muted measure" data-i18n="design.icons.intro"></p>
+          </header>
+          <ul class="icon-grid" role="list" id="icon-grid"></ul>
+        </section>
+
+        <section class="design-section" id="i18n" aria-labelledby="i18n-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="i18n-title" data-i18n="design.i18n.title"></h2>
+            <p class="muted measure" data-i18n="design.i18n.intro"></p>
+          </header>
+          <div class="design-columns">
+            <dl class="design-panel format-list" id="format-list"></dl>
+            <div class="design-panel">
+              <h3 class="design-panel__title t-label muted" data-i18n="design.i18n.keysTitle"></h3>
+              <div class="stack gap-3" id="key-parity"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="design-footer">
+      <div class="container">
+        <p class="t-body-sm muted" data-i18n="design.footer"></p>
+      </div>
+    </footer>
+  </body>
+</html>

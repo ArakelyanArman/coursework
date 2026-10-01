@@ -1,0 +1,6 @@
+node_modules/
+assets/vendor/
+assets/fonts/
+assets/icons/sprite.svg
+data/seed/
+FRONTEND_BRIEF.md
