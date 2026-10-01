@@ -54,7 +54,7 @@ python -m http.server 3000
 npx serve -l 3000 .
 ```
 
-or right-click `design.html` in VS Code and choose **Open with Live Server**.
+or right-click `index.html` in VS Code and choose **Open with Live Server**.
 
 With these servers a mistyped address shows the server's own error page; `start.bat` shows the
 app's "Page not found" page instead.
@@ -76,7 +76,7 @@ Users, bookings and the library's holdings are demo data kept in your browser.
 
 The other seed users (see `data/seed/users.json`) share the member password.
 
-To start over, open `design.html`, scroll to **Demo data** and press **Reset demo data**.
+To start over, open `/design.html`, scroll to **Demo data** and press **Reset demo data**.
 
 ## What works today
 
@@ -86,23 +86,29 @@ To start over, open `design.html`, scroll to **Demo data** and press **Reset dem
 | Data layer: Open Library, local demo store, services, backend adapter | Done |
 | Components: buttons, fields, chips, calendar, book cards, table, dialogs, toasts | Done |
 | Page shell: navbar, mobile menu, footer, sign-in state, access checks, "Page not found" | Done |
-| Home, Catalog, Book page | Next |
-| Login, Register, Admin | After that |
+| Home: search and three rails of books | Done |
+| Catalog: search, category chips, filters, sorting, pages | Done |
+| Book page: details and booking for a date range | Done |
+| Login, Register | Next |
+| Admin: books, users, reports | After that |
 
-Until the pages are built, the start scripts open `design.html`, the style guide. It shows every
-component in every state; switch the language and the theme in its top bar.
+The app opens on the Home page. The style guide, which shows every component in every state, is
+at `/design.html`.
 
-The navbar's **Home**, **Catalog** and **Log in** links point at pages that are not built yet, so
-for now they show the "Page not found" page.
+The **Log in** page is not built yet, so the navbar's "Log in" button and the "Book" button (which
+asks guests to log in) lead to the "Page not found" page for now.
 
 ## Project structure
 
 ```
 start.bat, start.sh     start a local server on port 3000
+index.html              Home
+catalog.html            Catalog: ?q=&category=&authors=&genres=&yearFrom=&yearTo=&sort=&page=
+book.html               Book details and booking: ?id=OL468431W
 design.html             style guide (not linked from the app navigation)
 404.html                "Page not found"
 components/             one folder per component: Name.html, Name.css, Name.js
-  Navbar/  UserMenu/  Footer/  LanguageSwitch/  ThemeToggle/
+  Navbar/  UserMenu/  Footer/  LanguageSwitch/  ThemeToggle/  BookRail/  Breadcrumb/
   Button/  TextField/  Select/  Checkbox/  SearchField/  Chip/  Tabs/  Badge/  Avatar/
   Calendar/  DateField/  FilterAccordion/  Pagination/  DataTable/  Dialog/  Toast/  Tooltip/
   Banner/  EmptyState/  Skeleton/  BookCover/  BookCard/  BookListItem/  Icon/
@@ -125,7 +131,8 @@ js/
   services/             the data API the pages use: books, bookings, auth, users, reports
   providers/            openlibrary, local-db, http-backend
   mappers/              API shapes to app shapes and back
-  pages/                one entry module per HTML page (design/ holds the style guide's sections)
+  pages/                one entry module per HTML page: home, catalog, book, not-found, design;
+                        a page with a lot to do keeps its parts in a folder of the same name
 docs/
   ARCHITECTURE.md       how the layers fit together
   API_CONTRACT.md       the REST API a real backend must implement

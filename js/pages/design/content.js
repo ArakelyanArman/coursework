@@ -1,9 +1,10 @@
 // @ts-check
 import { AvailabilityBadge } from '../../../components/Badge/Badge.js';
 import { Banner } from '../../../components/Banner/Banner.js';
-import { BookCard, BookCardSkeleton } from '../../../components/BookCard/BookCard.js';
 import { BookCover } from '../../../components/BookCover/BookCover.js';
 import { BookListItem, BookListItemSkeleton } from '../../../components/BookListItem/BookListItem.js';
+import { BookRail } from '../../../components/BookRail/BookRail.js';
+import { Breadcrumb } from '../../../components/Breadcrumb/Breadcrumb.js';
 import { Button, IconButton } from '../../../components/Button/Button.js';
 import { DataTable, DataTableSkeleton } from '../../../components/DataTable/DataTable.js';
 import { confirmDialog, formDialog } from '../../../components/Dialog/Dialog.js';
@@ -15,6 +16,7 @@ import { h, qs, render } from '../../core/dom.js';
 import { formatDate } from '../../core/format.js';
 import { ApiError } from '../../core/http.js';
 import { setText } from '../../core/i18n.js';
+import { buildUrl } from '../../core/url-state.js';
 import { rules, validate } from '../../core/validate.js';
 import { categoryById, countUpcomingBookings, listInventory } from '../../services/books.js';
 import { box, caption, panel } from './panel.js';
@@ -32,14 +34,32 @@ function renderBooks(books) {
     .map((state) => books.find((book) => book.availability === state))
     .filter((book) => book !== undefined);
 
+  const moreHref = buildUrl('catalog.html');
+  const rail = BookRail({ title: { key: 'home.trending' }, moreHref });
+  rail.showBooks([...withCover, ...withoutCover], { badge: { key: 'book.trending' } });
+  const failedRail = BookRail({ title: { key: 'categories.classics' }, moreHref });
+  failedRail.showError(new ApiError({ code: 'network', messageKey: 'errors.network' }), () =>
+    toast({ title: { key: 'common.retry' } }),
+  );
+
   render(
     qs('#books-demo'),
     box(
-      'design-rail',
-      [...withCover, ...withoutCover].map((book, index) =>
-        BookCard({ book, badge: index < 2 ? { key: 'book.trending' } : undefined }),
-      ),
-      BookCardSkeleton(),
+      'stack gap-2',
+      caption({ key: 'design.books.breadcrumb' }, 't-label muted'),
+      Breadcrumb({
+        items: [
+          { label: { key: 'nav.catalog' }, href: moreHref },
+          { label: withCover[0]?.title ?? '' },
+        ],
+      }),
+    ),
+    box(
+      'stack gap-6',
+      caption({ key: 'design.books.rail' }, 't-label muted'),
+      rail,
+      BookRail({ title: { key: 'categories.armenian' }, moreHref }),
+      failedRail,
     ),
     box('stack gap-4', byState.map((book) => BookListItem({ book })), BookListItemSkeleton()),
   );
@@ -250,7 +270,10 @@ function renderMessages() {
 /** Books and the table need real inventory data; the feedback demos do not. */
 export async function renderContent() {
   renderMessages();
-  render(qs('#books-demo'), box('design-rail', Array.from({ length: 5 }, BookCardSkeleton)));
+  render(
+    qs('#books-demo'),
+    BookRail({ title: { key: 'home.trending' }, moreHref: buildUrl('catalog.html') }),
+  );
   render(qs('#table-demo'), DataTableSkeleton());
   try {
     const { items } = await listInventory({ pageSize: 100 });

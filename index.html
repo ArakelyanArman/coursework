@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="home.pageTitle"></title>
+    <meta name="description" data-i18n-attr="content:meta.description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" data-i18n-attr="content:home.pageTitle" />
+    <meta property="og:description" data-i18n-attr="content:meta.description" />
+    <meta property="og:image" content="assets/img/og-image.png" />
+
+    <script src="js/theme-init.js"></script>
+
+    <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="i18n/translations.json" as="fetch" crossorigin />
+
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/pages/home.css" />
+
+    <script type="module" src="js/pages/home.js"></script>
+  </head>
+  <body>
+    <main id="main">
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="container home-hero__inner">
+          <h1 class="t-display" id="home-title" data-i18n="home.title"></h1>
+          <p class="t-body-lg muted" data-i18n="home.subtitle"></p>
+          <div class="home-hero__search" id="home-search"></div>
+        </div>
+      </section>
+      <div class="container home-rails" id="home-rails"></div>
+    </main>
+  </body>
+</html>

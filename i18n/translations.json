@@ -12,7 +12,8 @@
       "loading": "Loading…",
       "clear": "Clear",
       "showMore": "Show more",
-      "showLess": "Show less"
+      "showLess": "Show less",
+      "breadcrumb": "Breadcrumb"
     },
     "nav": {
       "primary": "Main navigation",
@@ -94,11 +95,36 @@
       "categoriesLabel": "Categories",
       "activeFilters": "Active filters",
       "filters": {
-        "genres": "Genres"
+        "genres": "Genres",
+        "title": "Filters",
+        "titleCount": "Filters ({count})",
+        "authors": "Authors",
+        "years": "Years",
+        "yearFrom": "From year",
+        "yearTo": "To year",
+        "yearPlaceholder": "e.g. 1900",
+        "yearOrder": "The first year can't be later than the second.",
+        "noAuthors": "Authors of the books in the results appear here.",
+        "apply": "Apply",
+        "clearAll": "Clear all filters"
       },
       "empty": {
         "title": "No books match your filters",
-        "text": "Try removing a filter or searching for something else."
+        "text": "Try removing a filter or searching for something else.",
+        "searchTitle": "No books found for “{q}”",
+        "searchText": "Check the spelling, or try a different title or author.",
+        "noneTitle": "No books to show",
+        "noneText": "The catalog returned nothing. Try again in a moment."
+      },
+      "pageTitle": "Catalog · Library",
+      "title": "Catalog",
+      "resultsLabel": "Search results",
+      "clearSearch": "Clear search",
+      "chip": {
+        "search": "Search: {q}",
+        "yearRange": "{from}–{to}",
+        "yearFrom": "From {year}",
+        "yearTo": "Until {year}"
       }
     },
     "categories": {
@@ -160,7 +186,16 @@
       "summary": {
         "one": "{count} day · {range}",
         "other": "{count} days · {range}"
-      }
+      },
+      "title": "Reserve this book",
+      "submit": "Book",
+      "rules": {
+        "one": "Up to {count} day per booking.",
+        "other": "Up to {count} days per booking."
+      },
+      "loginHint": "You'll be asked to log in before the booking is made.",
+      "again": "Book other dates",
+      "datesLoadFailed": "Booked dates couldn't be loaded. You can still pick dates; they are checked when you book."
     },
     "books": {
       "errors": {
@@ -256,10 +291,28 @@
           "other": "{count} left"
         },
         "unavailable": "Unavailable"
+      },
+      "pageTitle": "Book · Library",
+      "pageTitleFor": "{title} · Library",
+      "readMore": "Read more",
+      "readLess": "Show less",
+      "noDescription": "No description is available for this book.",
+      "subjects": "Subjects: {list}",
+      "notFound": {
+        "title": "We couldn't find that book",
+        "text": "It may have been removed, or the link may be wrong.",
+        "action": "Back to the catalog"
       }
     },
     "home": {
-      "exploreAll": "Explore all"
+      "exploreAll": "Explore all",
+      "pageTitle": "Library · Find your next read",
+      "title": "Find your next read",
+      "subtitle": "Search the catalog, see what's available, and book a title for the dates you need.",
+      "trending": "Trending this week",
+      "previous": "Previous books",
+      "next": "More books",
+      "empty": "Nothing to show here right now."
     },
     "admin": {
       "title": "Admin",
@@ -309,6 +362,9 @@
       "text": "The link may be broken, or the page may have been moved. Try a search instead.",
       "home": "Go to Home",
       "catalog": "Browse the catalog"
+    },
+    "meta": {
+      "description": "Browse the library catalog, see which books are available, and book a title for the dates you need."
     },
     "design": {
       "pageTitle": "Design system · Library",
@@ -419,7 +475,9 @@
         "none": "No dates chosen yet."
       },
       "books": {
-        "title": "Books"
+        "title": "Books",
+        "rail": "Home rail",
+        "breadcrumb": "Breadcrumb"
       },
       "table": {
         "title": "Table"
@@ -454,7 +512,8 @@
       "loading": "Բեռնվում է…",
       "clear": "Մաքրել",
       "showMore": "Ցույց տալ ավելին",
-      "showLess": "Ցույց տալ ավելի քիչ"
+      "showLess": "Ցույց տալ ավելի քիչ",
+      "breadcrumb": "Էջի ուղին"
     },
     "nav": {
       "primary": "Հիմնական նավիգացիա",
@@ -536,11 +595,36 @@
       "categoriesLabel": "Կատեգորիաներ",
       "activeFilters": "Ակտիվ զտիչներ",
       "filters": {
-        "genres": "Ժանրեր"
+        "genres": "Ժանրեր",
+        "title": "Զտիչներ",
+        "titleCount": "Զտիչներ ({count})",
+        "authors": "Հեղինակներ",
+        "years": "Տարիներ",
+        "yearFrom": "Սկսած տարուց",
+        "yearTo": "Մինչև տարին",
+        "yearPlaceholder": "օր.՝ 1900",
+        "yearOrder": "Առաջին տարին չի կարող երկրորդից ուշ լինել։",
+        "noAuthors": "Այստեղ հայտնվում են արդյունքներում եղած գրքերի հեղինակները։",
+        "apply": "Կիրառել",
+        "clearAll": "Մաքրել բոլոր զտիչները"
       },
       "empty": {
         "title": "Ձեր զտիչներին համապատասխան գրքեր չկան",
-        "text": "Փորձեք հեռացնել զտիչներից մեկը կամ որոնել այլ բան։"
+        "text": "Փորձեք հեռացնել զտիչներից մեկը կամ որոնել այլ բան։",
+        "searchTitle": "«{q}» հարցմամբ գիրք չի գտնվել",
+        "searchText": "Ստուգեք ուղղագրությունը կամ փորձեք այլ վերնագիր կամ հեղինակ։",
+        "noneTitle": "Ցուցադրելու գիրք չկա",
+        "noneText": "Կատալոգը ոչինչ չվերադարձրեց։ Փորձեք մի փոքր ուշ։"
+      },
+      "pageTitle": "Կատալոգ · Գրադարան",
+      "title": "Կատալոգ",
+      "resultsLabel": "Որոնման արդյունքներ",
+      "clearSearch": "Մաքրել որոնումը",
+      "chip": {
+        "search": "Որոնում՝ {q}",
+        "yearRange": "{from}–{to}",
+        "yearFrom": "{year}-ից",
+        "yearTo": "Մինչև {year}"
       }
     },
     "categories": {
@@ -602,7 +686,16 @@
       "summary": {
         "one": "{count} օր · {range}",
         "other": "{count} օր · {range}"
-      }
+      },
+      "title": "Ամրագրել այս գիրքը",
+      "submit": "Ամրագրել",
+      "rules": {
+        "one": "Մեկ ամրագրումը՝ առավելագույնը {count} օր։",
+        "other": "Մեկ ամրագրումը՝ առավելագույնը {count} օր։"
+      },
+      "loginHint": "Ամրագրելուց առաջ ձեզ կառաջարկվի մուտք գործել։",
+      "again": "Ամրագրել այլ օրերի համար",
+      "datesLoadFailed": "Զբաղված օրերը չհաջողվեց բեռնել։ Կարող եք ընտրել օրերը․ դրանք կստուգվեն ամրագրելիս։"
     },
     "books": {
       "errors": {
@@ -698,10 +791,28 @@
           "other": "Մնացել է {count}"
         },
         "unavailable": "Անհասանելի է"
+      },
+      "pageTitle": "Գիրք · Գրադարան",
+      "pageTitleFor": "{title} · Գրադարան",
+      "readMore": "Կարդալ ավելին",
+      "readLess": "Ցույց տալ ավելի քիչ",
+      "noDescription": "Այս գրքի նկարագրությունը հասանելի չէ։",
+      "subjects": "Թեմաներ՝ {list}",
+      "notFound": {
+        "title": "Այս գիրքը չհաջողվեց գտնել",
+        "text": "Հնարավոր է՝ այն հեռացվել է, կամ հղումը սխալ է։",
+        "action": "Վերադառնալ կատալոգ"
       }
     },
     "home": {
-      "exploreAll": "Տեսնել բոլորը"
+      "exploreAll": "Տեսնել բոլորը",
+      "pageTitle": "Գրադարան · Գտեք ձեր հաջորդ գիրքը",
+      "title": "Գտեք ձեր հաջորդ գիրքը",
+      "subtitle": "Որոնեք կատալոգում, տեսեք՝ ինչն է հասանելի, և ամրագրեք գիրքը ձեզ հարմար օրերի համար։",
+      "trending": "Այս շաբաթվա հանրաճանաչները",
+      "previous": "Նախորդ գրքերը",
+      "next": "Հաջորդ գրքերը",
+      "empty": "Այս պահին այստեղ ցուցադրելու բան չկա։"
     },
     "admin": {
       "title": "Կառավարում",
@@ -751,6 +862,9 @@
       "text": "Հնարավոր է՝ հղումը սխալ է, կամ էջը տեղափոխվել է։ Փորձեք որոնել։",
       "home": "Գնալ գլխավոր էջ",
       "catalog": "Թերթել կատալոգը"
+    },
+    "meta": {
+      "description": "Թերթեք գրադարանի կատալոգը, տեսեք՝ որ գրքերն են հասանելի, և ամրագրեք գիրքը ձեզ հարմար օրերի համար։"
     },
     "design": {
       "pageTitle": "Դիզայն համակարգ · Գրադարան",
@@ -861,7 +975,9 @@
         "none": "Ամսաթվեր դեռ ընտրված չեն։"
       },
       "books": {
-        "title": "Գրքեր"
+        "title": "Գրքեր",
+        "rail": "Գլխավոր էջի շարք",
+        "breadcrumb": "Էջի ուղի"
       },
       "table": {
         "title": "Աղյուսակ"

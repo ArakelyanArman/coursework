@@ -31,6 +31,8 @@
 @import url("../components/UserMenu/UserMenu.css") layer(components);
 @import url("../components/Navbar/Navbar.css") layer(components);
 @import url("../components/Footer/Footer.css") layer(components);
+@import url("../components/BookRail/BookRail.css") layer(components);
+@import url("../components/Breadcrumb/Breadcrumb.css") layer(components);
 
 /* ---------- Fonts ---------- */
 
@@ -196,6 +198,8 @@
 
     --book-card-width: 176px;
     --book-cover-list: 88px;
+    --book-cover-detail: 280px;
+    --hero-min-height: 240px;
     --dialog-width: 480px;
     --sidebar-width: 280px;
     --toast-width: 360px;

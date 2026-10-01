@@ -35,6 +35,23 @@ do not change when the source does.
 **Switching to the real backend:** set `dataSource: 'backend'` and `backendBaseUrl` in
 `js/config.js`. The backend must implement [API_CONTRACT.md](API_CONTRACT.md). No other file changes.
 
+### What the Catalog searches
+
+Open Library has no "all books" query, and a search that only names a year range times out.
+So a Catalog view without a search text, category, genre or author starts from the books that
+are trending this week; anything that narrows the search runs against all of Open Library.
+Paging stops after 500 pages (10,000 results), which is as far as Open Library pages reliably.
+
+| Sort option | Open Library `sort` |
+|---|---|
+| Relevance | none (its default ranking) |
+| Title A–Z | `title` |
+| Newest | `new` |
+| Trending | `trending` |
+
+The Authors filter has no list of its own, because Open Library returns no facet counts: it
+offers the authors of the books found so far for the current search.
+
 ### How a book gets its availability
 
 Open Library knows a book's metadata; only the library knows how many copies it holds.
@@ -115,6 +132,17 @@ runs again, so logging out in one tab also leaves a protected page in the others
 | `admin` | admins | guests to Login; members to Home with a "no permission" message |
 
 `requireLogin()` does the same for a single action, such as booking a book.
+
+## State in the address
+
+What a page shows is decided by its query string, so a view can be reloaded, bookmarked and
+shared, and Back and Forward restore it exactly (`js/core/url-state.js`).
+
+- **Catalog:** `q`, `category`, `authors`, `genres`, `yearFrom`, `yearTo`, `sort`, `page`.
+  Every change writes the address first and loads the results from it
+  (`js/pages/catalog/state.js`).
+- **Book:** `id`, plus `from` and `to` while dates are chosen. That is how the dates survive the
+  trip to the login page and back.
 
 ## Shared state
 

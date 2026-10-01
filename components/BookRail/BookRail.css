@@ -1,0 +1,82 @@
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.rail__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  align-items: flex-end;
+}
+
+/* The short accent bar under the heading. */
+.rail__title::after {
+  display: block;
+  width: var(--space-10);
+  height: var(--space-1);
+  margin-top: var(--space-2);
+  content: "";
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.rail__more {
+  display: inline-flex;
+  gap: var(--space-1);
+  align-items: center;
+  min-height: var(--size-control-md);
+  margin-inline-start: auto;
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-label-line);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+}
+
+.rail__more:hover {
+  text-decoration: underline;
+}
+
+.rail__more-icon {
+  display: inline-flex;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.rail__more:hover .rail__more-icon {
+  transform: translateX(calc(var(--space-1) / 2));
+}
+
+.rail__nav {
+  display: none;
+  gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .rail__nav {
+    display: flex;
+  }
+}
+
+/* The padding leaves room for the cards' focus ring and hover shadow inside the scroller. */
+.rail__track {
+  display: flex;
+  gap: var(--space-5);
+  padding: var(--space-2) var(--space-2) var(--space-4);
+  margin: calc(var(--space-2) * -1);
+  overflow-x: auto;
+  list-style: none;
+  scroll-behavior: smooth;
+  scroll-padding-inline: var(--space-2);
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.rail__item {
+  display: flex;
+  flex: none;
+  scroll-snap-align: start;
+}

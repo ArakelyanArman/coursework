@@ -37,7 +37,8 @@
   display: flex;
   gap: var(--space-2);
   min-width: 0;
-  padding: var(--space-1);
+  /* The end padding lets the last chip scroll clear of the fade. */
+  padding: var(--space-1) var(--space-8) var(--space-1) var(--space-1);
   overflow-x: auto;
   scrollbar-width: none;
   mask-image: linear-gradient(to right, black calc(100% - var(--space-8)), transparent);
@@ -49,6 +50,7 @@
 
 .chip-row--wrap {
   flex-wrap: wrap;
+  padding: var(--space-1);
   overflow-x: visible;
   mask-image: none;
 }

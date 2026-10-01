@@ -2,7 +2,7 @@
 import { uid } from '../../js/core/a11y.js';
 import { h } from '../../js/core/dom.js';
 import { ApiError } from '../../js/core/http.js';
-import { setText } from '../../js/core/i18n.js';
+import { applyTranslations, setText } from '../../js/core/i18n.js';
 import { loadTemplate, refs } from '../../js/core/template.js';
 import { Banner } from '../Banner/Banner.js';
 import { Button, IconButton, setLoading } from '../Button/Button.js';
@@ -71,6 +71,8 @@ export function Dialog({ title, description, body, actions = [], icon, closable 
 export function openDialog(dialog, { focus } = {}) {
   const opener = document.activeElement;
   document.body.append(dialog);
+  // A dialog that is reused was off the page while closed and may have missed a language switch.
+  applyTranslations(dialog);
   dialog.showModal();
   focus?.focus();
 

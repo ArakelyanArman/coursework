@@ -1,0 +1,29 @@
+@layer pages {
+  .home-hero {
+    display: flex;
+    align-items: center;
+    min-height: var(--hero-min-height);
+    padding-block: var(--space-10);
+    background: var(--color-surface-muted);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .home-hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .home-hero__search {
+    width: 100%;
+    max-width: calc(var(--dialog-width) * 1.25);
+    margin-top: var(--space-3);
+  }
+
+  .home-rails {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    padding-top: var(--space-12);
+  }
+}

@@ -16,8 +16,9 @@ import {
 const FIELDS = 'key,title,author_name,author_key,first_publish_year,cover_i,subject';
 const SORTS = /** @type {Record<string, string>} */ ({ title: 'title', newest: 'new', trending: 'trending' });
 
-// Open Library rejects a match-all query, so an empty search shows what is trending now.
-const DEFAULT_QUERY = 'trending_z_score:{0 TO *]';
+// Open Library rejects a match-all query and times out on a bare year range, so a search with
+// nothing else to narrow it starts from the books that are trending now.
+const BROWSE_QUERY = 'trending_z_score:{0 TO *]';
 
 const base = config.openLibraryBaseUrl;
 const cached = { cacheTtlMs: config.httpCacheTtlMs };
@@ -30,7 +31,10 @@ const plain = (text) => text.replace(/[+\-!(){}[\]^"~*?:\\/&|]/g, ' ').replace(/
 /** @param {string[]} values */
 const anyOf = (values) => (values.length === 1 ? values[0] : `(${values.join(' OR ')})`);
 
-/** @param {BookQuery & { categorySubject?: string }} query */
+/**
+ * @param {BookQuery & { categorySubject?: string }} query
+ * @returns {{ q: string, browsing: boolean }} `browsing` is true when nothing narrowed the search.
+ */
 function buildQuery({ q = '', categorySubject, genres = [], authors = [], yearFrom, yearTo }) {
   const parts = [];
   const text = plain(q);
@@ -39,10 +43,13 @@ function buildQuery({ q = '', categorySubject, genres = [], authors = [], yearFr
   if (genres.length > 0) parts.push(`subject_key:${anyOf(genres)}`);
   const authorIds = authors.filter((id) => /^OL\d+A$/.test(id));
   if (authorIds.length > 0) parts.push(`author_key:${anyOf(authorIds)}`);
+
+  const browsing = parts.length === 0;
+  if (browsing) parts.push(BROWSE_QUERY);
   if (yearFrom != null || yearTo != null) {
     parts.push(`first_publish_year:[${yearFrom ?? '*'} TO ${yearTo ?? '*'}]`);
   }
-  return parts.join(' AND ');
+  return { q: parts.join(' AND '), browsing };
 }
 
 /**
@@ -53,11 +60,11 @@ function buildQuery({ q = '', categorySubject, genres = [], authors = [], yearFr
 export function searchBooks(query, { signal } = {}) {
   const page = query.page ?? 1;
   const pageSize = query.pageSize ?? config.pageSize;
-  const q = buildQuery(query);
-  const sort = SORTS[query.sort ?? ''] ?? (q ? '' : SORTS.trending);
+  const { q, browsing } = buildQuery(query);
+  const sort = SORTS[query.sort ?? ''] ?? (browsing ? SORTS.trending : '');
 
   const url = withQuery(`${base}/search.json`, {
-    q: q || DEFAULT_QUERY,
+    q,
     fields: FIELDS,
     sort,
     page,

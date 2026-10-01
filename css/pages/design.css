@@ -289,19 +289,6 @@
     overflow-x: auto;
   }
 
-  .design-rail {
-    display: flex;
-    gap: var(--space-5);
-    padding: var(--space-2) var(--space-1) var(--space-4);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-  }
-
-  .design-rail > * {
-    scroll-snap-align: start;
-  }
-
   .design-sidebar {
     max-width: var(--sidebar-width);
   }
