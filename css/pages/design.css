@@ -1,70 +1,10 @@
 @layer pages {
-  .design-bar {
-    position: sticky;
-    top: 0;
-    z-index: var(--z-nav);
-    background: var(--color-surface-muted);
-    border-bottom: var(--border-width) solid var(--color-border);
-  }
-
-  .design-bar__inner {
-    display: flex;
-    gap: var(--space-3);
-    align-items: center;
-    min-height: var(--nav-height);
-  }
-
-  .design-bar__brand {
-    display: flex;
-    gap: var(--space-3);
-    align-items: center;
-    color: var(--color-text);
-    text-decoration: none;
-    border-radius: var(--radius-md);
-  }
-
-  .design-bar__brand:hover {
-    color: var(--color-text);
-  }
-
-  .design-bar__mark {
-    display: grid;
-    flex: none;
-    place-items: center;
-    width: var(--space-8);
-    height: var(--space-8);
-    color: var(--color-on-primary);
-    background: var(--color-primary);
-    border-radius: var(--radius-md);
-  }
-
-  .design-bar__wordmark {
-    font-family: var(--font-serif);
-    font-size: var(--text-h3-size);
-    font-weight: var(--font-weight-semibold);
-    font-feature-settings: normal;
-    line-height: 1;
-  }
-
-  .design-bar__tag {
+  .design-tag {
+    align-self: flex-start;
     padding: var(--space-1) var(--space-2);
     color: var(--color-on-accent-soft);
-    white-space: nowrap;
     background: var(--color-accent-soft);
     border-radius: var(--radius-sm);
-  }
-
-  .design-bar__actions {
-    display: flex;
-    gap: var(--space-2);
-    align-items: center;
-    margin-inline-start: auto;
-  }
-
-  @media (max-width: 639px) {
-    .design-bar__tag {
-      display: none;
-    }
   }
 
   .design-hero {
@@ -140,13 +80,6 @@
 
   .design-panel__title {
     margin-bottom: var(--space-4);
-  }
-
-  .design-footer {
-    margin-top: var(--space-16);
-    padding-block: var(--space-6);
-    background: var(--color-surface-muted);
-    border-top: var(--border-width) solid var(--color-border);
   }
 
   .swatch-group + .swatch-group {
@@ -371,5 +304,23 @@
 
   .design-sidebar {
     max-width: var(--sidebar-width);
+  }
+
+  /* A navbar shown as a specimen: it stays in the flow instead of sticking to the top. */
+  .design-specimen {
+    max-width: 100%;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .design-specimen--narrow {
+    width: 24rem;
+  }
+
+  .design-specimen .navbar {
+    position: static;
+    z-index: auto;
+    border-bottom: 0;
+    border-radius: inherit;
   }
 }

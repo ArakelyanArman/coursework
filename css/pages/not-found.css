@@ -1,0 +1,44 @@
+@layer pages {
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: center;
+    max-width: calc(var(--dialog-width) * 1.5);
+    margin-inline: auto;
+    padding-block: var(--space-16);
+    text-align: center;
+  }
+
+  .not-found__mark {
+    display: grid;
+    place-items: center;
+    width: var(--space-16);
+    height: var(--space-16);
+    margin-bottom: var(--space-3);
+    color: var(--color-on-accent-soft);
+    background: var(--color-accent-soft);
+    border-radius: var(--radius-full);
+  }
+
+  .not-found__search {
+    width: 100%;
+    max-width: var(--dialog-width);
+    margin-top: var(--space-5);
+    text-align: start;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-top: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .not-found {
+      padding-block: var(--space-20);
+    }
+  }
+}

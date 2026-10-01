@@ -1,0 +1,17 @@
+<div class="user-menu">
+  <button class="user-menu__button" type="button" aria-haspopup="menu" aria-expanded="false" data-ref="button">
+    <span data-ref="avatar"></span>
+    <span class="user-menu__name" data-ref="name"></span>
+    <span class="user-menu__chevron" data-ref="chevron"></span>
+  </button>
+  <div class="user-menu__panel" role="menu" data-ref="menu" hidden>
+    <div class="user-menu__header" role="none" data-ref="header">
+      <span class="t-label" data-ref="fullName"></span>
+      <span class="user-menu__email t-caption muted" data-ref="email"></span>
+    </div>
+    <button class="user-menu__item" type="button" role="menuitem" tabindex="-1" data-ref="logout">
+      <span class="user-menu__item-icon" data-ref="logoutIcon"></span>
+      <span data-i18n="nav.logout"></span>
+    </button>
+  </div>
+</div>

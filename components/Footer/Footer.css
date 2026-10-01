@@ -1,0 +1,57 @@
+.footer {
+  --btn-hover-fill: var(--color-surface-sunken);
+  --btn-active-fill: var(--color-border);
+
+  margin-top: var(--space-16);
+  padding-block: var(--space-8);
+  background: var(--color-surface-muted);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.footer__brand,
+.footer__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.footer__wordmark {
+  font-family: var(--font-serif);
+  font-size: var(--text-title-sm-size);
+  font-weight: var(--font-weight-semibold);
+  font-feature-settings: normal;
+  line-height: var(--text-title-sm-line);
+}
+
+/* Lines the button's label up with the text above it. */
+.footer__language {
+  margin-inline-start: calc(var(--space-4) * -1);
+}
+
+@media (min-width: 768px) {
+  .footer__inner {
+    flex-direction: row;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .footer__brand {
+    flex: 1;
+  }
+
+  .footer__meta {
+    text-align: end;
+  }
+
+  .footer__language {
+    margin-inline-start: var(--space-0);
+  }
+}

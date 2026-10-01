@@ -82,6 +82,40 @@ Text is passed to components either as a final string (a book title) or as a tra
 `{ key: 'common.save' }`. A key stays bound to its element (`data-i18n`), so switching the
 language re-translates every component on the page without re-rendering it.
 
+`LanguageSwitch` and `ThemeToggle` have no markup or styles of their own (they are built from
+`Button`), so their folders hold only a `.js` file.
+
+## The page shell
+
+Every page's HTML holds only its own `<main id="main">`. Its entry module starts with
+
+```js
+await mountShell({ page: 'catalog', access: 'public' });
+```
+
+`mountShell()` (`js/shell.js`) does the following, in this order:
+
+1. Applies the theme.
+2. Checks access (`js/guards.js`). A visitor who may not see the page is redirected before
+   anything is rendered, and the call never returns.
+3. Loads the translations.
+4. Puts the skip link, `Navbar`, `Footer` and the toast region around `<main>`.
+5. Shows a message the previous page left behind (`js/core/flash.js`), for example
+   "You've been logged out" after a redirect.
+6. Asks the server whether the stored session is still valid (`refreshSession()`).
+
+It then keeps listening to `auth:change`: the navbar follows the session, and the access check
+runs again, so logging out in one tab also leaves a protected page in the others.
+
+| `access` | Who may open the page | Everyone else goes to |
+|---|---|---|
+| `public` | anyone | – |
+| `guest` | visitors who are not logged in (Login, Register) | Home |
+| `user` | any logged-in user | Login, which returns here afterwards |
+| `admin` | admins | guests to Login; members to Home with a "no permission" message |
+
+`requireLogin()` does the same for a single action, such as booking a book.
+
 ## Shared state
 
 Session, theme and language live in `localStorage` (`js/core/storage.js`) and are announced with

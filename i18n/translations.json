@@ -20,7 +20,10 @@
       "catalog": "Catalog",
       "login": "Log in",
       "logout": "Log out",
-      "admin": "Admin"
+      "admin": "Admin",
+      "menu": "Menu",
+      "openMenu": "Open menu",
+      "account": "Account: {name}"
     },
     "theme": {
       "switchToDark": "Switch to dark theme",
@@ -29,8 +32,8 @@
     "language": {
       "shortEn": "EN",
       "shortHy": "ՀՅ",
-      "switchToEn": "Switch to English",
-      "switchToHy": "Switch to Armenian"
+      "code": "EN",
+      "switchToOther": "Switch to Armenian (Հայերեն)"
     },
     "errors": {
       "network": "Couldn't reach the server. Check your connection and try again.",
@@ -139,7 +142,8 @@
       "email": "Email",
       "fullName": "Full name",
       "password": "Password",
-      "passwordHelper": "At least 8 characters."
+      "passwordHelper": "At least 8 characters.",
+      "loggedOut": "You've been logged out."
     },
     "booking": {
       "errors": {
@@ -292,6 +296,20 @@
         }
       }
     },
+    "footer": {
+      "copyright": "© {year} Library",
+      "about": "Browse the catalog and book a title for the dates you need.",
+      "attribution": "Book data and covers from {link}.",
+      "openLibrary": "Open Library"
+    },
+    "notFound": {
+      "pageTitle": "Page not found · Library",
+      "eyebrow": "Error 404",
+      "title": "We can't find that page",
+      "text": "The link may be broken, or the page may have been moved. Try a search instead.",
+      "home": "Go to Home",
+      "catalog": "Browse the catalog"
+    },
     "design": {
       "pageTitle": "Design system · Library",
       "devOnly": "Dev only",
@@ -299,7 +317,6 @@
       "lead": "Warm paper neutrals, deep ink-blue for actions, a brass accent used sparingly, and a serif for anything bookish. Every value on this page is read from the CSS custom properties.",
       "phaseNote": "Foundations, data and components. The app pages are built from these.",
       "toc": "On this page",
-      "footer": "Development style guide. Not linked from the app navigation.",
       "colors": {
         "title": "Color",
         "intro": "Values update with the theme. Each swatch shows the contrast ratio between its two tokens.",
@@ -413,6 +430,14 @@
         "toastError": "Error toast",
         "confirm": "Confirm dialog",
         "form": "Form dialog"
+      },
+      "shell": {
+        "title": "Navigation",
+        "intro": "The bar at the top of this page is the real one. Here are its three sign-in states. Below 768 px the links and actions move into a menu drawer.",
+        "guest": "Guest",
+        "member": "Member",
+        "admin": "Admin",
+        "narrow": "Narrow screens"
       }
     }
   },
@@ -437,7 +462,10 @@
       "catalog": "Կատալոգ",
       "login": "Մուտք",
       "logout": "Ելք",
-      "admin": "Ադմին"
+      "admin": "Ադմին",
+      "menu": "Ցանկ",
+      "openMenu": "Բացել ցանկը",
+      "account": "Հաշիվ՝ {name}"
     },
     "theme": {
       "switchToDark": "Միացնել մուգ թեման",
@@ -446,8 +474,8 @@
     "language": {
       "shortEn": "EN",
       "shortHy": "ՀՅ",
-      "switchToEn": "Փոխել անգլերենի",
-      "switchToHy": "Փոխել հայերենի"
+      "code": "ՀՅ",
+      "switchToOther": "Փոխել անգլերենի (English)"
     },
     "errors": {
       "network": "Չհաջողվեց կապվել սերվերին։ Ստուգեք կապը և կրկին փորձեք։",
@@ -556,7 +584,8 @@
       "email": "Էլ. հասցե",
       "fullName": "Անուն ազգանուն",
       "password": "Գաղտնաբառ",
-      "passwordHelper": "Առնվազն 8 նիշ։"
+      "passwordHelper": "Առնվազն 8 նիշ։",
+      "loggedOut": "Դուք դուրս եկաք համակարգից։"
     },
     "booking": {
       "errors": {
@@ -709,6 +738,20 @@
         }
       }
     },
+    "footer": {
+      "copyright": "© {year} Գրադարան",
+      "about": "Թերթեք կատալոգը և ամրագրեք գիրքը ձեզ հարմար օրերի համար։",
+      "attribution": "Գրքերի տվյալներն ու շապիկները՝ {link} կայքից։",
+      "openLibrary": "Open Library"
+    },
+    "notFound": {
+      "pageTitle": "Էջը չի գտնվել · Գրադարան",
+      "eyebrow": "Սխալ 404",
+      "title": "Այս էջը չհաջողվեց գտնել",
+      "text": "Հնարավոր է՝ հղումը սխալ է, կամ էջը տեղափոխվել է։ Փորձեք որոնել։",
+      "home": "Գնալ գլխավոր էջ",
+      "catalog": "Թերթել կատալոգը"
+    },
     "design": {
       "pageTitle": "Դիզայն համակարգ · Գրադարան",
       "devOnly": "Միայն մշակման համար",
@@ -716,7 +759,6 @@
       "lead": "Թղթի ջերմ չեզոք երանգներ, մուգ թանաքագույն կապույտ՝ գործողությունների համար, չափավոր օգտագործվող արույրե շեշտ և սերիֆ տառատեսակ՝ գրքային ամեն ինչի համար։ Այս էջի յուրաքանչյուր արժեք կարդացվում է CSS փոփոխականներից։",
       "phaseNote": "Հիմքեր, տվյալներ և բաղադրիչներ։ Հավելվածի էջերը կառուցվում են սրանցից։",
       "toc": "Այս էջում",
-      "footer": "Մշակման ոճային ուղեցույց։ Հավելվածի նավիգացիայից հղված չէ։",
       "colors": {
         "title": "Գույներ",
         "intro": "Արժեքները փոխվում են թեմայի հետ։ Յուրաքանչյուր նմուշ ցույց է տալիս իր երկու գույների կոնտրաստի հարաբերակցությունը։",
@@ -830,6 +872,14 @@
         "toastError": "Սխալի ծանուցում",
         "confirm": "Հաստատման պատուհան",
         "form": "Ձևով պատուհան"
+      },
+      "shell": {
+        "title": "Նավիգացիա",
+        "intro": "Այս էջի վերևի վահանակը իրականն է։ Ստորև ներկայացված են դրա երեք վիճակները՝ ըստ մուտքի։ 768 px-ից նեղ էկրաններում հղումներն ու գործողությունները տեղափոխվում են կողային ցանկ։",
+        "guest": "Հյուր",
+        "member": "Անդամ",
+        "admin": "Ադմին",
+        "narrow": "Նեղ էկրաններ"
       }
     }
   }

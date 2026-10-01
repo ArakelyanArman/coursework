@@ -21,7 +21,7 @@ const create = await loadTemplate(new URL('./Dialog.html', import.meta.url));
  * @param {Element[]} [props.actions]
  * @param {import('../Icon/Icon.js').IconName} [props.icon] A warning icon beside the title.
  * @param {boolean} [props.closable] Show the × button. Defaults to true.
- * @param {boolean} [props.drawer] Slide in from the side instead of centring.
+ * @param {boolean | 'end'} [props.drawer] Slide in from the start edge (or the end edge) instead of centring.
  * @returns {HTMLDialogElement}
  */
 export function Dialog({ title, description, body, actions = [], icon, closable = true, drawer = false }) {
@@ -33,6 +33,7 @@ export function Dialog({ title, description, body, actions = [], icon, closable 
   dialog.setAttribute('aria-labelledby', parts.title.id);
   setText(parts.title, title);
   if (drawer) dialog.classList.add('dialog--drawer');
+  if (drawer === 'end') dialog.classList.add('dialog--drawer-end');
 
   if (description) {
     parts.description.id = `${id}-description`;

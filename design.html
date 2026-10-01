@@ -13,28 +13,17 @@
     <link rel="preload" href="i18n/translations.json" as="fetch" crossorigin />
 
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/pages/design.css" />
 
     <script type="module" src="js/pages/design.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main" data-i18n="common.skipToContent"></a>
-
-    <header class="design-bar">
-      <div class="container design-bar__inner">
-        <a class="design-bar__brand" href="design.html">
-          <span class="design-bar__mark" id="brand-mark"></span>
-          <span class="design-bar__wordmark" data-i18n="common.appName"></span>
-        </a>
-        <span class="design-bar__tag t-caption" data-i18n="design.devOnly"></span>
-        <div class="design-bar__actions" id="bar-actions"></div>
-      </div>
-    </header>
-
     <main id="main">
       <section class="design-hero">
         <div class="container stack gap-4">
+          <span class="design-tag t-caption" data-i18n="design.devOnly"></span>
           <h1 class="t-display" data-i18n="design.title"></h1>
           <p class="t-body-lg muted measure" data-i18n="design.lead"></p>
           <p class="t-body-sm muted" data-i18n="design.phaseNote"></p>
@@ -51,6 +40,7 @@
             <a class="design-toc__link" href="#books" data-i18n="design.books.title"></a>
             <a class="design-toc__link" href="#table" data-i18n="design.table.title"></a>
             <a class="design-toc__link" href="#messages" data-i18n="design.feedback.title"></a>
+            <a class="design-toc__link" href="#shell" data-i18n="design.shell.title"></a>
             <a class="design-toc__link" href="#i18n" data-i18n="design.i18n.title"></a>
             <a class="design-toc__link" href="#data" id="data-link" data-i18n="design.data.title" hidden></a>
           </nav>
@@ -162,6 +152,14 @@
           <div class="design-columns" id="messages-demo"></div>
         </section>
 
+        <section class="design-section" id="shell" aria-labelledby="shell-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="shell-title" data-i18n="design.shell.title"></h2>
+            <p class="muted measure" data-i18n="design.shell.intro"></p>
+          </header>
+          <div class="stack gap-6" id="shell-demo"></div>
+        </section>
+
         <section class="design-section" id="i18n" aria-labelledby="i18n-title">
           <header class="design-section__head">
             <h2 class="t-h1" id="i18n-title" data-i18n="design.i18n.title"></h2>
@@ -191,11 +189,5 @@
         </section>
       </div>
     </main>
-
-    <footer class="design-footer">
-      <div class="container">
-        <p class="t-body-sm muted" data-i18n="design.footer"></p>
-      </div>
-    </footer>
   </body>
 </html>

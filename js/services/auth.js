@@ -1,4 +1,5 @@
 // @ts-check
+import { ApiError } from '../core/http.js';
 import { getShared, setShared } from '../core/storage.js';
 import { library } from '../providers/index.js';
 
@@ -46,7 +47,7 @@ export async function logout() {
 }
 
 /**
- * Re-read the signed-in user; signs out locally when the session is no longer valid.
+ * Re-read the signed-in user; signs out locally when the server no longer knows the session.
  * @returns {Promise<User | null>}
  */
 export async function refreshSession() {
@@ -54,9 +55,14 @@ export async function refreshSession() {
   if (!session) return null;
   try {
     const user = await library.me();
-    setShared('session', { token: session.token, user });
+    // Written only when something changed, so pages are not told about a change that is none.
+    if (JSON.stringify(user) !== JSON.stringify(session.user)) {
+      setShared('session', { token: session.token, user });
+    }
     return user;
-  } catch {
+  } catch (error) {
+    // A failed request (offline, server down) says nothing about the session; only a 401 does.
+    if (!(error instanceof ApiError) || error.status !== 401) return session.user;
     setShared('session', null);
     return null;
   }

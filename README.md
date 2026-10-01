@@ -56,6 +56,9 @@ npx serve -l 3000 .
 
 or right-click `design.html` in VS Code and choose **Open with Live Server**.
 
+With these servers a mistyped address shows the server's own error page; `start.bat` shows the
+app's "Page not found" page instead.
+
 ### Why a server is needed
 
 Opening the HTML files by double-clicking them (`file://` addresses) does **not** work: browsers
@@ -82,25 +85,31 @@ To start over, open `design.html`, scroll to **Demo data** and press **Reset dem
 | Design tokens, fonts, themes, language switch, core helpers | Done |
 | Data layer: Open Library, local demo store, services, backend adapter | Done |
 | Components: buttons, fields, chips, calendar, book cards, table, dialogs, toasts | Done |
-| Navigation shell (navbar, footer, sign-in state, 404) | Next |
-| Home, Catalog, Book page, Login, Register, Admin | After that |
+| Page shell: navbar, mobile menu, footer, sign-in state, access checks, "Page not found" | Done |
+| Home, Catalog, Book page | Next |
+| Login, Register, Admin | After that |
 
 Until the pages are built, the start scripts open `design.html`, the style guide. It shows every
 component in every state; switch the language and the theme in its top bar.
+
+The navbar's **Home**, **Catalog** and **Log in** links point at pages that are not built yet, so
+for now they show the "Page not found" page.
 
 ## Project structure
 
 ```
 start.bat, start.sh     start a local server on port 3000
 design.html             style guide (not linked from the app navigation)
+404.html                "Page not found"
 components/             one folder per component: Name.html, Name.css, Name.js
+  Navbar/  UserMenu/  Footer/  LanguageSwitch/  ThemeToggle/
   Button/  TextField/  Select/  Checkbox/  SearchField/  Chip/  Tabs/  Badge/  Avatar/
   Calendar/  DateField/  FilterAccordion/  Pagination/  DataTable/  Dialog/  Toast/  Tooltip/
   Banner/  EmptyState/  Skeleton/  BookCover/  BookCard/  BookListItem/  Icon/
 assets/
   fonts/                self-hosted variable fonts and their licenses
   icons/sprite.svg      Lucide icons
-  img/                  logo and favicon
+  img/                  logo, favicon, touch icon and link-preview image
 css/
   index.css             design tokens, fonts, reset, base, typography, utilities
   pages/                page-specific layout
@@ -108,8 +117,11 @@ i18n/translations.json  all user-facing text, English and Armenian
 data/seed/              demo inventory, users and bookings
 js/
   config.js             data source switch and base URLs
+  shell.js              mountShell(): every page calls it to get the navbar, footer and messages
+  guards.js             who may open a page: anyone, guests, signed-in users or admins
   types.js              data shapes: Book, User, Booking, Report
-  core/                 dom, template, i18n, http, date, format, validate, storage, events, a11y
+  core/                 dom, template, i18n, http, date, format, validate, storage, events, a11y,
+                        flash
   services/             the data API the pages use: books, bookings, auth, users, reports
   providers/            openlibrary, local-db, http-backend
   mappers/              API shapes to app shapes and back

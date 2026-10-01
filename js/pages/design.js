@@ -1,45 +1,18 @@
 // @ts-check
-import { Button, IconButton, setIcon, setLabel, setLoading } from '../../components/Button/Button.js';
-import { Icon } from '../../components/Icon/Icon.js';
-import { qs, render } from '../core/dom.js';
+import { Button, setLoading } from '../../components/Button/Button.js';
+import { qs } from '../core/dom.js';
 import { EVENTS, on } from '../core/events.js';
 import { ApiError } from '../core/http.js';
-import { getLanguage, initI18n, setAttrText, setLanguage, setText, t } from '../core/i18n.js';
-import { refs } from '../core/template.js';
-import { getTheme, initTheme, toggleTheme } from '../core/theme.js';
+import { setText, t } from '../core/i18n.js';
 import { getDemoCounts, hasDemoData, resetDemoData } from '../services/demo.js';
+import { mountShell } from '../shell.js';
 import { renderComponents } from './design/components.js';
 import { renderContent } from './design/content.js';
 import { renderColors, renderFoundations } from './design/foundations.js';
+import { renderShell } from './design/shell.js';
 
-/** @type {HTMLElement} */
-let languageButton;
-/** @type {HTMLElement} */
-let themeButton;
 /** @type {HTMLElement} */
 let resetButton;
-
-// Built after the translations have loaded, so their labels resolve.
-function createControls() {
-  languageButton = Button({
-    label: '',
-    variant: 'ghost',
-    icon: 'languages',
-    onClick: () => setLanguage(getLanguage() === 'en' ? 'hy' : 'en'),
-  });
-  themeButton = IconButton({ icon: 'moon', label: { key: 'theme.switchToDark' }, onClick: () => toggleTheme() });
-  resetButton = Button({ label: { key: 'design.data.reset' }, variant: 'secondary', onClick: resetData });
-}
-
-function syncControls() {
-  const english = getLanguage() === 'en';
-  setText(refs(languageButton).label, { key: english ? 'language.shortEn' : 'language.shortHy' });
-  setAttrText(languageButton, 'aria-label', { key: english ? 'language.switchToHy' : 'language.switchToEn' });
-
-  const dark = getTheme() === 'dark';
-  setIcon(themeButton, dark ? 'sun' : 'moon');
-  setLabel(themeButton, { key: dark ? 'theme.switchToLight' : 'theme.switchToDark' });
-}
 
 async function renderData() {
   if (!hasDemoData) return;
@@ -70,29 +43,26 @@ async function resetData() {
 }
 
 async function init() {
-  initTheme();
-  await initI18n();
+  await mountShell({ page: 'design' });
 
-  createControls();
-  render(qs('#brand-mark'), Icon('book-open', 18));
-  render(qs('#bar-actions'), languageButton, themeButton);
+  resetButton = Button({
+    label: { key: 'design.data.reset' },
+    variant: 'secondary',
+    onClick: resetData,
+  });
   qs('#data-reset').replaceWith(resetButton);
 
-  syncControls();
   renderFoundations();
   renderComponents();
+  renderShell();
   renderData();
   renderContent();
 
   on(EVENTS.LANG_CHANGE, () => {
-    syncControls();
     renderFoundations();
     renderData();
   });
-  on(EVENTS.THEME_CHANGE, () => {
-    syncControls();
-    renderColors();
-  });
+  on(EVENTS.THEME_CHANGE, renderColors);
 }
 
 init();

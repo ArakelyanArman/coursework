@@ -85,10 +85,18 @@ try {
       }
 
       $bytes = $null
+      $notFoundPage = Join-Path $root '404.html'
+      $isPage = @('', '.html') -contains [System.IO.Path]::GetExtension($path).ToLower()
       if ($inside -and (Test-Path $target -PathType Leaf)) {
         $bytes = Send-File $response $target 200
-      } elseif (Test-Path (Join-Path $root '404.html')) {
-        $bytes = Send-File $response (Join-Path $root '404.html') 404
+      } elseif ($isPage -and (Test-Path $notFoundPage)) {
+        # 404.html links its files relatively, so a missing page in a subfolder is sent to it instead.
+        if ($path.TrimStart('/').Contains('/')) {
+          $response.Redirect('/404.html')
+          $response.Close()
+          continue
+        }
+        $bytes = Send-File $response $notFoundPage 404
       } else {
         $bytes = [System.Text.Encoding]::UTF8.GetBytes('404 Not Found')
         $response.StatusCode = 404

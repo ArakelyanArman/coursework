@@ -69,13 +69,14 @@
   background: var(--color-surface-sunken);
 }
 
+/* A bar with a muted background sets these one shade darker, so the hover stays visible. */
 .btn--ghost:hover {
   color: var(--color-text);
-  background: var(--color-surface-muted);
+  background: var(--btn-hover-fill, var(--color-surface-muted));
 }
 
 .btn--ghost:active {
-  background: var(--color-surface-sunken);
+  background: var(--btn-active-fill, var(--color-surface-sunken));
 }
 
 .btn--danger {

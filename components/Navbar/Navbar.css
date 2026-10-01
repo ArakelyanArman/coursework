@@ -1,0 +1,206 @@
+.navbar {
+  --btn-hover-fill: var(--color-surface-sunken);
+  --btn-active-fill: var(--color-border);
+
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  height: var(--nav-height);
+  background: var(--color-surface-muted);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.navbar__inner {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  height: 100%;
+}
+
+.navbar__brand {
+  display: flex;
+  flex: none;
+  gap: var(--space-3);
+  align-items: center;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+
+.navbar__brand:hover {
+  color: var(--color-text);
+}
+
+.navbar__mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+}
+
+.navbar__wordmark {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-semibold);
+  font-feature-settings: normal;
+  line-height: 1;
+}
+
+.navbar__links,
+.navbar__actions {
+  display: none;
+}
+
+.navbar__links {
+  gap: var(--space-1);
+  align-self: stretch;
+}
+
+/* Full height, so the underline of the current page sits on the bar's bottom edge. */
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--space-2);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-label-line);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-block: var(--border-width-strong) solid transparent;
+}
+
+.navbar__link:hover {
+  color: var(--color-text);
+}
+
+.navbar__link[aria-current="page"] {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+
+.navbar__link:focus-visible {
+  outline-offset: calc(var(--focus-ring-width) * -1);
+  border-radius: var(--radius-md);
+}
+
+.navbar__actions {
+  gap: var(--space-2);
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+/* The Admin button while on an admin page; the same look in the drawer. */
+.navbar .btn[aria-current="page"],
+.navbar-drawer .btn[aria-current="page"] {
+  color: var(--color-on-primary-soft);
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+}
+
+.navbar__toggle {
+  display: flex;
+  margin-inline-start: auto;
+}
+
+@media (min-width: 768px) {
+  .navbar__links,
+  .navbar__actions {
+    display: flex;
+  }
+
+  .navbar__toggle {
+    display: none;
+  }
+}
+
+/* Between md and lg the bar is full in Armenian, so the roomier spacing waits for lg. */
+@media (min-width: 1024px) {
+  .navbar__inner {
+    gap: var(--space-6);
+  }
+
+  .navbar__link {
+    padding-inline: var(--space-3);
+  }
+}
+
+/* The drawer that holds the same items below md. */
+.navbar-drawer .dialog__body {
+  gap: var(--space-6);
+}
+
+.navbar-drawer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navbar-drawer__link {
+  display: flex;
+  align-items: center;
+  min-height: var(--size-control-lg);
+  padding-inline: var(--space-3);
+  font-size: var(--text-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-body-line);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+
+.navbar-drawer__link:hover {
+  color: var(--color-text);
+  background: var(--color-surface-muted);
+}
+
+.navbar-drawer__link[aria-current="page"] {
+  color: var(--color-on-primary-soft);
+  background: var(--color-primary-soft);
+}
+
+.navbar-drawer__account {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.navbar-drawer__user {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  min-width: 0;
+}
+
+.navbar-drawer__identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.navbar-drawer__settings {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  margin-top: auto;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* Forces the narrow layout at any width, for a bar that sits inside a narrow box. */
+.navbar--compact .navbar__links,
+.navbar--compact .navbar__actions {
+  display: none;
+}
+
+.navbar--compact .navbar__toggle {
+  display: flex;
+}
