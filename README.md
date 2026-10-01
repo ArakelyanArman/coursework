@@ -81,18 +81,22 @@ To start over, open `design.html`, scroll to **Demo data** and press **Reset dem
 |---|---|
 | Design tokens, fonts, themes, language switch, core helpers | Done |
 | Data layer: Open Library, local demo store, services, backend adapter | Done |
-| Components (buttons, fields, cards, calendar, table, dialogs) | Next |
-| Navigation shell, Home, Catalog, Book page, Login, Register, Admin | After that |
+| Components: buttons, fields, chips, calendar, book cards, table, dialogs, toasts | Done |
+| Navigation shell (navbar, footer, sign-in state, 404) | Next |
+| Home, Catalog, Book page, Login, Register, Admin | After that |
 
-Until the pages are built, the start scripts open `design.html`, the style guide.
+Until the pages are built, the start scripts open `design.html`, the style guide. It shows every
+component in every state; switch the language and the theme in its top bar.
 
 ## Project structure
 
 ```
 start.bat, start.sh     start a local server on port 3000
 design.html             style guide (not linked from the app navigation)
-components/
-  Icon/                 one folder per component: Icon.html, Icon.css, Icon.js
+components/             one folder per component: Name.html, Name.css, Name.js
+  Button/  TextField/  Select/  Checkbox/  SearchField/  Chip/  Tabs/  Badge/  Avatar/
+  Calendar/  DateField/  FilterAccordion/  Pagination/  DataTable/  Dialog/  Toast/  Tooltip/
+  Banner/  EmptyState/  Skeleton/  BookCover/  BookCard/  BookListItem/  Icon/
 assets/
   fonts/                self-hosted variable fonts and their licenses
   icons/sprite.svg      Lucide icons
@@ -109,7 +113,7 @@ js/
   services/             the data API the pages use: books, bookings, auth, users, reports
   providers/            openlibrary, local-db, http-backend
   mappers/              API shapes to app shapes and back
-  pages/                one entry module per HTML page
+  pages/                one entry module per HTML page (design/ holds the style guide's sections)
 docs/
   ARCHITECTURE.md       how the layers fit together
   API_CONTRACT.md       the REST API a real backend must implement

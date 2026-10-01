@@ -1,0 +1,16 @@
+.tooltip {
+  position: fixed;
+  inset: var(--tooltip-y, 0) auto auto var(--tooltip-x, 0);
+  max-width: calc(var(--toast-width) * 0.75);
+  margin: var(--space-0);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-caption-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-caption-line);
+  color: var(--color-bg);
+  pointer-events: none;
+  background: var(--color-text);
+  border: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}

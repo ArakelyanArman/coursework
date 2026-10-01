@@ -5,6 +5,29 @@
 @layer tokens, reset, base, components, pages, utilities;
 
 @import url("../components/Icon/Icon.css") layer(components);
+@import url("../components/Button/Button.css") layer(components);
+@import url("../components/Tooltip/Tooltip.css") layer(components);
+@import url("../components/Badge/Badge.css") layer(components);
+@import url("../components/Avatar/Avatar.css") layer(components);
+@import url("../components/Chip/Chip.css") layer(components);
+@import url("../components/Tabs/Tabs.css") layer(components);
+@import url("../components/TextField/TextField.css") layer(components);
+@import url("../components/SearchField/SearchField.css") layer(components);
+@import url("../components/Select/Select.css") layer(components);
+@import url("../components/Checkbox/Checkbox.css") layer(components);
+@import url("../components/Banner/Banner.css") layer(components);
+@import url("../components/EmptyState/EmptyState.css") layer(components);
+@import url("../components/Skeleton/Skeleton.css") layer(components);
+@import url("../components/Pagination/Pagination.css") layer(components);
+@import url("../components/BookCover/BookCover.css") layer(components);
+@import url("../components/BookCard/BookCard.css") layer(components);
+@import url("../components/BookListItem/BookListItem.css") layer(components);
+@import url("../components/FilterAccordion/FilterAccordion.css") layer(components);
+@import url("../components/Dialog/Dialog.css") layer(components);
+@import url("../components/Toast/Toast.css") layer(components);
+@import url("../components/DataTable/DataTable.css") layer(components);
+@import url("../components/Calendar/Calendar.css") layer(components);
+@import url("../components/DateField/DateField.css") layer(components);
 
 /* ---------- Fonts ---------- */
 
@@ -159,6 +182,27 @@
     --size-hit-min: 40px;
     --size-icon: 20px;
     --icon-stroke: 1.75;
+    --size-check: 20px;
+    --size-badge: 22px;
+    --size-tab: 36px;
+    --size-row: 56px;
+    --size-dot: 6px;
+    --size-avatar: 32px;
+    --size-thumb: 32px;
+    --opacity-disabled: 0.5;
+
+    --book-card-width: 176px;
+    --book-cover-list: 88px;
+    --dialog-width: 480px;
+    --sidebar-width: 280px;
+    --toast-width: 360px;
+
+    /* Typographic cover fallback: the hue comes from the book, the rest is fixed. */
+    --cover-ink: #f6f1e7;
+    --cover-rule: rgb(246 241 231 / 0.35);
+    --cover-spine: rgb(0 0 0 / 0.22);
+    --cover-saturation: 34%;
+    --cover-lightness: 36%;
 
     --nav-height: 64px;
     --container-max: 1280px;
@@ -171,6 +215,12 @@
     --z-toast: 80;
   }
 
+  @media (min-width: 640px) {
+    :root {
+      --book-cover-list: 120px;
+    }
+  }
+
   @media (min-width: 768px) {
     :root {
       --container-pad: var(--space-6);
@@ -181,6 +231,7 @@
     :root {
       --container-pad: var(--space-8);
       --card-pad: var(--space-5);
+      --book-card-width: 200px;
     }
   }
 
@@ -220,6 +271,8 @@
     --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.45);
     --shadow-lg: 0 16px 40px -8px rgb(0 0 0 / 0.6);
     --shadow-cover: 0 2px 4px rgb(0 0 0 / 0.35), 0 8px 16px -4px rgb(0 0 0 / 0.45);
+
+    --cover-lightness: 30%;
   }
 }
 

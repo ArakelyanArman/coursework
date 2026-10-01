@@ -1,0 +1,47 @@
+.book-card {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: var(--book-card-width);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+
+.book-card:hover {
+  color: var(--color-text);
+}
+
+.book-card:focus-visible {
+  outline-offset: var(--space-1);
+}
+
+.book-card__cover {
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.book-card .book-cover {
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.book-card:hover .book-cover,
+.book-card:focus-visible .book-cover {
+  box-shadow: var(--shadow-cover), var(--shadow-md);
+  transform: translateY(calc(var(--space-1) / -2));
+}
+
+.book-card__badge {
+  display: flex;
+  margin-top: var(--space-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-card:hover .book-cover,
+  .book-card:focus-visible .book-cover {
+    transform: none;
+  }
+}

@@ -1,0 +1,21 @@
+.select__input {
+  padding-inline-end: var(--space-10);
+  cursor: pointer;
+  appearance: none;
+}
+
+.select__chevron {
+  position: absolute;
+  inset-block: var(--space-0);
+  inset-inline-end: var(--space-3);
+  display: flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.select--sm .select__input {
+  height: var(--size-control-md);
+  font-size: var(--text-label-size);
+  line-height: var(--text-label-line);
+}

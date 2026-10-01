@@ -1,0 +1,44 @@
+.skeleton {
+  display: block;
+  width: var(--skeleton-width, 100%);
+  height: var(--text-body-sm-size);
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-sunken) 0%,
+    var(--color-surface-muted) 50%,
+    var(--color-surface-sunken) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  animation: skeleton-shimmer 1.4s linear infinite;
+}
+
+.skeleton--title {
+  height: var(--text-h3-size);
+}
+
+.skeleton--cover {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+}
+
+.skeleton--block {
+  height: var(--skeleton-height, var(--size-row));
+}
+
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="calendar">
+  <div class="calendar__header">
+    <span data-ref="prev"></span>
+    <h2 class="calendar__title t-label" data-ref="title" aria-live="polite"></h2>
+    <span data-ref="next"></span>
+  </div>
+  <table class="calendar__grid" role="grid" data-ref="grid">
+    <thead>
+      <tr data-ref="weekdays"></tr>
+    </thead>
+    <tbody data-ref="days"></tbody>
+  </table>
+  <div class="calendar__legend t-caption muted" aria-hidden="true">
+    <span class="calendar__key">
+      <span class="calendar__swatch calendar__swatch--selected"></span>
+      <span data-i18n="calendar.legend.selected"></span>
+    </span>
+    <span class="calendar__key">
+      <span class="calendar__swatch calendar__swatch--today"></span>
+      <span data-i18n="calendar.legend.today"></span>
+    </span>
+    <span class="calendar__key calendar__key--unavailable" data-ref="unavailableKey" hidden>
+      <span data-i18n="calendar.legend.unavailable"></span>
+    </span>
+  </div>
+</div>

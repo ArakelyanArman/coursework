@@ -1,0 +1,54 @@
+.chip {
+  display: inline-flex;
+  flex: none;
+  gap: var(--space-1);
+  align-items: center;
+  min-height: var(--size-control-sm);
+  padding: var(--space-0) var(--space-3);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-label-line);
+  color: var(--color-text);
+  white-space: nowrap;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--color-border-input);
+}
+
+.chip__icon {
+  display: inline-flex;
+}
+
+.chip[aria-pressed="true"] {
+  color: var(--color-on-primary-soft);
+  background: var(--color-primary-soft);
+  border-color: transparent;
+}
+
+/* The row scrolls sideways on narrow screens, fading out at the edge it continues past. */
+.chip-row {
+  display: flex;
+  gap: var(--space-2);
+  min-width: 0;
+  padding: var(--space-1);
+  overflow-x: auto;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, black calc(100% - var(--space-8)), transparent);
+}
+
+.chip-row::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-row--wrap {
+  flex-wrap: wrap;
+  overflow-x: visible;
+  mask-image: none;
+}

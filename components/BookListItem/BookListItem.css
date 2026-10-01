@@ -1,0 +1,86 @@
+.book-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--book-cover-list) minmax(0, 1fr);
+  gap: var(--card-pad);
+  padding: var(--card-pad);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  transition:
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.book-item:hover,
+.book-item:focus-within {
+  box-shadow: var(--shadow-md);
+  transform: translateY(calc(var(--space-1) / -2));
+}
+
+.book-item:focus-within {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.book-item__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.book-item__link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.book-item__link:hover {
+  color: var(--color-text);
+}
+
+/* The title link covers the whole card, so the card is clickable without nesting links. */
+.book-item__link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border-radius: var(--radius-lg);
+}
+
+.book-item__link:focus-visible {
+  outline: none;
+}
+
+.book-item__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.book-item__badges:empty {
+  display: none;
+}
+
+.book-item__foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.book-item__more {
+  display: inline-flex;
+  gap: var(--space-1);
+  align-items: center;
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-label-line);
+  color: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-item:hover,
+  .book-item:focus-within {
+    transform: none;
+  }
+}

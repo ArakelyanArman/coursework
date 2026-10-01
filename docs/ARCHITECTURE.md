@@ -78,6 +78,10 @@ components/Icon/
 `Name.js` loads its HTML file through `loadTemplate()` (`js/core/template.js`) and exports a
 function that returns a DOM element. `css/index.css` imports every component stylesheet.
 
+Text is passed to components either as a final string (a book title) or as a translation key:
+`{ key: 'common.save' }`. A key stays bound to its element (`data-i18n`), so switching the
+language re-translates every component on the page without re-rendering it.
+
 ## Shared state
 
 Session, theme and language live in `localStorage` (`js/core/storage.js`) and are announced with

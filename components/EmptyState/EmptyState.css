@@ -1,0 +1,30 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  border: var(--border-width) dashed var(--color-border-input);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state__icon {
+  display: grid;
+  place-items: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-full);
+}
+
+.empty-state--error .empty-state__icon {
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+}
+
+.empty-state__action {
+  margin-top: var(--space-2);
+}

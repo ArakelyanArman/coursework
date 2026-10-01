@@ -1,0 +1,123 @@
+.dialog {
+  width: min(var(--dialog-width), calc(100% - var(--space-8)));
+  max-height: calc(100dvh - var(--space-8));
+  /* The reset zeroes every margin; a modal dialog needs auto to centre itself. */
+  margin: auto;
+  padding: var(--space-0);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 0;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.dialog::backdrop {
+  background: var(--color-overlay);
+}
+
+.dialog[open] {
+  animation: dialog-in var(--duration-slow) var(--ease-out);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2)) scale(0.98);
+  }
+}
+
+/* Padding lives here, not on <dialog>, so a click on the backdrop lands on the dialog itself. */
+.dialog__surface {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.dialog__header {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.dialog__title {
+  flex: 1;
+  min-width: 0;
+  padding-top: var(--space-1);
+}
+
+.dialog__close {
+  display: flex;
+  margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1) 0 0;
+}
+
+.dialog__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--size-control-md);
+  height: var(--size-control-md);
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+  border-radius: var(--radius-full);
+}
+
+.dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--field-gap);
+}
+
+.dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--field-gap);
+}
+
+.dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: flex-end;
+  margin-top: var(--space-3);
+}
+
+.dialog__actions:empty {
+  display: none;
+}
+
+/* Drawer: slides in from the start edge (mobile navigation, catalog filters). */
+.dialog--drawer {
+  width: min(var(--dialog-width) * 0.7, calc(100% - var(--space-12)));
+  height: 100dvh;
+  max-height: none;
+  margin: var(--space-0) auto var(--space-0) var(--space-0);
+  border-radius: var(--space-0) var(--radius-xl) var(--radius-xl) var(--space-0);
+}
+
+.dialog--drawer[open] {
+  animation-name: drawer-in;
+}
+
+.dialog--drawer .dialog__surface {
+  min-height: 100%;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open],
+  .dialog--drawer[open] {
+    animation-name: dialog-fade;
+  }
+
+  @keyframes dialog-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}

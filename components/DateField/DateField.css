@@ -1,0 +1,42 @@
+.date-field {
+  position: relative;
+  min-width: 0;
+}
+
+.date-field__popover {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  z-index: var(--z-popover);
+  max-width: calc(100vw - var(--space-8));
+  padding: var(--space-3);
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  inset-inline-start: 0;
+  animation: date-field-in var(--duration-base) var(--ease-out);
+}
+
+@keyframes date-field-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--space-1) * -1));
+  }
+}
+
+.date-range {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .date-range {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* The second field's calendar opens towards the start so it stays inside the page. */
+  .date-field--end .date-field__popover {
+    inset-inline: auto 0;
+  }
+}

@@ -1,0 +1,87 @@
+.accordion {
+  padding: var(--space-2);
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-lg);
+}
+
+.accordion__item + .accordion__item {
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.accordion__trigger {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  width: 100%;
+  min-height: var(--size-input);
+  padding: var(--space-0) var(--space-3);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-label-line);
+  color: var(--color-text);
+  text-align: start;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.accordion__trigger:hover {
+  background: var(--color-surface-sunken);
+}
+
+.accordion__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--size-check);
+  height: var(--size-check);
+  padding: var(--space-0) var(--space-1);
+  font-size: var(--text-caption-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.accordion__chevron {
+  display: inline-flex;
+  margin-inline-start: auto;
+  color: var(--color-text-muted);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.accordion__trigger[aria-expanded="true"] .accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.accordion__panel {
+  padding: var(--space-1) var(--space-3) var(--space-3);
+}
+
+.check-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-0);
+  border: 0;
+}
+
+.check-group__search {
+  margin-bottom: var(--space-2);
+}
+
+.check-group__search .field__input {
+  height: var(--size-control-md);
+  font-size: var(--text-body-sm-size);
+}
+
+.check-group__more {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+}
+
+.check-group__empty {
+  padding-block: var(--space-2);
+}

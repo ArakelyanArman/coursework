@@ -1,0 +1,245 @@
+.table-card {
+  /* clip, not hidden: hidden would turn the card into the bulk bar's scroll container. */
+  overflow: clip;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.table-card__scroll {
+  overflow-x: auto;
+}
+
+.bulk-bar {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-label-line);
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+}
+
+.bulk-bar__actions {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.bulk-bar .btn {
+  color: var(--color-on-primary);
+}
+
+.bulk-bar .btn:hover {
+  color: var(--color-on-primary);
+  background: color-mix(in srgb, var(--color-on-primary) 16%, transparent);
+}
+
+.data-table {
+  width: 100%;
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-line);
+}
+
+.data-table thead th {
+  height: var(--size-input);
+  padding: var(--space-0) var(--space-4);
+  font-size: var(--text-caption-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-caption-line);
+  color: var(--color-text-muted);
+  text-align: start;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+  background: var(--color-surface-muted);
+}
+
+:lang(hy) .data-table thead th {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.data-table__sort {
+  display: inline-flex;
+  gap: var(--space-1);
+  align-items: center;
+  min-height: var(--space-6);
+  padding: var(--space-0);
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+
+.data-table__sort:hover {
+  color: var(--color-text);
+}
+
+.data-table__sort .icon {
+  opacity: 0.35;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+[aria-sort] .data-table__sort {
+  color: var(--color-text);
+}
+
+[aria-sort] .data-table__sort .icon {
+  opacity: 1;
+}
+
+[aria-sort="ascending"] .data-table__sort .icon {
+  transform: rotate(180deg);
+}
+
+.data-table tbody td,
+.data-table tbody th {
+  height: var(--size-row);
+  padding: var(--space-2) var(--space-4);
+  font-weight: var(--font-weight-regular);
+  text-align: start;
+  vertical-align: middle;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.data-table tbody tr {
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.data-table tbody tr:hover {
+  background: var(--color-surface-muted);
+}
+
+.data-table tbody tr.is-selected {
+  background: var(--color-primary-soft);
+}
+
+.data-table .data-table__check {
+  width: 1%;
+  padding-inline: var(--space-2) var(--space-0);
+}
+
+.data-table .data-table__numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table .data-table__actions {
+  text-align: end;
+  white-space: nowrap;
+}
+
+.data-table__main {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  font-weight: var(--font-weight-medium);
+}
+
+/* From md up, "Select all" needs no visible text: the column makes it obvious. */
+@media (min-width: 768px) {
+  .data-table thead .check__label {
+    position: absolute;
+    width: var(--border-width);
+    height: var(--border-width);
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Below md each row becomes a stacked card; the column header moves in front of its value. */
+@media (max-width: 767px) {
+  .data-table,
+  .data-table thead,
+  .data-table tbody {
+    display: block;
+  }
+
+  .data-table thead tr {
+    display: flex;
+    background: var(--color-surface-muted);
+  }
+
+  .data-table thead th:not(.data-table__check) {
+    position: absolute;
+    width: var(--border-width);
+    height: var(--border-width);
+    padding: var(--space-0);
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .data-table thead .data-table__check {
+    width: auto;
+    padding-inline: var(--space-4);
+  }
+
+  .data-table tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1) var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  .data-table--selectable tbody tr {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .data-table tbody td,
+  .data-table tbody th {
+    display: flex;
+    grid-column: -2 / -1;
+    gap: var(--space-3);
+    align-items: center;
+    height: auto;
+    min-height: var(--space-8);
+    padding: var(--space-0);
+    border: 0;
+  }
+
+  .data-table tbody .data-table__check {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    align-items: flex-start;
+    width: auto;
+    padding: var(--space-0);
+  }
+
+  .data-table tbody td[data-label]::before {
+    flex: none;
+    width: 35%;
+    font-size: var(--text-caption-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    content: attr(data-label);
+  }
+
+  .data-table tbody .data-table__actions {
+    justify-content: flex-end;
+  }
+
+  .data-table tbody .data-table__actions::before {
+    display: none;
+  }
+}
+
+.data-table__skeleton-row {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+  height: var(--size-row);
+  padding-inline: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}

@@ -147,34 +147,116 @@ export function localizeNumber(value, options = {}) {
     .join('');
 }
 
+/** @param {Element} element @returns {Params} From data-i18n-params. */
+function paramsOf(element) {
+  const raw = element.getAttribute('data-i18n-params');
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return {};
+  }
+}
+
+/** @param {Element} element */
+function translateElement(element) {
+  const params = paramsOf(element);
+  const key = element.getAttribute('data-i18n');
+  if (key) element.textContent = t(key, params);
+
+  for (const pair of (element.getAttribute('data-i18n-attr') ?? '').split(';')) {
+    const separator = pair.indexOf(':');
+    if (separator === -1) continue;
+    const attr = pair.slice(0, separator).trim();
+    const attrKey = pair.slice(separator + 1).trim();
+    if (attr && attrKey) element.setAttribute(attr, t(attrKey, params));
+  }
+}
+
 /**
  * Fill `data-i18n="key"` text and `data-i18n-attr="placeholder:key;aria-label:key"` attributes.
+ * Placeholders come from `data-i18n-params` (JSON).
  * @param {ParentNode} [root]
  */
 export function applyTranslations(root = document) {
-  /** @type {Element[]} */
-  const textTargets = [...root.querySelectorAll('[data-i18n]')];
-  /** @type {Element[]} */
-  const attrTargets = [...root.querySelectorAll('[data-i18n-attr]')];
-  if (root instanceof Element) {
-    if (root.hasAttribute('data-i18n')) textTargets.push(root);
-    if (root.hasAttribute('data-i18n-attr')) attrTargets.push(root);
+  if (root instanceof Element) translateElement(root);
+  for (const element of root.querySelectorAll('[data-i18n], [data-i18n-attr]')) {
+    translateElement(element);
+  }
+}
+
+/**
+ * Text a component can show: a final string (a book title, a name) or a translation key.
+ * @typedef {string | { key: string, params?: Params }} Text
+ */
+
+/** @param {Element} element @param {Params} [params] */
+function storeParams(element, params) {
+  if (params && Object.keys(params).length > 0) {
+    element.setAttribute('data-i18n-params', JSON.stringify(params));
+  }
+}
+
+/**
+ * Set an element's text. A translation key stays bound, so it follows language switches.
+ * @param {Element} element
+ * @param {Text | null | undefined} text
+ */
+export function setText(element, text) {
+  if (text == null || typeof text === 'string') {
+    element.removeAttribute('data-i18n');
+    element.textContent = text ?? '';
+    return;
+  }
+  element.setAttribute('data-i18n', text.key);
+  storeParams(element, text.params);
+  element.textContent = t(text.key, text.params);
+}
+
+/**
+ * Set an attribute from text; a translation key stays bound.
+ * @param {Element} element
+ * @param {string} attr
+ * @param {Text | null | undefined} text
+ */
+export function setAttrText(element, attr, text) {
+  const bound = (element.getAttribute('data-i18n-attr') ?? '')
+    .split(';')
+    .filter((pair) => pair && !pair.startsWith(`${attr}:`));
+
+  if (text == null) {
+    element.removeAttribute(attr);
+  } else if (typeof text === 'string') {
+    element.setAttribute(attr, text);
+  } else {
+    bound.push(`${attr}:${text.key}`);
+    storeParams(element, text.params);
+    element.setAttribute(attr, t(text.key, text.params));
   }
 
-  for (const element of textTargets) {
-    element.textContent = t(element.getAttribute('data-i18n') ?? '');
-  }
+  if (bound.length > 0) element.setAttribute('data-i18n-attr', bound.join(';'));
+  else element.removeAttribute('data-i18n-attr');
+}
 
-  for (const element of attrTargets) {
-    const pairs = (element.getAttribute('data-i18n-attr') ?? '').split(';');
-    for (const pair of pairs) {
-      const separator = pair.indexOf(':');
-      if (separator === -1) continue;
-      const attr = pair.slice(0, separator).trim();
-      const key = pair.slice(separator + 1).trim();
-      if (attr && key) element.setAttribute(attr, t(key));
+/** @param {Text} text @returns {string} */
+export const textOf = (text) => (typeof text === 'string' ? text : t(text.key, text.params));
+
+/**
+ * Re-run `handler` on language switches for as long as `element` stays on the page.
+ * For text made by Intl formatting, which data-i18n cannot rebind.
+ * @param {Element} element
+ * @param {() => void} handler
+ */
+export function whileConnected(element, handler) {
+  let seen = false;
+  const off = on(EVENTS.LANG_CHANGE, () => {
+    if (element.isConnected) {
+      seen = true;
+      handler();
+    } else if (seen) {
+      off();
     }
-  }
+  });
 }
 
 /** @param {Lang} lang */

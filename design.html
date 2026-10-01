@@ -28,10 +28,7 @@
           <span class="design-bar__wordmark" data-i18n="common.appName"></span>
         </a>
         <span class="design-bar__tag t-caption" data-i18n="design.devOnly"></span>
-        <div class="design-bar__actions">
-          <button type="button" class="design-btn" id="lang-switch"></button>
-          <button type="button" class="design-btn design-btn--icon" id="theme-toggle"></button>
-        </div>
+        <div class="design-bar__actions" id="bar-actions"></div>
       </div>
     </header>
 
@@ -46,6 +43,14 @@
             <a class="design-toc__link" href="#typography" data-i18n="design.typography.title"></a>
             <a class="design-toc__link" href="#foundations" data-i18n="design.foundations.title"></a>
             <a class="design-toc__link" href="#icons" data-i18n="design.icons.title"></a>
+            <a class="design-toc__link" href="#buttons" data-i18n="design.buttons.title"></a>
+            <a class="design-toc__link" href="#forms" data-i18n="design.forms.title"></a>
+            <a class="design-toc__link" href="#selection" data-i18n="design.selection.title"></a>
+            <a class="design-toc__link" href="#filters" data-i18n="design.filters.title"></a>
+            <a class="design-toc__link" href="#dates" data-i18n="design.dates.title"></a>
+            <a class="design-toc__link" href="#books" data-i18n="design.books.title"></a>
+            <a class="design-toc__link" href="#table" data-i18n="design.table.title"></a>
+            <a class="design-toc__link" href="#messages" data-i18n="design.feedback.title"></a>
             <a class="design-toc__link" href="#i18n" data-i18n="design.i18n.title"></a>
             <a class="design-toc__link" href="#data" id="data-link" data-i18n="design.data.title" hidden></a>
           </nav>
@@ -99,6 +104,64 @@
           <ul class="icon-grid" role="list" id="icon-grid"></ul>
         </section>
 
+        <section class="design-section" id="buttons" aria-labelledby="buttons-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="buttons-title" data-i18n="design.buttons.title"></h2>
+            <p class="muted measure" data-i18n="design.buttons.intro"></p>
+          </header>
+          <div class="stack gap-4" id="buttons-demo"></div>
+        </section>
+
+        <section class="design-section" id="forms" aria-labelledby="forms-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="forms-title" data-i18n="design.forms.title"></h2>
+          </header>
+          <div class="design-columns" id="forms-demo"></div>
+        </section>
+
+        <section class="design-section" id="selection" aria-labelledby="selection-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="selection-title" data-i18n="design.selection.title"></h2>
+          </header>
+          <div class="design-columns" id="selection-demo"></div>
+        </section>
+
+        <section class="design-section" id="filters" aria-labelledby="filters-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="filters-title" data-i18n="design.filters.title"></h2>
+          </header>
+          <div class="design-sidebar" id="filters-demo"></div>
+        </section>
+
+        <section class="design-section" id="dates" aria-labelledby="dates-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="dates-title" data-i18n="design.dates.title"></h2>
+            <p class="muted measure" data-i18n="design.dates.intro"></p>
+          </header>
+          <div class="design-columns" id="dates-demo"></div>
+        </section>
+
+        <section class="design-section" id="books" aria-labelledby="books-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="books-title" data-i18n="design.books.title"></h2>
+          </header>
+          <div class="stack gap-8" id="books-demo"></div>
+        </section>
+
+        <section class="design-section" id="table" aria-labelledby="table-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="table-title" data-i18n="design.table.title"></h2>
+          </header>
+          <div class="stack gap-6" id="table-demo"></div>
+        </section>
+
+        <section class="design-section" id="messages" aria-labelledby="messages-title">
+          <header class="design-section__head">
+            <h2 class="t-h1" id="messages-title" data-i18n="design.feedback.title"></h2>
+          </header>
+          <div class="design-columns" id="messages-demo"></div>
+        </section>
+
         <section class="design-section" id="i18n" aria-labelledby="i18n-title">
           <header class="design-section__head">
             <h2 class="t-h1" id="i18n-title" data-i18n="design.i18n.title"></h2>
@@ -121,7 +184,7 @@
           <div class="design-panel stack gap-4">
             <p class="tnum" id="data-counts"></p>
             <div class="row gap-3">
-              <button type="button" class="design-btn design-btn--outline" id="data-reset" data-i18n="design.data.reset"></button>
+              <span id="data-reset"></span>
               <span class="t-body-sm muted" id="data-status" role="status"></span>
             </div>
           </div>

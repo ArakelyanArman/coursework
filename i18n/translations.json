@@ -9,7 +9,10 @@
       "save": "Save",
       "delete": "Delete",
       "search": "Search",
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "clear": "Clear",
+      "showMore": "Show more",
+      "showLess": "Show less"
     },
     "nav": {
       "primary": "Main navigation",
@@ -80,6 +83,19 @@
       "resultCount": {
         "one": "{count} book",
         "other": "{count} books"
+      },
+      "searchLabel": "Search the catalog",
+      "searchPlaceholder": "Title, author, ISBN…",
+      "sortBy": "Sort by",
+      "clearFilters": "Clear filters",
+      "categoriesLabel": "Categories",
+      "activeFilters": "Active filters",
+      "filters": {
+        "genres": "Genres"
+      },
+      "empty": {
+        "title": "No books match your filters",
+        "text": "Try removing a filter or searching for something else."
       }
     },
     "categories": {
@@ -119,7 +135,11 @@
       "errors": {
         "invalidCredentials": "Incorrect email or password.",
         "emailTaken": "An account with this email already exists."
-      }
+      },
+      "email": "Email",
+      "fullName": "Full name",
+      "password": "Password",
+      "passwordHelper": "At least 8 characters."
     },
     "booking": {
       "errors": {
@@ -130,6 +150,12 @@
           "other": "A booking can be at most {count} days."
         },
         "unavailable": "The book is already booked on some of those dates."
+      },
+      "confirmed": "Booking confirmed",
+      "confirmedText": "Pick the book up at the front desk. Your booking starts on {date}.",
+      "summary": {
+        "one": "{count} day · {range}",
+        "other": "{count} days · {range}"
       }
     },
     "books": {
@@ -153,12 +179,125 @@
         "overdue": "Overdue returns"
       }
     },
+    "field": {
+      "showPassword": "Show password",
+      "hidePassword": "Hide password"
+    },
+    "filters": {
+      "remove": "Remove filter:",
+      "selected": {
+        "one": "{count} selected",
+        "other": "{count} selected"
+      },
+      "noMatches": "No matches",
+      "searchList": "Search this list",
+      "searchPlaceholder": "Search…"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page",
+      "page": "Page {page}"
+    },
+    "calendar": {
+      "label": "Choose a date",
+      "open": "Open calendar",
+      "previousMonth": "Previous month",
+      "nextMonth": "Next month",
+      "unavailable": "unavailable",
+      "placeholder": "e.g. Mar 15, 2026",
+      "from": "From",
+      "to": "To",
+      "range": "Date range",
+      "legend": {
+        "selected": "Selected",
+        "today": "Today",
+        "unavailable": "Booked"
+      }
+    },
+    "table": {
+      "selectAll": "Select all",
+      "selectRow": "Select {name}",
+      "selected": {
+        "one": "{count} selected",
+        "other": "{count} selected"
+      },
+      "actions": "Actions"
+    },
+    "toast": {
+      "region": "Notifications",
+      "dismiss": "Dismiss"
+    },
+    "states": {
+      "errorTitle": "Something went wrong"
+    },
+    "roles": {
+      "member": "Member",
+      "admin": "Admin"
+    },
+    "book": {
+      "coverAlt": "Cover of {title}",
+      "unknownAuthor": "Unknown author",
+      "viewDetails": "View details",
+      "firstPublished": "First published {year}",
+      "trending": "Trending",
+      "availability": {
+        "available": "Available",
+        "availableCopies": {
+          "one": "Available · {count} copy",
+          "other": "Available · {count} copies"
+        },
+        "few": {
+          "one": "{count} left",
+          "other": "{count} left"
+        },
+        "unavailable": "Unavailable"
+      }
+    },
+    "home": {
+      "exploreAll": "Explore all"
+    },
+    "admin": {
+      "title": "Admin",
+      "tabsLabel": "Admin sections",
+      "tabs": {
+        "books": "Book management",
+        "reports": "Reports",
+        "users": "User management"
+      },
+      "editItem": "Edit {name}",
+      "deleteItem": "Delete {name}",
+      "saved": "Changes saved",
+      "books": {
+        "add": "Add book",
+        "edit": "Edit book",
+        "tableLabel": "Books in the library",
+        "columns": {
+          "title": "Title",
+          "author": "Author",
+          "category": "Category",
+          "copies": "Copies",
+          "status": "Status"
+        },
+        "deleteTitle": "Delete “{title}”?",
+        "deleteText": {
+          "one": "This removes the book and cancels its {count} upcoming booking. This can't be undone.",
+          "other": "This removes the book and cancels its {count} upcoming bookings. This can't be undone."
+        },
+        "deleteTextNone": "This removes the book from the library. This can't be undone.",
+        "deleted": "Book deleted",
+        "deleteManyTitle": {
+          "one": "Delete {count} book?",
+          "other": "Delete {count} books?"
+        }
+      }
+    },
     "design": {
       "pageTitle": "Design system · Library",
       "devOnly": "Dev only",
       "title": "Paper & Ink",
       "lead": "Warm paper neutrals, deep ink-blue for actions, a brass accent used sparingly, and a serif for anything bookish. Every value on this page is read from the CSS custom properties.",
-      "phaseNote": "Foundations and data only for now. Components are added next.",
+      "phaseNote": "Foundations, data and components. The app pages are built from these.",
       "toc": "On this page",
       "footer": "Development style guide. Not linked from the app navigation.",
       "colors": {
@@ -233,6 +372,47 @@
         },
         "reset": "Reset demo data",
         "resetDone": "Demo data was reset."
+      },
+      "states": {
+        "default": "Default",
+        "disabled": "Disabled",
+        "loading": "Loading",
+        "error": "Error",
+        "sizes": "Sizes",
+        "icons": "Icons",
+        "skeletons": "Loading skeletons"
+      },
+      "buttons": {
+        "title": "Buttons",
+        "intro": "One primary action per view. Disabled buttons stay focusable, so a tooltip can explain why."
+      },
+      "forms": {
+        "title": "Form controls",
+        "nameHelper": "As it appears on your library card."
+      },
+      "selection": {
+        "title": "Chips · Tabs · Badges · Pagination"
+      },
+      "filters": {
+        "title": "Filters"
+      },
+      "dates": {
+        "title": "Dates",
+        "intro": "Pick a date or type it. Booked days are struck through, and a range is at most 14 days.",
+        "none": "No dates chosen yet."
+      },
+      "books": {
+        "title": "Books"
+      },
+      "table": {
+        "title": "Table"
+      },
+      "feedback": {
+        "title": "Feedback",
+        "toastSuccess": "Success toast",
+        "toastError": "Error toast",
+        "confirm": "Confirm dialog",
+        "form": "Form dialog"
       }
     }
   },
@@ -246,7 +426,10 @@
       "save": "Պահպանել",
       "delete": "Ջնջել",
       "search": "Որոնել",
-      "loading": "Բեռնվում է…"
+      "loading": "Բեռնվում է…",
+      "clear": "Մաքրել",
+      "showMore": "Ցույց տալ ավելին",
+      "showLess": "Ցույց տալ ավելի քիչ"
     },
     "nav": {
       "primary": "Հիմնական նավիգացիա",
@@ -317,6 +500,19 @@
       "resultCount": {
         "one": "{count} գիրք",
         "other": "{count} գիրք"
+      },
+      "searchLabel": "Որոնել կատալոգում",
+      "searchPlaceholder": "Վերնագիր, հեղինակ, ISBN…",
+      "sortBy": "Դասավորել ըստ",
+      "clearFilters": "Մաքրել զտիչները",
+      "categoriesLabel": "Կատեգորիաներ",
+      "activeFilters": "Ակտիվ զտիչներ",
+      "filters": {
+        "genres": "Ժանրեր"
+      },
+      "empty": {
+        "title": "Ձեր զտիչներին համապատասխան գրքեր չկան",
+        "text": "Փորձեք հեռացնել զտիչներից մեկը կամ որոնել այլ բան։"
       }
     },
     "categories": {
@@ -356,7 +552,11 @@
       "errors": {
         "invalidCredentials": "Էլ. հասցեն կամ գաղտնաբառը սխալ է։",
         "emailTaken": "Այս էլ. հասցեով հաշիվ արդեն գոյություն ունի։"
-      }
+      },
+      "email": "Էլ. հասցե",
+      "fullName": "Անուն ազգանուն",
+      "password": "Գաղտնաբառ",
+      "passwordHelper": "Առնվազն 8 նիշ։"
     },
     "booking": {
       "errors": {
@@ -367,6 +567,12 @@
           "other": "Ամրագրումը կարող է տևել առավելագույնը {count} օր։"
         },
         "unavailable": "Գիրքն այդ օրերից մի քանիսում արդեն ամրագրված է։"
+      },
+      "confirmed": "Ամրագրումը հաստատված է",
+      "confirmedText": "Գիրքը կարող եք վերցնել ընդունարանից։ Ամրագրման սկիզբը՝ {date}։",
+      "summary": {
+        "one": "{count} օր · {range}",
+        "other": "{count} օր · {range}"
       }
     },
     "books": {
@@ -390,12 +596,125 @@
         "overdue": "Ուշացած վերադարձներ"
       }
     },
+    "field": {
+      "showPassword": "Ցույց տալ գաղտնաբառը",
+      "hidePassword": "Թաքցնել գաղտնաբառը"
+    },
+    "filters": {
+      "remove": "Հեռացնել զտիչը՝",
+      "selected": {
+        "one": "{count} ընտրված",
+        "other": "{count} ընտրված"
+      },
+      "noMatches": "Համընկնումներ չկան",
+      "searchList": "Որոնել այս ցանկում",
+      "searchPlaceholder": "Որոնել…"
+    },
+    "pagination": {
+      "label": "Էջավորում",
+      "previous": "Նախորդ էջ",
+      "next": "Հաջորդ էջ",
+      "page": "Էջ {page}"
+    },
+    "calendar": {
+      "label": "Ընտրեք ամսաթիվը",
+      "open": "Բացել օրացույցը",
+      "previousMonth": "Նախորդ ամիս",
+      "nextMonth": "Հաջորդ ամիս",
+      "unavailable": "անհասանելի",
+      "placeholder": "օր.՝ 15.03.2026",
+      "from": "Սկիզբ",
+      "to": "Ավարտ",
+      "range": "Ամսաթվերի միջակայք",
+      "legend": {
+        "selected": "Ընտրված",
+        "today": "Այսօր",
+        "unavailable": "Ամրագրված"
+      }
+    },
+    "table": {
+      "selectAll": "Ընտրել բոլորը",
+      "selectRow": "Ընտրել՝ {name}",
+      "selected": {
+        "one": "{count} ընտրված",
+        "other": "{count} ընտրված"
+      },
+      "actions": "Գործողություններ"
+    },
+    "toast": {
+      "region": "Ծանուցումներ",
+      "dismiss": "Փակել"
+    },
+    "states": {
+      "errorTitle": "Ինչ-որ բան սխալ ստացվեց"
+    },
+    "roles": {
+      "member": "Անդամ",
+      "admin": "Ադմին"
+    },
+    "book": {
+      "coverAlt": "«{title}» գրքի շապիկը",
+      "unknownAuthor": "Անհայտ հեղինակ",
+      "viewDetails": "Մանրամասն",
+      "firstPublished": "Առաջին հրատարակությունը՝ {year}",
+      "trending": "Հանրաճանաչ",
+      "availability": {
+        "available": "Հասանելի է",
+        "availableCopies": {
+          "one": "Հասանելի է · {count} օրինակ",
+          "other": "Հասանելի է · {count} օրինակ"
+        },
+        "few": {
+          "one": "Մնացել է {count}",
+          "other": "Մնացել է {count}"
+        },
+        "unavailable": "Անհասանելի է"
+      }
+    },
+    "home": {
+      "exploreAll": "Տեսնել բոլորը"
+    },
+    "admin": {
+      "title": "Կառավարում",
+      "tabsLabel": "Կառավարման բաժիններ",
+      "tabs": {
+        "books": "Գրքերի կառավարում",
+        "reports": "Հաշվետվություններ",
+        "users": "Օգտատերերի կառավարում"
+      },
+      "editItem": "Խմբագրել՝ {name}",
+      "deleteItem": "Ջնջել՝ {name}",
+      "saved": "Փոփոխությունները պահպանվեցին",
+      "books": {
+        "add": "Ավելացնել գիրք",
+        "edit": "Խմբագրել գիրքը",
+        "tableLabel": "Գրադարանի գրքերը",
+        "columns": {
+          "title": "Վերնագիր",
+          "author": "Հեղինակ",
+          "category": "Կատեգորիա",
+          "copies": "Օրինակներ",
+          "status": "Կարգավիճակ"
+        },
+        "deleteTitle": "Ջնջե՞լ «{title}» գիրքը",
+        "deleteText": {
+          "one": "Գիրքը կհեռացվի, իսկ դրա {count} առաջիկա ամրագրումը կչեղարկվի։ Այս գործողությունը հնարավոր չէ հետարկել։",
+          "other": "Գիրքը կհեռացվի, իսկ դրա {count} առաջիկա ամրագրումը կչեղարկվի։ Այս գործողությունը հնարավոր չէ հետարկել։"
+        },
+        "deleteTextNone": "Գիրքը կհեռացվի գրադարանից։ Այս գործողությունը հնարավոր չէ հետարկել։",
+        "deleted": "Գիրքը ջնջվեց",
+        "deleteManyTitle": {
+          "one": "Ջնջե՞լ {count} գիրք",
+          "other": "Ջնջե՞լ {count} գիրք"
+        }
+      }
+    },
     "design": {
       "pageTitle": "Դիզայն համակարգ · Գրադարան",
       "devOnly": "Միայն մշակման համար",
       "title": "Թուղթ և թանաք",
       "lead": "Թղթի ջերմ չեզոք երանգներ, մուգ թանաքագույն կապույտ՝ գործողությունների համար, չափավոր օգտագործվող արույրե շեշտ և սերիֆ տառատեսակ՝ գրքային ամեն ինչի համար։ Այս էջի յուրաքանչյուր արժեք կարդացվում է CSS փոփոխականներից։",
-      "phaseNote": "Առայժմ միայն հիմքերն ու տվյալները։ Բաղադրիչները կավելացվեն հաջորդիվ։",
+      "phaseNote": "Հիմքեր, տվյալներ և բաղադրիչներ։ Հավելվածի էջերը կառուցվում են սրանցից։",
       "toc": "Այս էջում",
       "footer": "Մշակման ոճային ուղեցույց։ Հավելվածի նավիգացիայից հղված չէ։",
       "colors": {
@@ -470,6 +789,47 @@
         },
         "reset": "Վերականգնել ցուցադրական տվյալները",
         "resetDone": "Ցուցադրական տվյալները վերականգնվեցին։"
+      },
+      "states": {
+        "default": "Սովորական",
+        "disabled": "Անջատված",
+        "loading": "Բեռնվում է",
+        "error": "Սխալ",
+        "sizes": "Չափեր",
+        "icons": "Պատկերակներ",
+        "skeletons": "Բեռնման կմախքներ"
+      },
+      "buttons": {
+        "title": "Կոճակներ",
+        "intro": "Մեկ հիմնական գործողություն յուրաքանչյուր էկրանում։ Անջատված կոճակները մնում են ֆոկուսավորելի, որպեսզի հուշումը բացատրի պատճառը։"
+      },
+      "forms": {
+        "title": "Ձևի տարրեր",
+        "nameHelper": "Ինչպես գրված է ձեր գրադարանի քարտում։"
+      },
+      "selection": {
+        "title": "Չիպեր · Ներդիրներ · Նշաններ · Էջավորում"
+      },
+      "filters": {
+        "title": "Զտիչներ"
+      },
+      "dates": {
+        "title": "Ամսաթվեր",
+        "intro": "Ընտրեք ամսաթիվը կամ մուտքագրեք այն։ Ամրագրված օրերը գծված են, իսկ միջակայքը՝ առավելագույնը 14 օր։",
+        "none": "Ամսաթվեր դեռ ընտրված չեն։"
+      },
+      "books": {
+        "title": "Գրքեր"
+      },
+      "table": {
+        "title": "Աղյուսակ"
+      },
+      "feedback": {
+        "title": "Արձագանք",
+        "toastSuccess": "Հաջողության ծանուցում",
+        "toastError": "Սխալի ծանուցում",
+        "confirm": "Հաստատման պատուհան",
+        "form": "Ձևով պատուհան"
       }
     }
   }
