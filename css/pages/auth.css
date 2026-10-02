@@ -1,0 +1,65 @@
+@layer pages {
+  /* The card sits in the middle of whatever room the page has between navbar and footer. */
+  .auth-page {
+    display: grid;
+    place-items: center;
+    padding: var(--space-10) var(--container-pad) var(--space-0);
+  }
+
+  .auth-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 100%;
+    max-width: var(--auth-card-width);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .auth-form,
+  .auth-form__fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--field-gap);
+  }
+
+  /* The button follows the fields in the page, so Tab reaches it straight after the password. */
+  .auth-form__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .auth-form__submit {
+    display: flex;
+  }
+
+  .auth-form__submit .btn {
+    flex: 1;
+  }
+
+  .auth-form__link {
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (min-width: 640px) {
+    .auth-card {
+      padding: var(--space-8);
+    }
+
+    .auth-form__footer {
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .auth-form__submit .btn {
+      flex: none;
+    }
+  }
+}

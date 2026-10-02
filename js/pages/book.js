@@ -131,7 +131,8 @@ function showBook(book) {
     from: params.from,
     to: params.to,
     // Kept in the address, so the dates survive the trip to the login page and back.
-    onRangeChange: ({ from, to }) => writeParams({ id: book.id, from, to }, SCHEMA, { replace: true }),
+    onRangeChange: ({ from, to }) =>
+      writeParams({ id: book.id, from, to }, SCHEMA, { replace: true }),
     // A new booking can change today's availability.
     onBooked: async () => render(meta, metaBadges(await getBook(book.id))),
   });
@@ -139,7 +140,10 @@ function showBook(book) {
   render(
     root,
     Breadcrumb({
-      items: [{ label: { key: 'nav.catalog' }, href: pageUrl('catalog.html') }, { label: book.title }],
+      items: [
+        { label: { key: 'nav.catalog' }, href: pageUrl('catalog.html') },
+        { label: book.title },
+      ],
     }),
     h(
       'article',

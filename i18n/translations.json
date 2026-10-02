@@ -169,7 +169,23 @@
       "fullName": "Full name",
       "password": "Password",
       "passwordHelper": "At least 8 characters.",
-      "loggedOut": "You've been logged out."
+      "loggedOut": "You've been logged out.",
+      "login": {
+        "pageTitle": "Log in · Library",
+        "title": "Log in",
+        "submit": "Log in",
+        "prompt": "Don't have an account?",
+        "link": "Register"
+      },
+      "register": {
+        "pageTitle": "Create an account · Library",
+        "title": "Create an account",
+        "submit": "Create account",
+        "prompt": "Already have an account?",
+        "link": "Log in"
+      },
+      "welcomeBack": "Welcome back, {name}",
+      "welcome": "Your account is ready. Welcome, {name}!"
     },
     "booking": {
       "errors": {
@@ -669,7 +685,23 @@
       "fullName": "Անուն ազգանուն",
       "password": "Գաղտնաբառ",
       "passwordHelper": "Առնվազն 8 նիշ։",
-      "loggedOut": "Դուք դուրս եկաք համակարգից։"
+      "loggedOut": "Դուք դուրս եկաք համակարգից։",
+      "login": {
+        "pageTitle": "Մուտք · Գրադարան",
+        "title": "Մուտք",
+        "submit": "Մուտք գործել",
+        "prompt": "Դեռ հաշիվ չունե՞ք",
+        "link": "Գրանցվել"
+      },
+      "register": {
+        "pageTitle": "Գրանցում · Գրադարան",
+        "title": "Ստեղծել հաշիվ",
+        "submit": "Ստեղծել հաշիվ",
+        "prompt": "Արդեն հաշիվ ունե՞ք",
+        "link": "Մուտք գործել"
+      },
+      "welcomeBack": "Բարի վերադարձ, {name}",
+      "welcome": "Ձեր հաշիվը պատրաստ է։ Բարի գալուստ, {name}։"
     },
     "booking": {
       "errors": {

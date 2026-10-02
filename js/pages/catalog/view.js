@@ -22,7 +22,8 @@ const SKELETON_ITEMS = 6;
  * @returns {{ element: HTMLElement, sync: (state: CatalogState) => void }}
  */
 export function CategoryChips(onChange) {
-  const entries = [{ id: '', labelKey: 'categories.all' }, ...CATEGORIES].map(({ id, labelKey }) => ({
+  const all = { id: '', labelKey: 'categories.all' };
+  const entries = [all, ...CATEGORIES].map(({ id, labelKey }) => ({
     id,
     chip: Chip({ label: { key: labelKey }, onClick: () => onChange({ category: id }) }),
   }));
@@ -129,7 +130,11 @@ export function ActiveFilters(state, onChange) {
  * @param {import('../../core/i18n.js').Text} [label]
  */
 export function ClearFiltersLink(onChange, label = { key: 'catalog.clearFilters' }) {
-  return Button({ label, variant: 'link', onClick: () => onChange({ ...NO_FILTERS, category: '' }) });
+  return Button({
+    label,
+    variant: 'link',
+    onClick: () => onChange({ ...NO_FILTERS, category: '' }),
+  });
 }
 
 /** @returns {HTMLElement} */

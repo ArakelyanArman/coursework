@@ -133,6 +133,11 @@ runs again, so logging out in one tab also leaves a protected page in the others
 
 `requireLogin()` does the same for a single action, such as booking a book.
 
+After a login or a registration the visitor goes to the `returnTo` address when there is one
+(only same-origin paths are accepted). Without it, admins land on the admin pages and members
+on the Catalog (`homeFor()` in `js/guards.js`). Login and Register share one form module,
+`js/pages/auth/form.js`.
+
 ## State in the address
 
 What a page shows is decided by its query string, so a view can be reloaded, bookmarked and

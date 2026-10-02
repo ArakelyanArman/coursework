@@ -89,14 +89,14 @@ To start over, open `/design.html`, scroll to **Demo data** and press **Reset de
 | Home: search and three rails of books | Done |
 | Catalog: search, category chips, filters, sorting, pages | Done |
 | Book page: details and booking for a date range | Done |
-| Login, Register | Next |
-| Admin: books, users, reports | After that |
+| Login, Register | Done |
+| Admin: books, users, reports | Next |
 
 The app opens on the Home page. The style guide, which shows every component in every state, is
 at `/design.html`.
 
-The **Log in** page is not built yet, so the navbar's "Log in" button and the "Book" button (which
-asks guests to log in) lead to the "Page not found" page for now.
+The **Admin** pages are not built yet. The navbar's Admin button, and logging in as the admin
+(which lands there), show the "Page not found" page for now; the admin can still browse and book.
 
 ## Project structure
 
@@ -105,6 +105,8 @@ start.bat, start.sh     start a local server on port 3000
 index.html              Home
 catalog.html            Catalog: ?q=&category=&authors=&genres=&yearFrom=&yearTo=&sort=&page=
 book.html               Book details and booking: ?id=OL468431W
+login.html              Log in: ?returnTo= brings the visitor back afterwards
+register.html           Create an account
 design.html             style guide (not linked from the app navigation)
 404.html                "Page not found"
 components/             one folder per component: Name.html, Name.css, Name.js
@@ -131,7 +133,8 @@ js/
   services/             the data API the pages use: books, bookings, auth, users, reports
   providers/            openlibrary, local-db, http-backend
   mappers/              API shapes to app shapes and back
-  pages/                one entry module per HTML page: home, catalog, book, not-found, design;
+  pages/                one entry module per HTML page: home, catalog, book, login, register,
+                        not-found, design;
                         a page with a lot to do keeps its parts in a folder of the same name
 docs/
   ARCHITECTURE.md       how the layers fit together
