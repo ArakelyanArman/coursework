@@ -1,5 +1,6 @@
 // @ts-check
 import { uid } from '../../js/core/a11y.js';
+import { h } from '../../js/core/dom.js';
 import { setAttrText, setText } from '../../js/core/i18n.js';
 import { loadTemplate, refs } from '../../js/core/template.js';
 import { IconButton, setIcon, setLabel } from '../Button/Button.js';
@@ -23,6 +24,7 @@ const create = await loadTemplate(new URL('./TextField.html', import.meta.url));
  * @property {string} [inputMode]
  * @property {boolean} [required]
  * @property {boolean} [disabled]
+ * @property {boolean} [multiline] A textarea instead of a one-line input.
  * @property {import('../Icon/Icon.js').IconName} [icon] Leading icon.
  * @property {Element} [trailing] A control placed inside the field's end, e.g. an IconButton.
  * @property {(event: Event) => void} [onInput]
@@ -42,18 +44,24 @@ export function TextField({
   inputMode,
   required = false,
   disabled = false,
+  multiline = false,
   icon,
   trailing,
   onInput,
   onChange,
 }) {
   const field = create();
+  if (multiline) {
+    const textarea = h('textarea', { class: 'field__input field__input--multiline', rows: 4 });
+    textarea.dataset.ref = 'input';
+    refs(field).input.replaceWith(textarea);
+  }
   const parts = refs(field);
   const { input } = parts;
   const id = uid('field');
 
   input.id = id;
-  input.type = type;
+  if (!multiline) input.type = type;
   input.value = value;
   input.required = required;
   input.disabled = disabled;
@@ -91,7 +99,7 @@ export function TextField({
   return field;
 }
 
-/** @param {Element} field @returns {HTMLInputElement} */
+/** @param {Element} field @returns {HTMLInputElement} The input (a textarea when multiline). */
 export const inputOf = (field) => refs(field).input;
 
 /**

@@ -130,6 +130,11 @@ function renderForms() {
           helper: { key: 'auth.passwordHelper' },
           autocomplete: 'new-password',
         }),
+        TextField({
+          label: { key: 'admin.books.form.description' },
+          helper: { key: 'admin.books.form.descriptionHelper' },
+          multiline: true,
+        }),
       ),
     ),
     box(
@@ -144,6 +149,12 @@ function renderForms() {
             onSubmit: (query) => toast({ title: { key: 'common.search' }, message: query || '—' }),
           }),
           Select({ label: { key: 'catalog.sortBy' }, options: sortOptions, value: 'relevance' }),
+          Select({
+            label: { key: 'admin.users.columns.role' },
+            options: [{ value: 'admin', label: { key: 'roles.admin' } }],
+            disabled: true,
+            helper: { key: 'users.errors.selfDemote' },
+          }),
         ),
       ),
       panel(

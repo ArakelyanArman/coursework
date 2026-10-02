@@ -32,6 +32,13 @@
   transition: border-color var(--duration-fast) var(--ease-out);
 }
 
+.field__input--multiline {
+  height: auto;
+  min-height: calc(var(--size-input) * 2);
+  padding-block: var(--space-2);
+  resize: vertical;
+}
+
 .field__input::placeholder {
   color: var(--color-text-muted);
   opacity: 1;

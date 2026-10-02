@@ -13,7 +13,8 @@
       "clear": "Clear",
       "showMore": "Show more",
       "showLess": "Show less",
-      "breadcrumb": "Breadcrumb"
+      "breadcrumb": "Breadcrumb",
+      "optional": "optional"
     },
     "nav": {
       "primary": "Main navigation",
@@ -62,7 +63,8 @@
       "min": "Enter {min} or more.",
       "max": "Enter {max} or less.",
       "date": "Enter a valid date.",
-      "oneOf": "Choose one of the listed options."
+      "oneOf": "Choose one of the listed options.",
+      "url": "Enter a web address that starts with http:// or https://."
     },
     "date": {
       "monthsLong": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -362,6 +364,107 @@
         "deleteManyTitle": {
           "one": "Delete {count} book?",
           "other": "Delete {count} books?"
+        },
+        "pageTitle": "Book management · Library",
+        "search": "Search the library's books",
+        "searchPlaceholder": "Title or author…",
+        "added": "Book added",
+        "deletedMany": {
+          "one": "{count} book deleted",
+          "other": "{count} books deleted"
+        },
+        "deleteManyText": {
+          "one": "This removes the selected books and cancels {count} upcoming booking. This can't be undone.",
+          "other": "This removes the selected books and cancels {count} upcoming bookings. This can't be undone."
+        },
+        "deleteManyTextNone": "This removes the selected books from the library. This can't be undone.",
+        "empty": {
+          "title": "No books in the library yet",
+          "text": "Add one by hand, or import its details by ISBN.",
+          "action": "Add your first book"
+        },
+        "noMatch": {
+          "title": "No books match “{q}”",
+          "text": "Try a different title or author."
+        },
+        "form": {
+          "authors": "Authors",
+          "authorsHelper": "Separate several authors with commas.",
+          "noCategory": "No category",
+          "year": "First published",
+          "description": "Description",
+          "descriptionHelper": "Optional. A book imported from Open Library shows its description from there.",
+          "coverUrl": "Cover image address",
+          "coverUrlHelper": "Optional. Without it the Open Library cover or a typographic cover is shown.",
+          "isbn": "Import by ISBN",
+          "isbnPlaceholder": "e.g. 9780141439518",
+          "isbnLookup": "Look up",
+          "isbnInvalid": "An ISBN has 10 or 13 digits.",
+          "isbnNotFound": "No book was found for this ISBN.",
+          "isbnFound": "Details filled in from Open Library. Check them before saving."
+        }
+      },
+      "users": {
+        "pageTitle": "User management · Library",
+        "tableLabel": "Library users",
+        "search": "Search users",
+        "searchPlaceholder": "Name or email…",
+        "add": "Add user",
+        "edit": "Edit user",
+        "added": "User added",
+        "you": "You",
+        "columns": {
+          "role": "Role",
+          "joined": "Joined"
+        },
+        "deleteTitle": "Delete {name}?",
+        "deleteText": "This removes the account and cancels the user's upcoming bookings. This can't be undone.",
+        "deleted": "User deleted",
+        "deleteManyTitle": {
+          "one": "Delete {count} user?",
+          "other": "Delete {count} users?"
+        },
+        "deleteManyText": "This removes the selected accounts and cancels their upcoming bookings. This can't be undone.",
+        "deletedMany": {
+          "one": "{count} user deleted",
+          "other": "{count} users deleted"
+        },
+        "selfSkipped": "Your own account was left out.",
+        "noMatch": {
+          "title": "No users match “{q}”",
+          "text": "Try a different name or email."
+        }
+      },
+      "reports": {
+        "pageTitle": "Reports · Library",
+        "type": "Report",
+        "generate": "Generate",
+        "exportCsv": "Export CSV",
+        "tableLabel": "Report rows",
+        "chartLabel": "Chart: {type}, {range}",
+        "empty": {
+          "title": "Choose a report and date range",
+          "text": "Pick what you want to see, then press Generate."
+        },
+        "none": {
+          "title": "Nothing to report for these dates",
+          "text": "Try a wider date range."
+        },
+        "stats": {
+          "totalBookings": "Total bookings",
+          "uniqueUsers": "Unique users",
+          "averageDays": "Average booking length, days"
+        },
+        "columns": {
+          "date": "Date",
+          "bookings": "Bookings",
+          "title": "Title",
+          "averageDays": "Average days",
+          "fullName": "User",
+          "email": "Email",
+          "lastBooking": "Last booking",
+          "toDate": "Due back",
+          "daysOverdue": "Days overdue"
         }
       }
     },
@@ -503,7 +606,8 @@
         "toastSuccess": "Success toast",
         "toastError": "Error toast",
         "confirm": "Confirm dialog",
-        "form": "Form dialog"
+        "form": "Form dialog",
+        "stat": "Stat card"
       },
       "shell": {
         "title": "Navigation",
@@ -529,7 +633,8 @@
       "clear": "Մաքրել",
       "showMore": "Ցույց տալ ավելին",
       "showLess": "Ցույց տալ ավելի քիչ",
-      "breadcrumb": "Էջի ուղին"
+      "breadcrumb": "Էջի ուղին",
+      "optional": "ոչ պարտադիր"
     },
     "nav": {
       "primary": "Հիմնական նավիգացիա",
@@ -578,7 +683,8 @@
       "min": "Մուտքագրեք {min} կամ ավելի մեծ թիվ։",
       "max": "Մուտքագրեք {max} կամ ավելի փոքր թիվ։",
       "date": "Մուտքագրեք վավեր ամսաթիվ։",
-      "oneOf": "Ընտրեք նշված տարբերակներից մեկը։"
+      "oneOf": "Ընտրեք նշված տարբերակներից մեկը։",
+      "url": "Մուտքագրեք http:// կամ https://-ով սկսվող հասցե։"
     },
     "date": {
       "monthsLong": ["հունվար", "փետրվար", "մարտ", "ապրիլ", "մայիս", "հունիս", "հուլիս", "օգոստոս", "սեպտեմբեր", "հոկտեմբեր", "նոյեմբեր", "դեկտեմբեր"],
@@ -878,6 +984,107 @@
         "deleteManyTitle": {
           "one": "Ջնջե՞լ {count} գիրք",
           "other": "Ջնջե՞լ {count} գիրք"
+        },
+        "pageTitle": "Գրքերի կառավարում · Գրադարան",
+        "search": "Որոնել գրադարանի գրքերում",
+        "searchPlaceholder": "Վերնագիր կամ հեղինակ…",
+        "added": "Գիրքն ավելացվեց",
+        "deletedMany": {
+          "one": "Ջնջվեց {count} գիրք",
+          "other": "Ջնջվեց {count} գիրք"
+        },
+        "deleteManyText": {
+          "one": "Ընտրված գրքերը կհեռացվեն, իսկ {count} առաջիկա ամրագրում կչեղարկվի։ Այս գործողությունը հնարավոր չէ հետարկել։",
+          "other": "Ընտրված գրքերը կհեռացվեն, իսկ {count} առաջիկա ամրագրում կչեղարկվի։ Այս գործողությունը հնարավոր չէ հետարկել։"
+        },
+        "deleteManyTextNone": "Ընտրված գրքերը կհեռացվեն գրադարանից։ Այս գործողությունը հնարավոր չէ հետարկել։",
+        "empty": {
+          "title": "Գրադարանում դեռ գիրք չկա",
+          "text": "Ավելացրեք ձեռքով կամ ներմուծեք տվյալները ISBN-ով։",
+          "action": "Ավելացնել առաջին գիրքը"
+        },
+        "noMatch": {
+          "title": "«{q}» հարցմամբ գիրք չի գտնվել",
+          "text": "Փորձեք այլ վերնագիր կամ հեղինակ։"
+        },
+        "form": {
+          "authors": "Հեղինակներ",
+          "authorsHelper": "Մի քանի հեղինակ գրեք ստորակետներով բաժանված։",
+          "noCategory": "Առանց կատեգորիայի",
+          "year": "Առաջին հրատարակության տարին",
+          "description": "Նկարագրություն",
+          "descriptionHelper": "Ոչ պարտադիր։ Open Library-ից ներմուծված գրքի նկարագրությունը վերցվում է այնտեղից։",
+          "coverUrl": "Շապիկի նկարի հասցե",
+          "coverUrlHelper": "Ոչ պարտադիր։ Առանց դրա ցուցադրվում է Open Library-ի շապիկը կամ տպագրական շապիկ։",
+          "isbn": "Ներմուծել ISBN-ով",
+          "isbnPlaceholder": "օր.՝ 9780141439518",
+          "isbnLookup": "Գտնել",
+          "isbnInvalid": "ISBN-ը բաղկացած է 10 կամ 13 թվանշանից։",
+          "isbnNotFound": "Այս ISBN-ով գիրք չի գտնվել։",
+          "isbnFound": "Տվյալները լրացվեցին Open Library-ից։ Պահպանելուց առաջ ստուգեք դրանք։"
+        }
+      },
+      "users": {
+        "pageTitle": "Օգտատերերի կառավարում · Գրադարան",
+        "tableLabel": "Գրադարանի օգտատերերը",
+        "search": "Որոնել օգտատերերին",
+        "searchPlaceholder": "Անուն կամ էլ. հասցե…",
+        "add": "Ավելացնել օգտատեր",
+        "edit": "Խմբագրել օգտատիրոջը",
+        "added": "Օգտատերն ավելացվեց",
+        "you": "Դուք",
+        "columns": {
+          "role": "Դեր",
+          "joined": "Գրանցվել է"
+        },
+        "deleteTitle": "Ջնջե՞լ {name} օգտատիրոջը",
+        "deleteText": "Հաշիվը կհեռացվի, իսկ օգտատիրոջ առաջիկա ամրագրումները կչեղարկվեն։ Այս գործողությունը հնարավոր չէ հետարկել։",
+        "deleted": "Օգտատերը ջնջվեց",
+        "deleteManyTitle": {
+          "one": "Ջնջե՞լ {count} օգտատիրոջ",
+          "other": "Ջնջե՞լ {count} օգտատիրոջ"
+        },
+        "deleteManyText": "Ընտրված հաշիվները կհեռացվեն, իսկ դրանց առաջիկա ամրագրումները կչեղարկվեն։ Այս գործողությունը հնարավոր չէ հետարկել։",
+        "deletedMany": {
+          "one": "Ջնջվեց {count} օգտատեր",
+          "other": "Ջնջվեց {count} օգտատեր"
+        },
+        "selfSkipped": "Ձեր սեփական հաշիվը բաց թողնվեց։",
+        "noMatch": {
+          "title": "«{q}» հարցմամբ օգտատեր չի գտնվել",
+          "text": "Փորձեք այլ անուն կամ էլ. հասցե։"
+        }
+      },
+      "reports": {
+        "pageTitle": "Հաշվետվություններ · Գրադարան",
+        "type": "Հաշվետվություն",
+        "generate": "Ստեղծել",
+        "exportCsv": "Արտահանել CSV",
+        "tableLabel": "Հաշվետվության տողերը",
+        "chartLabel": "Գծապատկեր՝ {type}, {range}",
+        "empty": {
+          "title": "Ընտրեք հաշվետվությունը և ժամանակահատվածը",
+          "text": "Ընտրեք, թե ինչ եք ուզում տեսնել, ապա սեղմեք «Ստեղծել»։"
+        },
+        "none": {
+          "title": "Այս օրերի համար տվյալներ չկան",
+          "text": "Փորձեք ավելի լայն ժամանակահատված։"
+        },
+        "stats": {
+          "totalBookings": "Ընդամենը ամրագրումներ",
+          "uniqueUsers": "Եզակի օգտատերեր",
+          "averageDays": "Ամրագրման միջին տևողությունը, օր"
+        },
+        "columns": {
+          "date": "Ամսաթիվ",
+          "bookings": "Ամրագրումներ",
+          "title": "Վերնագիր",
+          "averageDays": "Միջինը՝ օր",
+          "fullName": "Օգտատեր",
+          "email": "Էլ. հասցե",
+          "lastBooking": "Վերջին ամրագրումը",
+          "toDate": "Վերադարձի օրը",
+          "daysOverdue": "Ուշացած օրեր"
         }
       }
     },
@@ -1019,7 +1226,8 @@
         "toastSuccess": "Հաջողության ծանուցում",
         "toastError": "Սխալի ծանուցում",
         "confirm": "Հաստատման պատուհան",
-        "form": "Ձևով պատուհան"
+        "form": "Ձևով պատուհան",
+        "stat": "Ցուցանիշի քարտ"
       },
       "shell": {
         "title": "Նավիգացիա",

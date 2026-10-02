@@ -90,13 +90,13 @@ To start over, open `/design.html`, scroll to **Demo data** and press **Reset de
 | Catalog: search, category chips, filters, sorting, pages | Done |
 | Book page: details and booking for a date range | Done |
 | Login, Register | Done |
-| Admin: books, users, reports | Next |
+| Admin: book management, user management, reports with a chart and CSV export | Done |
+| Final polish: keyboard, contrast and responsive passes | Next |
 
 The app opens on the Home page. The style guide, which shows every component in every state, is
 at `/design.html`.
 
-The **Admin** pages are not built yet. The navbar's Admin button, and logging in as the admin
-(which lands there), show the "Page not found" page for now; the admin can still browse and book.
+Log in as the admin to reach the Admin pages; a member who tries is sent back to Home.
 
 ## Project structure
 
@@ -107,16 +107,21 @@ catalog.html            Catalog: ?q=&category=&authors=&genres=&yearFrom=&yearTo
 book.html               Book details and booking: ?id=OL468431W
 login.html              Log in: ?returnTo= brings the visitor back afterwards
 register.html           Create an account
+admin/
+  books.html            Book management: ?q=&sort=&order=&page=
+  users.html            User management, same parameters
+  reports.html          Reports: ?type=&from=&to=
 design.html             style guide (not linked from the app navigation)
 404.html                "Page not found"
 components/             one folder per component: Name.html, Name.css, Name.js
-  Navbar/  UserMenu/  Footer/  LanguageSwitch/  ThemeToggle/  BookRail/  Breadcrumb/
+  Navbar/  UserMenu/  Footer/  LanguageSwitch/  ThemeToggle/  BookRail/  Breadcrumb/  StatCard/
   Button/  TextField/  Select/  Checkbox/  SearchField/  Chip/  Tabs/  Badge/  Avatar/
   Calendar/  DateField/  FilterAccordion/  Pagination/  DataTable/  Dialog/  Toast/  Tooltip/
   Banner/  EmptyState/  Skeleton/  BookCover/  BookCard/  BookListItem/  Icon/
 assets/
   fonts/                self-hosted variable fonts and their licenses
   icons/sprite.svg      Lucide icons
+  vendor/               Chart.js, loaded only by the Reports page
   img/                  logo, favicon, touch icon and link-preview image
 css/
   index.css             design tokens, fonts, reset, base, typography, utilities
@@ -129,12 +134,12 @@ js/
   guards.js             who may open a page: anyone, guests, signed-in users or admins
   types.js              data shapes: Book, User, Booking, Report
   core/                 dom, template, i18n, http, date, format, validate, storage, events, a11y,
-                        flash
+                        flash, csv
   services/             the data API the pages use: books, bookings, auth, users, reports
   providers/            openlibrary, local-db, http-backend
   mappers/              API shapes to app shapes and back
   pages/                one entry module per HTML page: home, catalog, book, login, register,
-                        not-found, design;
+                        not-found, design, admin/books, admin/users, admin/reports;
                         a page with a lot to do keeps its parts in a folder of the same name
 docs/
   ARCHITECTURE.md       how the layers fit together
@@ -193,6 +198,7 @@ CDN while the app runs.
 | Source Serif 4 (variable) | 4.005 | SIL OFL 1.1 |
 | Noto Sans Armenian, Noto Serif Armenian (variable) | Fontsource 5.3.0 | SIL OFL 1.1 |
 | Lucide icons | 1.49.0 | ISC |
+| Chart.js | 4.5.1 | MIT |
 
-License texts sit next to the files in `assets/fonts/` and `assets/icons/`.
+License texts sit next to the files in `assets/fonts/`, `assets/icons/` and `assets/vendor/`.
 Book data and covers: [Open Library](https://openlibrary.org).

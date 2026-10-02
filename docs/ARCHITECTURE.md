@@ -149,6 +149,23 @@ shared, and Back and Forward restore it exactly (`js/core/url-state.js`).
 - **Book:** `id`, plus `from` and `to` while dates are chosen. That is how the dates survive the
   trip to the login page and back.
 
+## Admin pages
+
+The three admin pages start with `mountAdmin()` (`js/pages/admin/layout.js`), which runs the
+admin access check before anything is built and adds the tab bar.
+
+- **Books and Users** share `js/pages/admin/list.js`: a searchable, sortable, paged table whose
+  search, sort and page are in the address. Each page adds its columns, its form dialog and
+  its delete rules. An admin cannot delete their own account or remove their own admin role:
+  those controls are disabled and say why, and the data layer refuses it as well.
+- **Reports** asks the service for one of four reports, shows three summary figures, a chart
+  and a table, and exports the rows as CSV (`js/core/csv.js`; the file starts with a
+  byte-order mark so Excel reads Armenian text correctly).
+- **Chart.js** is the only third-party script. It is fetched from `assets/vendor/` the first
+  time a chart is drawn, so no other page pays for it. The chart reads its colours, font and
+  radii from the CSS custom properties when it is drawn, and is drawn again when the theme or
+  the language changes.
+
 ## Shared state
 
 Session, theme and language live in `localStorage` (`js/core/storage.js`) and are announced with

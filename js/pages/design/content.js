@@ -9,11 +9,12 @@ import { Button, IconButton } from '../../../components/Button/Button.js';
 import { DataTable, DataTableSkeleton } from '../../../components/DataTable/DataTable.js';
 import { confirmDialog, formDialog } from '../../../components/Dialog/Dialog.js';
 import { EmptyState, ErrorState } from '../../../components/EmptyState/EmptyState.js';
+import { StatCard, StatList } from '../../../components/StatCard/StatCard.js';
 import { TextField, inputOf, setFieldError } from '../../../components/TextField/TextField.js';
 import { toast } from '../../../components/Toast/Toast.js';
 import { todayIso } from '../../core/date.js';
 import { h, qs, render } from '../../core/dom.js';
-import { formatDate } from '../../core/format.js';
+import { formatDate, formatNumber } from '../../core/format.js';
 import { ApiError } from '../../core/http.js';
 import { setText } from '../../core/i18n.js';
 import { buildUrl } from '../../core/url-state.js';
@@ -263,6 +264,14 @@ function renderMessages() {
         action: Button({ label: { key: 'catalog.clearFilters' }, variant: 'secondary', size: 'sm', onClick: notify }),
       }),
       ErrorState({ error: network, onRetry: notify }),
+    ),
+    box(
+      'stack gap-2',
+      caption({ key: 'design.feedback.stat' }, 't-label muted'),
+      StatList([
+        StatCard({ label: { key: 'admin.reports.stats.totalBookings' }, value: formatNumber(59) }),
+        StatCard({ label: { key: 'admin.reports.stats.uniqueUsers' }, value: formatNumber(15) }),
+      ]),
     ),
   );
 }

@@ -1,0 +1,32 @@
+/* A row of figures: one column on phones, side by side from sm up. */
+.stat-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .stat-list {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  padding: var(--card-pad);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.stat-card__value {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1-size);
+  font-weight: var(--font-weight-semibold);
+  font-feature-settings: normal;
+  line-height: var(--text-h1-line);
+}

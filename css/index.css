@@ -33,6 +33,7 @@
 @import url("../components/Footer/Footer.css") layer(components);
 @import url("../components/BookRail/BookRail.css") layer(components);
 @import url("../components/Breadcrumb/Breadcrumb.css") layer(components);
+@import url("../components/StatCard/StatCard.css") layer(components);
 
 /* ---------- Fonts ---------- */
 
@@ -202,6 +203,7 @@
     --hero-min-height: 240px;
     --dialog-width: 480px;
     --auth-card-width: 440px;
+    --content-narrow: 960px;
     --sidebar-width: 280px;
     --toast-width: 360px;
 

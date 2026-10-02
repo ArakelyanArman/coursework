@@ -1,0 +1,175 @@
+@layer pages {
+  .admin {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: var(--content-narrow);
+    padding-top: var(--space-8);
+    margin-inline: auto;
+  }
+
+  .admin__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .admin__toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .admin__toolbar .btn {
+    align-self: flex-start;
+  }
+
+  .admin__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    min-width: 0;
+  }
+
+  .admin__content:focus {
+    outline: none;
+  }
+
+  .admin__content[aria-busy="true"] .table-card {
+    opacity: var(--opacity-disabled);
+  }
+
+  .admin__pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  .admin__pagination:empty {
+    display: none;
+  }
+
+  /* A name with something in front of it: a cover thumbnail or an avatar. */
+  .admin-name {
+    display: inline-flex;
+    gap: var(--space-3);
+    align-items: center;
+    min-width: 0;
+  }
+
+  .admin-name__link {
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+  }
+
+  .admin-name__link:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .book-form__isbn {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-2);
+    align-items: start;
+    padding-bottom: var(--field-gap);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  /* Lines the button up with the input beside it, below the label. */
+  .book-form__isbn .btn,
+  .report-controls__submit .btn {
+    min-height: var(--size-input);
+    margin-top: calc(var(--text-label-line) + var(--label-gap));
+  }
+
+  .book-form__status {
+    grid-column: 1 / -1;
+  }
+
+  .book-form__pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .report-controls {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--card-pad);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .report-controls__submit {
+    display: flex;
+  }
+
+  .report-result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  /* The chart reads its text size from here. */
+  .report-chart {
+    position: relative;
+    height: calc(var(--space-20) * 4);
+    font-size: var(--text-caption-size);
+    padding: var(--card-pad);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xs);
+  }
+
+  /* A bar per row: the chart grows with the number of rows. */
+  .report-chart--bar {
+    height: max(
+      calc(var(--space-20) * 3),
+      calc(var(--chart-rows, 1) * var(--space-8) + var(--space-20))
+    );
+  }
+
+  .report-chart canvas {
+    max-width: 100%;
+  }
+
+  .report-result__toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 767px) {
+    .report-controls__submit .btn {
+      margin-top: var(--space-0);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .admin__toolbar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin__toolbar .search-field {
+      flex: 1;
+      max-width: calc(var(--dialog-width) * 0.9);
+    }
+
+    .admin__toolbar .btn {
+      align-self: auto;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .report-controls {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto;
+      align-items: start;
+    }
+  }
+}

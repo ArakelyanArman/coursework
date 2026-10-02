@@ -18,10 +18,22 @@ const create = await loadTemplate(new URL('./Select.html', import.meta.url));
  * @param {string} [props.value]
  * @param {string} [props.name]
  * @param {'sm' | 'md'} [props.size]
+ * @param {boolean} [props.disabled]
+ * @param {Text} [props.helper] e.g. why the select is disabled.
  * @param {(value: string) => void} [props.onChange]
  * @returns {HTMLElement}
  */
-export function Select({ label, hideLabel = false, options, value, name, size = 'md', onChange }) {
+export function Select({
+  label,
+  hideLabel = false,
+  options,
+  value,
+  name,
+  size = 'md',
+  disabled = false,
+  helper,
+  onChange,
+}) {
   const field = create();
   const parts = refs(field);
   const id = uid('select');
@@ -40,6 +52,13 @@ export function Select({ label, hideLabel = false, options, value, name, size = 
     parts.input.append(element);
   }
   if (value != null) parts.input.value = value;
+  parts.input.disabled = disabled;
+  if (helper) {
+    parts.helper.id = `${id}-helper`;
+    setText(parts.helper, helper);
+    parts.helper.hidden = false;
+    parts.input.setAttribute('aria-describedby', parts.helper.id);
+  }
   if (onChange) parts.input.addEventListener('change', () => onChange(parts.input.value));
   return field;
 }

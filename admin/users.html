@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title data-i18n="admin.users.pageTitle"></title>
+
+    <script src="../js/theme-init.js"></script>
+
+    <link rel="preload" href="../assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../i18n/translations.json" as="fetch" crossorigin />
+
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/pages/admin.css" />
+
+    <script type="module" src="../js/pages/admin/users.js"></script>
+  </head>
+  <body>
+    <main id="main">
+      <div class="container">
+        <div class="admin">
+          <header class="admin__header">
+            <h1 class="t-h1 text-center" data-i18n="admin.title"></h1>
+            <div id="admin-tabs"></div>
+          </header>
+          <div class="admin__toolbar" id="admin-toolbar"></div>
+          <div class="admin__content" id="admin-content" tabindex="-1"></div>
+          <div class="admin__pagination" id="admin-pagination"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
