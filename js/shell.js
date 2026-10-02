@@ -1,6 +1,7 @@
 // @ts-check
 import { Footer } from '../components/Footer/Footer.js';
 import { Navbar } from '../components/Navbar/Navbar.js';
+import { ScrollTop } from '../components/ScrollTop/ScrollTop.js';
 import { toast } from '../components/Toast/Toast.js';
 import { h, qs } from './core/dom.js';
 import { EVENTS, on } from './core/events.js';
@@ -30,7 +31,7 @@ const RETURN_AFTER_LOGIN = new Set(['catalog', 'book']);
 
 /**
  * Every page calls this first. It checks access, loads the translations and puts the skip link,
- * navbar, footer and toast region around the page's <main id="main">.
+ * navbar, back-to-top button, footer and toast region around the page's <main id="main">.
  * @param {object} [options]
  * @param {Page} [options.page]
  * @param {Access} [options.access]
@@ -70,7 +71,7 @@ export async function mountShell({ page, access = 'public' } = {}) {
   });
 
   main.before(skipLink, navbar);
-  main.after(Footer());
+  main.after(ScrollTop({ target: main }), Footer());
   document.body.dataset.shell = 'ready';
 
   on(EVENTS.AUTH_CHANGE, ({ detail }) => {

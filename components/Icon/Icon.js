@@ -5,6 +5,7 @@ import { loadTemplate } from '../../js/core/template.js';
 /** Every symbol in assets/icons/sprite.svg. */
 export const ICON_NAMES = /** @type {const} */ ([
   'arrow-right',
+  'arrow-up',
   'book-open',
   'calendar-days',
   'chart-column',

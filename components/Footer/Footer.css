@@ -2,7 +2,7 @@
   --btn-hover-fill: var(--color-surface-sunken);
   --btn-active-fill: var(--color-border);
 
-  margin-top: var(--space-16);
+  margin-top: var(--footer-gap);
   padding-block: var(--space-8);
   background: var(--color-surface-muted);
   border-top: var(--border-width) solid var(--color-border);

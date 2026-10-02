@@ -116,7 +116,8 @@ await mountShell({ page: 'catalog', access: 'public' });
 2. Checks access (`js/guards.js`). A visitor who may not see the page is redirected before
    anything is rendered, and the call never returns.
 3. Loads the translations.
-4. Puts the skip link, `Navbar`, `Footer` and the toast region around `<main>`.
+4. Puts the skip link, `Navbar`, `ScrollTop` (the back-to-top button, shown once a page has been
+   scrolled half a screen), `Footer` and the toast region around `<main>`.
 5. Shows a message the previous page left behind (`js/core/flash.js`), for example
    "You've been logged out" after a redirect.
 6. Asks the server whether the stored session is still valid (`refreshSession()`).

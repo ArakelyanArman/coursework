@@ -1,0 +1,36 @@
+/* Sits between <main> and the footer and sticks to the bottom of the window. At the end of the
+   page it comes to rest in the gap above the footer, so it never covers the footer. */
+.scroll-top {
+  --scroll-top-size: var(--size-control-lg);
+  --scroll-top-rest: calc((var(--footer-gap) - var(--scroll-top-size)) / 2);
+
+  position: sticky;
+  bottom: calc(var(--space-4) + var(--scroll-top-size) + var(--scroll-top-rest));
+  z-index: var(--z-nav);
+  flex: none;
+  height: 0;
+}
+
+.scroll-top__button {
+  position: absolute;
+  inset-block-start: var(--scroll-top-rest);
+  inset-inline-end: var(--container-pad);
+  width: var(--scroll-top-size);
+  min-height: var(--scroll-top-size);
+  visibility: hidden;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(var(--space-2));
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    visibility var(--duration-base);
+}
+
+.scroll-top--visible .scroll-top__button {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}

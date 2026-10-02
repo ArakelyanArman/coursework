@@ -3,6 +3,7 @@
     "common": {
       "appName": "Library",
       "skipToContent": "Skip to content",
+      "backToTop": "Back to top",
       "retry": "Try again",
       "cancel": "Cancel",
       "close": "Close",
@@ -619,6 +620,7 @@
     "common": {
       "appName": "Գրադարան",
       "skipToContent": "Անցնել բովանդակությանը",
+      "backToTop": "Վերադառնալ վերև",
       "retry": "Կրկին փորձել",
       "cancel": "Չեղարկել",
       "close": "Փակել",

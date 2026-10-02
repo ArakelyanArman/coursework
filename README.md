@@ -108,7 +108,8 @@ admin/
 design.html             style guide (not linked from the app navigation)
 404.html                "Page not found"
 components/             one folder per component: Name.html, Name.css, Name.js
-  Navbar/  UserMenu/  Footer/  LanguageSwitch/  ThemeToggle/  BookRail/  Breadcrumb/  StatCard/
+  Navbar/  UserMenu/  Footer/  ScrollTop/  LanguageSwitch/  ThemeToggle/  BookRail/  Breadcrumb/
+  StatCard/
   Button/  TextField/  Select/  Checkbox/  SearchField/  Chip/  Tabs/  Badge/  Avatar/
   Calendar/  DateField/  FilterAccordion/  Pagination/  DataTable/  Dialog/  Toast/  Tooltip/
   Banner/  EmptyState/  Skeleton/  BookCover/  BookCard/  BookListItem/  Icon/
