@@ -17,9 +17,6 @@ export const currentUser = () => getSession()?.user ?? null;
 
 export const isLoggedIn = () => getSession() !== null;
 
-// UX only: the backend must enforce roles on every request.
-export const isAdmin = () => currentUser()?.role === 'admin';
-
 /**
  * @param {string} email
  * @param {string} password

@@ -123,11 +123,6 @@ export function render(parent, ...children) {
   return parent;
 }
 
-/** @param {Element} element */
-export function clear(element) {
-  element.replaceChildren();
-}
-
 /**
  * @param {string} selector
  * @param {ParentNode} [root]
@@ -135,13 +130,4 @@ export function clear(element) {
  */
 export function qs(selector, root = document) {
   return root.querySelector(selector);
-}
-
-/**
- * @param {string} selector
- * @param {ParentNode} [root]
- * @returns {any[]}
- */
-export function qsa(selector, root = document) {
-  return [...root.querySelectorAll(selector)];
 }

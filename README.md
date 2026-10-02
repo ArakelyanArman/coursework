@@ -78,25 +78,19 @@ The other seed users (see `data/seed/users.json`) share the member password.
 
 To start over, open `/design.html`, scroll to **Demo data** and press **Reset demo data**.
 
-## What works today
+## What is in the app
 
-| Part | Status |
+| Page | What it does |
 |---|---|
-| Design tokens, fonts, themes, language switch, core helpers | Done |
-| Data layer: Open Library, local demo store, services, backend adapter | Done |
-| Components: buttons, fields, chips, calendar, book cards, table, dialogs, toasts | Done |
-| Page shell: navbar, mobile menu, footer, sign-in state, access checks, "Page not found" | Done |
-| Home: search and three rails of books | Done |
-| Catalog: search, category chips, filters, sorting, pages | Done |
-| Book page: details and booking for a date range | Done |
-| Login, Register | Done |
-| Admin: book management, user management, reports with a chart and CSV export | Done |
-| Final polish: keyboard, contrast and responsive passes | Next |
+| Home | Search, and rails of trending books, classics and Armenian literature |
+| Catalog | Search, category chips, author / genre / year filters, sorting, pages |
+| Book | Details, availability, and booking for a date range (needs an account) |
+| Log in, Register | Accounts; after logging in you return to where you were |
+| Admin (admins only) | Book management, user management, reports with a chart and CSV export |
 
 The app opens on the Home page. The style guide, which shows every component in every state, is
-at `/design.html`.
-
-Log in as the admin to reach the Admin pages; a member who tries is sent back to Home.
+at `/design.html`. Log in as the admin to reach the Admin pages; a member who tries is sent
+back to Home.
 
 ## Project structure
 
@@ -169,6 +163,19 @@ No other file changes; see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 - **Dates** are calendar dates stored as `"2026-10-15"`; weeks start on Monday.
 - Pages talk to `js/services/` only. Network requests go through `js/core/http.js`.
 - No code file is longer than 500 lines (`css/index.css` is the one exception).
+
+## How it was checked
+
+- **Accessibility:** every page was checked in both themes for text contrast (WCAG AA),
+  labelled controls, heading order, landmarks and target sizes, and was walked through with
+  the keyboard alone.
+- **Responsive:** every page at 360, 768, 1024 and 1440 px wide, in English and Armenian.
+- **Translations:** `/design.html` reports any key that exists in only one language.
+- **Backend switch:** with `dataSource: 'backend'` and no server running, every page loads and
+  shows its error state with a "Try again" button.
+
+Lighthouse, Prettier and ESLint need Node.js, which was not available while the app was built;
+see below to run the last two.
 
 ## Optional developer tools
 

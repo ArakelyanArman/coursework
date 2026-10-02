@@ -116,18 +116,6 @@ export function compare(a, b) {
 }
 
 /**
- * @param {IsoDate} a
- * @param {IsoDate} b
- */
-export const isBefore = (a, b) => compare(a, b) < 0;
-
-/**
- * @param {IsoDate} a
- * @param {IsoDate} b
- */
-export const isAfter = (a, b) => compare(a, b) > 0;
-
-/**
  * Both ends included.
  * @param {IsoDate} iso
  * @param {IsoDate} from

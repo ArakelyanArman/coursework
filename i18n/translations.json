@@ -9,12 +9,10 @@
       "save": "Save",
       "delete": "Delete",
       "search": "Search",
-      "loading": "Loading…",
       "clear": "Clear",
       "showMore": "Show more",
       "showLess": "Show less",
-      "breadcrumb": "Breadcrumb",
-      "optional": "optional"
+      "breadcrumb": "Breadcrumb"
     },
     "nav": {
       "primary": "Main navigation",
@@ -605,8 +603,6 @@
         "title": "Feedback",
         "toastSuccess": "Success toast",
         "toastError": "Error toast",
-        "confirm": "Confirm dialog",
-        "form": "Form dialog",
         "stat": "Stat card"
       },
       "shell": {
@@ -629,12 +625,10 @@
       "save": "Պահպանել",
       "delete": "Ջնջել",
       "search": "Որոնել",
-      "loading": "Բեռնվում է…",
       "clear": "Մաքրել",
       "showMore": "Ցույց տալ ավելին",
       "showLess": "Ցույց տալ ավելի քիչ",
-      "breadcrumb": "Էջի ուղին",
-      "optional": "ոչ պարտադիր"
+      "breadcrumb": "Էջի ուղին"
     },
     "nav": {
       "primary": "Հիմնական նավիգացիա",
@@ -1225,8 +1219,6 @@
         "title": "Արձագանք",
         "toastSuccess": "Հաջողության ծանուցում",
         "toastError": "Սխալի ծանուցում",
-        "confirm": "Հաստատման պատուհան",
-        "form": "Ձևով պատուհան",
         "stat": "Ցուցանիշի քարտ"
       },
       "shell": {

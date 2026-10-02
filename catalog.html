@@ -28,13 +28,15 @@
         </header>
 
         <div class="catalog__layout">
-          <aside class="catalog__side" data-i18n-attr="aria-label:catalog.filters.title">
+          <aside class="catalog__side" aria-labelledby="catalog-filters-title">
+            <h2 class="sr-only" id="catalog-filters-title" data-i18n="catalog.filters.title"></h2>
             <div id="catalog-search"></div>
             <div class="catalog__filter-button" id="catalog-filter-button"></div>
             <div class="catalog__filters" id="catalog-filters"></div>
           </aside>
 
-          <section class="catalog__results" aria-labelledby="catalog-title">
+          <section class="catalog__results" aria-labelledby="catalog-results-title">
+            <h2 class="sr-only" id="catalog-results-title" data-i18n="catalog.resultsLabel"></h2>
             <div class="catalog__toolbar">
               <div class="catalog__categories" id="catalog-categories"></div>
               <div class="catalog__sort" id="catalog-sort"></div>

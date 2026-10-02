@@ -86,7 +86,10 @@ try {
 
       $bytes = $null
       $notFoundPage = Join-Path $root '404.html'
-      $isPage = @('', '.html') -contains [System.IO.Path]::GetExtension($path).ToLower()
+      # Only a browser asking for a page gets the "Page not found" page; a failed data request
+      # gets a plain 404, so the app can tell it failed.
+      $wantsPage = "$($request.Headers['Accept'])" -like '*text/html*'
+      $isPage = $wantsPage -and (@('', '.html') -contains [System.IO.Path]::GetExtension($path).ToLower())
       if ($inside -and (Test-Path $target -PathType Leaf)) {
         $bytes = Send-File $response $target 200
       } elseif ($isPage -and (Test-Path $notFoundPage)) {

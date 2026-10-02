@@ -19,8 +19,9 @@ echo ""
   fi
 ) >/dev/null 2>&1 &
 
-if command -v python3 >/dev/null 2>&1; then exec python3 -m http.server "$PORT"
-elif command -v python >/dev/null 2>&1; then exec python -m http.server "$PORT"
+# Python is run once first: on some systems the command exists but only tells you to install it.
+if python3 -c "" >/dev/null 2>&1; then exec python3 -m http.server "$PORT"
+elif python -c "" >/dev/null 2>&1; then exec python -m http.server "$PORT"
 elif command -v ruby >/dev/null 2>&1; then exec ruby -run -e httpd . -p "$PORT"
 elif command -v php >/dev/null 2>&1; then exec php -S "localhost:$PORT"
 elif command -v npx >/dev/null 2>&1; then exec npx --yes serve -l "$PORT" .

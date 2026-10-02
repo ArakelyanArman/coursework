@@ -1,5 +1,5 @@
 // @ts-check
-import { uid } from '../../js/core/a11y.js';
+import { rememberFocus, uid } from '../../js/core/a11y.js';
 import { h } from '../../js/core/dom.js';
 import { ApiError } from '../../js/core/http.js';
 import { applyTranslations, setText } from '../../js/core/i18n.js';
@@ -69,7 +69,7 @@ export function Dialog({ title, description, body, actions = [], icon, closable 
  * @returns {Promise<string>} Resolves with the dialog's returnValue once it has closed.
  */
 export function openDialog(dialog, { focus } = {}) {
-  const opener = document.activeElement;
+  const returnFocus = rememberFocus();
   document.body.append(dialog);
   // A dialog that is reused was off the page while closed and may have missed a language switch.
   applyTranslations(dialog);
@@ -81,7 +81,7 @@ export function openDialog(dialog, { focus } = {}) {
       'close',
       () => {
         dialog.remove();
-        if (opener instanceof HTMLElement && opener.isConnected) opener.focus();
+        returnFocus();
         resolve(dialog.returnValue);
       },
       { once: true },

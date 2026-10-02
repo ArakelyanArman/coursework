@@ -7,7 +7,10 @@
   box-shadow: var(--shadow-xs);
 }
 
+/* Positioned, so the visually hidden labels inside it scroll with the table instead of
+   widening the page. */
 .table-card__scroll {
+  position: relative;
   overflow-x: auto;
 }
 

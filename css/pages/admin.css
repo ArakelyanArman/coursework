@@ -57,6 +57,9 @@
   }
 
   .admin-name__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--space-6);
     color: var(--color-text);
     text-decoration: none;
     border-radius: var(--radius-sm);

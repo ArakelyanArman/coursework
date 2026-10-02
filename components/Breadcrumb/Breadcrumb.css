@@ -21,6 +21,9 @@
 }
 
 .breadcrumb__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--space-6);
   text-underline-offset: 0.2em;
   border-radius: var(--radius-sm);
 }

@@ -9,6 +9,12 @@
   cursor: pointer;
 }
 
+/* A long word, such as an Armenian label, breaks instead of pushing past the row. */
+.check__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .check__input {
   display: grid;
   flex: none;

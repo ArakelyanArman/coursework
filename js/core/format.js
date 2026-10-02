@@ -20,7 +20,6 @@ const WEEKDAY_KEYS = {
   short: 'date.weekdaysShort',
   narrow: 'date.weekdaysNarrow',
 };
-const MONTH_KEYS = { long: 'date.monthsLong', short: 'date.monthsShort' };
 
 /** @type {Map<string, Intl.DateTimeFormat>} */
 const dateFormatters = new Map();
@@ -99,17 +98,6 @@ export function weekdayNames(width = 'short') {
   const { year, month, day } = parseIso(KNOWN_MONDAY);
   return Array.from({ length: 7 }, (_, index) =>
     formatter.format(toUtcDate(toIso(year, month, day + index))),
-  );
-}
-
-/** @param {'long' | 'short'} [width] @returns {string[]} January first. */
-export function monthNames(width = 'long') {
-  if (!hasIntlLocale()) {
-    return Array.from({ length: 12 }, (_, index) => t(`${MONTH_KEYS[width]}.${index}`));
-  }
-  const formatter = dateFormatter(getLocale(), { month: width });
-  return Array.from({ length: 12 }, (_, index) =>
-    formatter.format(toUtcDate(toIso(2024, index + 1, 1))),
   );
 }
 
